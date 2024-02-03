@@ -1,0 +1,58 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  {
+    "key": "ctrl+s",
+    "command": "runCommands",
+    "args": {
+      "commands": ["workbench.action.files.save", "extension.vim_escape"]
+    }
+  },
+  {
+    "key": "cmd+s",
+    "command": "runCommands",
+    "args": {
+      "commands": ["workbench.action.files.save", "extension.vim_escape"]
+    }
+  },
+  {
+    "key": "ctrl+shift+j",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+b",
+    "when": "editorTextFocus",
+    "command": "workbench.files.action.focusFilesExplorer"
+  },
+  {
+    "key": "ctrl+t",
+    "when": "editorTextFocus",
+    "command": "workbench.view.testing.focus"
+  },
+  {
+    "key": "a",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "explorer.newFile"
+  },
+  {
+    "key": "r",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "renameFile"
+  },
+  {
+    "key": "d",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "deleteFile"
+  },
+  {
+    "key": "ctrl+z",
+    "command": "workbench.action.toggleZenMode"
+  }
+]

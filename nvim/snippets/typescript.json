@@ -1,0 +1,27 @@
+{
+  "Playwright object model class": {
+    "prefix": "pwc",
+    "body": [
+      "import { Locator, Page } from '@playwright/test';",
+      "",
+      "export class $1 {",
+      "  constructor(page: Page, isMobile: boolean) {",
+      "   this.page = page;",
+      "   this.isMobile = isMobile;",
+      "  }",
+      "}"
+    ]
+  },
+  "Playwright module": {
+    "prefix": "pwm",
+    "body": ["export module $1 {\n  \n}", "}"]
+  },
+  "Playwright test step": {
+    "prefix": "pws",
+    "body": ["await test.step('$1', async () => {\n  $2\n});"]
+  },
+  "Playwright short test step": {
+    "prefix": "pwss",
+    "body": ["await test.step('$1', async () => $2);"]
+  }
+}

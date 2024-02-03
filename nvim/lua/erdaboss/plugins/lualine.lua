@@ -4,7 +4,6 @@ local M = {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"AndreM222/copilot-lualine",
-		"arkav/lualine-lsp-progress",
 	},
 }
 
@@ -78,13 +77,7 @@ M.config = function()
 					},
 				},
 			},
-			lualine_x = {
-				{
-					"lsp_progress",
-					display_components = { "lsp_client_name", { "title", "percentage", "message" } },
-					timer = { progress_enddelay = 2000, spinner = 0, lsp_client_name_enddelay = 2000 },
-				},
-			},
+			lualine_x = {},
 			lualine_y = {
 				"copilot",
 				{

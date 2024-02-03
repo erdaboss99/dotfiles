@@ -19,7 +19,6 @@ M.config = function()
 		ensure_installed = {
 			"c",
 			"cpp",
-			"rust",
 			"lua",
 			"bash",
 			"javascript",

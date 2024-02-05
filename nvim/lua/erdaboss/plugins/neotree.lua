@@ -66,7 +66,6 @@ M.config = function()
 				mappings = {
 					["<bs>"] = "",
 					["."] = "",
-					["/"] = "",
 					["#"] = "",
 					["D"] = "",
 					["f"] = "",
@@ -79,12 +78,6 @@ M.config = function()
 					["on"] = "",
 					["os"] = "",
 					["ot"] = "",
-				},
-				fuzzy_finder_mappings = {
-					["<down>"] = "",
-					["<C-n>"] = "",
-					["<up>"] = "",
-					["<C-p>"] = "",
 				},
 			},
 			filtered_items = {

@@ -63,6 +63,12 @@ M.config = function()
 		on_attach = on_attach,
 	}
 
+	-- TOML LSP
+	lspconf.taplo.setup {
+		on_attach = on_attach,
+		capabilities = capabilities,
+	}
+
 	-- Bash (Shell) LSP
 	lspconf.bashls.setup {
 		on_attach = on_attach,
@@ -75,90 +81,86 @@ M.config = function()
 		capabilities = capabilities,
 	}
 
-	-- Astro LSP
-	lspconf.astro.setup {
-		capabilities = capabilities,
-		on_attach = on_attach,
-	}
+	if vim.loop.os_uname().sysname == "Darwin" then
+		-- Astro LSP
+		lspconf.astro.setup {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		}
 
-	-- HTML LSP
-	lspconf.html.setup {
-		capabilities = capabilities,
-		on_attach = on_attach,
-	}
+		-- HTML LSP
+		lspconf.html.setup {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		}
 
-	-- CSS LSP
-	lspconf.cssls.setup {
-		capabilities = capabilities,
-		on_attach = on_attach,
-		settings = {
-			css = {
-				validate = true,
-				lint = { unknownAtRules = "ignore" },
+		-- CSS LSP
+		lspconf.cssls.setup {
+			capabilities = capabilities,
+			on_attach = on_attach,
+			settings = {
+				css = {
+					validate = true,
+					lint = { unknownAtRules = "ignore" },
+				},
+				scss = {
+					validate = true,
+					lint = { unknownAtRules = "ignore" },
+				},
+				less = {
+					validate = true,
+					lint = { unknownAtRules = "ignore" },
+				},
 			},
-			scss = {
-				validate = true,
-				lint = { unknownAtRules = "ignore" },
+		}
+
+		-- TailwindCSS LSP
+		lspconf.tailwindcss.setup {
+			capabilities = capabilities,
+			on_attach = function(_, bufnr)
+				require("tailwindcss-colors").buf_attach(bufnr)
+				on_attach(_, bufnr)
+			end,
+		}
+
+		-- Markdown and MDX LSP
+		lspconf.marksman.setup {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		}
+
+		-- Prisma ORM LSP
+		lspconf.prismals.setup {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		}
+
+		-- Python LSP
+		lspconf.pyright.setup {
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = {
+				"python",
 			},
-			less = {
-				validate = true,
-				lint = { unknownAtRules = "ignore" },
-			},
-		},
-	}
+		}
 
-	-- TailwindCSS LSP
-	lspconf.tailwindcss.setup {
-		capabilities = capabilities,
-		on_attach = function(_, bufnr)
-			require("tailwindcss-colors").buf_attach(bufnr)
-			on_attach(_, bufnr)
-		end,
-	}
-
-	-- Markdown and MDX LSP
-	lspconf.marksman.setup {
-		capabilities = capabilities,
-		on_attach = on_attach,
-	}
-
-	-- Prisma ORM LSP
-	lspconf.prismals.setup {
-		capabilities = capabilities,
-		on_attach = on_attach,
-	}
-
-	-- Emmet LSP
-	-- lspconf.emmet_ls.setup {
-	-- 	capabilities = capabilities,
-	-- 	on_attach = on_attach,
-	-- 	filetypes = {
-	-- 		"astro",
-	-- 		"html",
-	-- 		-- "typescriptreact",
-	-- 		-- "javascriptreact",
-	-- 		"css",
-	-- 		"sass",
-	-- 		"scss",
-	-- 		"less",
-	-- 		"svelte",
-	-- 	},
-	-- }
-
-	-- Python LSP
-	lspconf.pyright.setup {
-		on_attach = on_attach,
-		capabilities = capabilities,
-		filetypes = {
-			"python",
-		},
-	}
-
-	-- TOML LSP
-	lspconf.taplo.setup {
-		on_attach = on_attach,
-		capabilities = capabilities,
-	}
+		-- Emmet LSP
+		-- lspconf.emmet_ls.setup {
+		-- 	capabilities = capabilities,
+		-- 	on_attach = on_attach,
+		-- 	filetypes = {
+		-- 		"astro",
+		-- 		"html",
+		-- 		-- "typescriptreact",
+		-- 		-- "javascriptreact",
+		-- 		"css",
+		-- 		"sass",
+		-- 		"scss",
+		-- 		"less",
+		-- 		"svelte",
+		-- 	},
+		-- }
+	end
 end
 
 return M

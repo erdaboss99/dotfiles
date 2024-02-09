@@ -5,6 +5,8 @@ g.copilot_filetypes = { VimspectorPrompt = false }
 
 g.mapleader = " "
 
+-- opt.fileformats = "dos,unix"
+
 opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 opt.cursorline = false -- highlight the current line
 opt.conceallevel = 0 -- so that `` is visible in markdown files

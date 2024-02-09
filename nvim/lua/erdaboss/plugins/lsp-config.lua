@@ -1,9 +1,6 @@
 local M = {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
-	dependencies = {
-		"themaxmarchuk/tailwindcss-colors.nvim",
-	},
 }
 
 M.config = function()
@@ -117,10 +114,7 @@ M.config = function()
 		-- TailwindCSS LSP
 		lspconf.tailwindcss.setup {
 			capabilities = capabilities,
-			on_attach = function(_, bufnr)
-				require("tailwindcss-colors").buf_attach(bufnr)
-				on_attach(_, bufnr)
-			end,
+			on_attach = on_attach,
 		}
 
 		-- Markdown and MDX LSP

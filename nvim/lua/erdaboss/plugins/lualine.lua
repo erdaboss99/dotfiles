@@ -49,34 +49,7 @@ M.config = function()
 					colored = true, -- Displays diagnostics status in color if set to true.
 				},
 			},
-			lualine_c = {
-				{
-					"buffers",
-					show_filename_only = true, -- Shows shortened relative path when set to false.
-					hide_filename_extension = false, -- Hide filename extension when set to true.
-					show_modified_status = true, -- Shows indicator when the buffer is modified.
-
-					mode = 0, -- 0: Shows buffer name
-					-- 1: Shows buffer index
-					-- 2: Shows buffer name + buffer index
-					-- 3: Shows buffer number
-					-- 4: Shows buffer name + buffer number
-
-					filetype_names = {
-						TelescopePrompt = "Telescope",
-						dashboard = "Dashboard",
-						packer = "Packer",
-						fzf = "FZF",
-						alpha = "Alpha",
-					},
-
-					symbols = {
-						modified = " 󰏫", -- Text to show when the buffer is modified
-						alternate_file = "", -- Text to show to identify the alternate file
-						directory = "", -- Text to show when the buffer is a directory
-					},
-				},
-			},
+			lualine_c = {},
 			lualine_x = {},
 			lualine_y = {
 				"copilot",
@@ -94,7 +67,7 @@ M.config = function()
 		inactive_sections = {
 			lualine_a = {},
 			lualine_b = {},
-			lualine_c = { "buffers" },
+			lualine_c = {},
 			lualine_x = {},
 			lualine_y = { "filetype" },
 			lualine_z = { "location", "progress" },

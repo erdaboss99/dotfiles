@@ -24,7 +24,7 @@ M.config = function()
 			"taplo", -- TOML LSP
 			"marksman", -- Markdown and MDX LSP
 			"pyright", -- Python LSP
-			"csharp-language-server", -- C# LSP
+			-- "csharp-language-server", -- C# LSP
 
 			"stylua", -- Lua formatter
 			"shfmt", -- Bash formatter

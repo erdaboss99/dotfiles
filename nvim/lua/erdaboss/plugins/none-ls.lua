@@ -15,37 +15,69 @@ M.config = function()
 	end
 	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
+	local sources = function()
+		if vim.loop.os_uname().sysname == "Darwin" then
+			return {
+				null_ls.builtins.formatting.stylua,
+				null_ls.builtins.diagnostics.luacheck.with {
+					extra_args = { "--ignore", "542" },
+				},
+
+				null_ls.builtins.formatting.prettierd.with {
+					extra_filetypes = { "astro", "prisma" },
+					disabled_filetypes = { "markdown" },
+					extra_args = { "--ignore-path", "./.prettierignore" },
+				},
+
+				null_ls.builtins.formatting.shfmt,
+				null_ls.builtins.diagnostics.shellcheck.with {
+					disabled_filetypes = { "dotenv" },
+				},
+
+				null_ls.builtins.formatting.csharpier,
+
+				null_ls.builtins.formatting.autopep8,
+				null_ls.builtins.diagnostics.flake8.with {
+					extra_args = { "--ignore=E501" },
+				},
+
+				null_ls.builtins.formatting.taplo,
+
+				null_ls.builtins.formatting.trim_whitespace.with {
+					filetypes = { "*" },
+				},
+			}
+		else
+			return {
+				null_ls.builtins.formatting.stylua,
+				null_ls.builtins.diagnostics.luacheck.with {
+					extra_args = { "--ignore", "542" },
+				},
+
+				null_ls.builtins.formatting.prettierd.with {
+					extra_filetypes = { "astro", "prisma" },
+					disabled_filetypes = { "markdown" },
+					extra_args = { "--ignore-path", "./.prettierignore" },
+				},
+
+				null_ls.builtins.formatting.shfmt,
+				null_ls.builtins.diagnostics.shellcheck.with {
+					disabled_filetypes = { "dotenv" },
+				},
+
+				null_ls.builtins.formatting.csharpier,
+
+				null_ls.builtins.formatting.taplo,
+
+				null_ls.builtins.formatting.trim_whitespace.with {
+					filetypes = { "*" },
+				},
+			}
+		end
+	end
+
 	null_ls.setup {
-		sources = {
-			null_ls.builtins.formatting.stylua,
-			null_ls.builtins.diagnostics.luacheck.with {
-				extra_args = { "--ignore", "542" },
-			},
-
-			null_ls.builtins.formatting.prettierd.with {
-				extra_filetypes = { "astro", "prisma" },
-				disabled_filetypes = { "markdown" },
-				extra_args = { "--ignore-path", "./.prettierignore" },
-			},
-
-			null_ls.builtins.formatting.shfmt,
-			null_ls.builtins.diagnostics.shellcheck.with {
-				disabled_filetypes = { "dotenv" },
-			},
-
-			null_ls.builtins.formatting.csharpier,
-
-			null_ls.builtins.formatting.autopep8,
-			null_ls.builtins.diagnostics.flake8.with {
-				extra_args = { "--ignore=E501" },
-			},
-
-			null_ls.builtins.formatting.taplo,
-
-			null_ls.builtins.formatting.trim_whitespace.with {
-				filetypes = { "*" },
-			},
-		},
+		sources = sources(),
 		on_attach = function(client, bufnr)
 			if client.supports_method "textDocument/formatting" then
 				vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }

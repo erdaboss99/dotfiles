@@ -8,7 +8,7 @@ local M = {
 
 M.config = function()
 	-- stylua: ignore
-	vim.api.nvim_set_keymap( "n", "<leader>lg", "<CMD>LazyGit<CR>", { desc = "Open [L]azy[G]it", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>g", "<CMD>LazyGit<CR>", { desc = "Open Lazy[G]it", noremap = true, silent = true, nowait = true })
 end
 
 return M

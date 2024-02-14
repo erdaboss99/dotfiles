@@ -4,8 +4,9 @@ local g = vim.g
 g.copilot_filetypes = { VimspectorPrompt = false }
 
 g.mapleader = " "
+g.maplocalleader = " "
 
--- opt.fileformats = "dos,unix"
+if vim.loop.os_uname().sysname == "Linux" then opt.fileformats = "dos,unix" end
 
 opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 opt.cursorline = false -- highlight the current line

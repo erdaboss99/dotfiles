@@ -1,7 +1,9 @@
 -- stylua: ignore start
-vim.api.nvim_set_keymap("n", "<Char-0xAA>", "<CMD>w!<CR>", { desc = "Save current buffer", noremap = true, silent = true, nowait = true }) -- <CMD-s>
-vim.api.nvim_set_keymap("i", "<Char-0xAA>", "<ESC><CMD>w!<CR>", { desc = "Save current buffer", noremap = true, silent = true, nowait = true }) -- <CMD-s>
-vim.api.nvim_set_keymap("v", "<Char-0xAA>", "<ESC><CMD>w!<CR>", { desc = "Save current buffer", noremap = true, silent = true, nowait = true }) -- <CMD-s>
+if vim.loop.os_uname().sysname == "Darwin" then
+    vim.api.nvim_set_keymap("n", "<Char-0xAA>", "<CMD>w!<CR>", { desc = "Save current buffer", noremap = true, silent = true, nowait = true }) -- <CMD-s>
+    vim.api.nvim_set_keymap("i", "<Char-0xAA>", "<ESC><CMD>w!<CR>", { desc = "Save current buffer", noremap = true, silent = true, nowait = true }) -- <CMD-s>
+    vim.api.nvim_set_keymap("v", "<Char-0xAA>", "<ESC><CMD>w!<CR>", { desc = "Save current buffer", noremap = true, silent = true, nowait = true }) -- <CMD-s>
+end
 
 vim.api.nvim_set_keymap("n", "<C-s>", "<CMD>w!<CR>", { desc = "Save current buffer", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("i", "<C-s>", "<ESC><CMD>w!<CR>", { desc = "Save current buffer", noremap = true, silent = true, nowait = true })
@@ -16,6 +18,12 @@ vim.api.nvim_set_keymap("n", "<S-TAB>", "<CMD>bprev<CR>", { desc = "Previous buf
 vim.api.nvim_set_keymap("n", "<C-w>b", "<CMD>bd<CR>", { desc = "Close buffer", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("i", "jk", "<ESC>", { desc = "Exit from insert mode", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("i", "kj", "<ESC>", { desc = "Exit from insert mode", noremap = true, silent = true, nowait = true })
+
+-- Better window movement
+vim.api.nvim_set_keymap("n", "<C-Up>", "<C-w>k", { desc = "Move to the window above", noremap = true, silent = true, nowait = true })
+vim.api.nvim_set_keymap("n", "<C-Down>", "<C-w>j", { desc = "Move to the window below", noremap = true, silent = true, nowait = true })
+vim.api.nvim_set_keymap("n", "<C-Right>", "<C-w>l", { desc = "Move to the window to the right", noremap = true, silent = true, nowait = true })
+vim.api.nvim_set_keymap("n", "<C-Left>", "<C-w>h", { desc = "Move to the window to the left", noremap = true, silent = true, nowait = true })
 
 -- Remove Shift+Arrow keys jumps
 vim.api.nvim_set_keymap("n", "<S-Up>", "<Up>", { noremap = true, silent = true, nowait = true })

@@ -36,3 +36,4 @@ alias python='python3'
 
 alias g='lazygit'
 
+export PATH="$PATH:/Users/erdelyiroland/.dotnet/tools"

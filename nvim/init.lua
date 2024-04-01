@@ -28,8 +28,6 @@ SPEC "erdaboss.plugins.copilot"
 SPEC "erdaboss.plugins.comment"
 SPEC "erdaboss.plugins.surround"
 SPEC "erdaboss.plugins.symbol-usage"
-SPEC "erdaboss.plugins.dap"
-SPEC "erdaboss.plugins.dap-ui"
 
 if vim.loop.os_uname().sysname == "Darwin" then SPEC "erdaboss.plugins.vimtex" end
 

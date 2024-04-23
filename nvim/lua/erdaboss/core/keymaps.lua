@@ -16,6 +16,7 @@ vim.api.nvim_set_keymap("v", "<C-q>", "<ESC><CMD>qa!<CR>", { desc = "Quit all", 
 vim.api.nvim_set_keymap("n", "<TAB>", "<CMD>bnext<CR>", { desc = "Next buffer", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("n", "<S-TAB>", "<CMD>bprev<CR>", { desc = "Previous buffer", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("n", "<C-w>b", "<CMD>bd<CR>", { desc = "Close buffer", noremap = true, silent = true, nowait = true })
+vim.api.nvim_set_keymap("n", "<C-z>", "<CMD>bd<CR>", { desc = "Close buffer", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("i", "jk", "<ESC>", { desc = "Exit from insert mode", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("i", "kj", "<ESC>", { desc = "Exit from insert mode", noremap = true, silent = true, nowait = true })
 

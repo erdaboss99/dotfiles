@@ -138,22 +138,26 @@ M.config = function()
 			},
 		}
 
-		-- Emmet LSP
-		-- lspconf.emmet_ls.setup {
-		-- 	capabilities = capabilities,
-		-- 	on_attach = on_attach,
-		-- 	filetypes = {
-		-- 		"astro",
-		-- 		"html",
-		-- 		-- "typescriptreact",
-		-- 		-- "javascriptreact",
-		-- 		"css",
-		-- 		"sass",
-		-- 		"scss",
-		-- 		"less",
-		-- 		"svelte",
-		-- 	},
-		-- }
+		-- Go LSP
+		lspconf.gopls.setup {
+			on_attach = on_attach,
+			capabilities = capabilities,
+			cmd = { "gopls" },
+			filetypes = {
+				"go",
+				"gomod",
+				"gowork",
+				"gotmpl",
+			},
+			settings = {
+				gopls = {
+					completeUnimported = true,
+					analyses = {
+						ununsedparams = true,
+					},
+				},
+			},
+		}
 	end
 end
 

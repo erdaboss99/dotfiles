@@ -23,12 +23,16 @@ local packages = function()
 			"marksman", -- Markdown and MDX LSP
 			"pyright", -- Python LSP
 			{ "csharp-language-server", version = "0.10.0" }, -- C# LSP
+			"gopls", -- Go LSP
 
 			"stylua", -- Lua formatter
 			"shfmt", -- Bash formatter
 			"prettierd", -- Formatter for Astro, HTML, CSS, Markdown, MDX, JavaScript, TypeScript, JSX, TSX, JSON
 			"black", -- Python formatter
 			"csharpier", -- C# formatter
+			"gofumpt", -- Go formatter
+			"goimports-reviser", -- Go imports formatter
+			"golines", -- Go lines formatter
 
 			"selene", -- Lua linter
 		}

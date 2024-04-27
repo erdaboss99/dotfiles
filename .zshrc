@@ -9,5 +9,14 @@ export FZF_CTRL_T_COMMAND="fd --type f --hidden --follow --exclude '{node_module
 export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude '{node_modules}'"
 
 eval "$(starship init zsh)"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(fzf --zsh)"
 
+export PATH="$PATH:/Users/erdelyiroland/go/bin"
+
+# pnpm
+export PNPM_HOME="/Users/erdelyiroland/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

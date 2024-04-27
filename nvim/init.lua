@@ -28,15 +28,12 @@ SPEC "erdaboss.plugins.copilot"
 SPEC "erdaboss.plugins.comment"
 SPEC "erdaboss.plugins.surround"
 SPEC "erdaboss.plugins.symbol-usage"
-
-if vim.loop.os_uname().sysname == "Darwin" then SPEC "erdaboss.plugins.vimtex" end
+SPEC "erdaboss.plugins.gopher"
 
 SPEC "erdaboss.plugins.lazygit"
 SPEC "erdaboss.plugins.obsidian"
 SPEC "erdaboss.plugins.toggleterm"
 
 SPEC "erdaboss.plugins.whichkey"
-
--- SPEC "erdaboss.plugins.neotest"
 
 require "erdaboss.lazy"

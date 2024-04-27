@@ -1,6 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = """$os$username$directory$git_branch$fill$nodejs$python$time
+format = """$os$username$directory$git_branch$fill$golang$nodejs$python$time
 [ ](bold)"""
 palette = "catppuccin_mocha"
 add_newline = false
@@ -32,6 +32,10 @@ style = "bold yellow"
 
 [nodejs]
 style = "bold green"
+
+[golang]
+symbol = " "
+style = "bold cyan"
 
 [time]
 format = "󰥔 [$time]($style) "

@@ -27,12 +27,12 @@ M.config = function()
 				"astro",
 				"tsx",
 				"python",
+				"go",
+				"gomod",
 				"markdown",
 				"markdown_inline",
 				"toml",
 				"csv",
-				"bibtex",
-				"latex",
 			}
 		else
 			return {

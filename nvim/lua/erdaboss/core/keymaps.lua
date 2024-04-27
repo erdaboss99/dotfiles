@@ -48,6 +48,7 @@ vim.api.nvim_set_keymap("n", "<C-y>", "ggVG", { desc = "Select all", noremap = t
 vim.api.nvim_set_keymap("n", "yw", "yiw", { desc = "Yank current word", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("n", "dw", "diw", { desc = "Delete current word", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("n", "cw", "ciw", { desc = "Change current word", noremap = true, silent = true, nowait = true })
+vim.api.nvim_set_keymap("n", "vw", "viw", { desc = "Select current word", noremap = true, silent = true, nowait = true })
 
 vim.api.nvim_set_keymap("n", "x", '"_x', { desc = "Delete character without saving into register", noremap = true, silent = true, nowait = true })
 

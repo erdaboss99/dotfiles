@@ -28,6 +28,9 @@ M.config = function()
 				null_ls.builtins.formatting.shfmt,
 				null_ls.builtins.formatting.csharpier,
 				null_ls.builtins.formatting.black,
+				null_ls.builtins.formatting.gofumpt,
+				null_ls.builtins.formatting.goimports_reviser,
+				null_ls.builtins.formatting.golines,
 			}
 		else
 			return {

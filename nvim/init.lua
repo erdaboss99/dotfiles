@@ -16,7 +16,6 @@ SPEC "erdaboss.plugins.lualine"
 SPEC "erdaboss.plugins.noice"
 SPEC "erdaboss.plugins.twilight"
 SPEC "erdaboss.plugins.zenmode"
-SPEC "erdaboss.plugins.bufferline"
 
 SPEC "erdaboss.plugins.treesitter"
 SPEC "erdaboss.plugins.lsp-config"
@@ -30,7 +29,6 @@ SPEC "erdaboss.plugins.surround"
 SPEC "erdaboss.plugins.symbol-usage"
 SPEC "erdaboss.plugins.gopher"
 
-SPEC "erdaboss.plugins.lazygit"
 SPEC "erdaboss.plugins.obsidian"
 SPEC "erdaboss.plugins.toggleterm"
 

@@ -14,6 +14,7 @@ M.config = function()
         vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show documentation", buffer = bufnr })
         vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, { desc = "[G]o to [D]efinition", buffer = bufnr })
         vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { desc = "[G]o to [R]eferences", buffer = bufnr })
+        vim.keymap.set("n", "gi", require("telescope.builtin").lsp_implementations, { desc = "[G]o to [I]mplementations", buffer = bufnr })
         vim.keymap.set("n", "gt", require("telescope.builtin").lsp_type_definitions, { desc = "[G]o to [T]ype definitions", buffer = bufnr })
         vim.keymap.set("n", "ge", function() vim.diagnostic.open_float { border = "rounded" } end, { desc = "[G]o to [E]rrors", buffer = bufnr })
         vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic", buffer = bufnr })
@@ -78,87 +79,85 @@ M.config = function()
 		capabilities = capabilities,
 	}
 
-	if vim.loop.os_uname().sysname == "Darwin" then
-		-- Astro LSP
-		lspconf.astro.setup {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		}
+	-- Astro LSP
+	lspconf.astro.setup {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	}
 
-		-- HTML LSP
-		lspconf.html.setup {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		}
+	-- HTML LSP
+	lspconf.html.setup {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	}
 
-		-- CSS LSP
-		lspconf.cssls.setup {
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = {
-				css = {
-					validate = true,
-					lint = { unknownAtRules = "ignore" },
-				},
-				scss = {
-					validate = true,
-					lint = { unknownAtRules = "ignore" },
-				},
-				less = {
-					validate = true,
-					lint = { unknownAtRules = "ignore" },
-				},
+	-- CSS LSP
+	lspconf.cssls.setup {
+		capabilities = capabilities,
+		on_attach = on_attach,
+		settings = {
+			css = {
+				validate = true,
+				lint = { unknownAtRules = "ignore" },
 			},
-		}
-
-		-- TailwindCSS LSP
-		lspconf.tailwindcss.setup {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		}
-
-		-- Markdown and MDX LSP
-		lspconf.marksman.setup {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		}
-
-		-- Prisma ORM LSP
-		lspconf.prismals.setup {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		}
-
-		-- Python LSP
-		lspconf.pyright.setup {
-			on_attach = on_attach,
-			capabilities = capabilities,
-			filetypes = {
-				"python",
+			scss = {
+				validate = true,
+				lint = { unknownAtRules = "ignore" },
 			},
-		}
-
-		-- Go LSP
-		lspconf.gopls.setup {
-			on_attach = on_attach,
-			capabilities = capabilities,
-			cmd = { "gopls" },
-			filetypes = {
-				"go",
-				"gomod",
-				"gowork",
-				"gotmpl",
+			less = {
+				validate = true,
+				lint = { unknownAtRules = "ignore" },
 			},
-			settings = {
-				gopls = {
-					completeUnimported = true,
-					analyses = {
-						ununsedparams = true,
-					},
+		},
+	}
+
+	-- TailwindCSS LSP
+	lspconf.tailwindcss.setup {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	}
+
+	-- Markdown and MDX LSP
+	lspconf.marksman.setup {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	}
+
+	-- Prisma ORM LSP
+	lspconf.prismals.setup {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	}
+
+	-- Python LSP
+	lspconf.pyright.setup {
+		on_attach = on_attach,
+		capabilities = capabilities,
+		filetypes = {
+			"python",
+		},
+	}
+
+	-- Go LSP
+	lspconf.gopls.setup {
+		on_attach = on_attach,
+		capabilities = capabilities,
+		cmd = { "gopls" },
+		filetypes = {
+			"go",
+			"gomod",
+			"gowork",
+			"gotmpl",
+		},
+		settings = {
+			gopls = {
+				completeUnimported = true,
+				analyses = {
+					ununsedparams = true,
 				},
 			},
-		}
-	end
+		},
+	}
 end
 
 return M

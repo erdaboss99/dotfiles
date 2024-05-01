@@ -5,9 +5,10 @@ local M = {
 		"williamboman/mason.nvim",
 	},
 }
-local packages = function()
-	if vim.loop.os_uname().sysname == "Darwin" then
-		return {
+
+M.config = function()
+	require("mason-tool-installer").setup {
+		ensure_installed = {
 			"lua-language-server", -- Lua LSP
 			"bash-language-server", -- Bash LSP
 			"typescript-language-server", -- TypeScript, JavaScript, JSX and TSX LSP
@@ -24,6 +25,7 @@ local packages = function()
 			"pyright", -- Python LSP
 			{ "csharp-language-server", version = "0.10.0" }, -- C# LSP
 			"gopls", -- Go LSP
+			"taplo", -- TOML LSP
 
 			"stylua", -- Lua formatter
 			"shfmt", -- Bash formatter
@@ -33,32 +35,7 @@ local packages = function()
 			"gofumpt", -- Go formatter
 			"goimports-reviser", -- Go imports formatter
 			"golines", -- Go lines formatter
-
-			"selene", -- Lua linter
-		}
-	else
-		return {
-			"lua-language-server", -- Lua LSP
-			"bash-language-server", -- Bash LSP
-			"typescript-language-server", -- TypeScript, JavaScript, JSX and TSX LSP
-			"eslint-lsp", -- ESLint LSP - Linter for JavaScript and TypeScript
-			"json-lsp", -- JSON LSP
-			"yaml-language-server", -- YAML LSP
-			{ "csharp-language-server", version = "0.10.0" }, -- C# LSP
-
-			"stylua", -- Lua formatter
-			"shfmt", -- Bash formatter
-			"prettierd", -- Formatter for Astro, HTML, CSS, Markdown, MDX, JavaScript, TypeScript, JSX, TSX, JSON
-			"csharpier", -- C# formatter
-
-			"selene", -- Lua linter
-		}
-	end
-end
-
-M.config = function()
-	require("mason-tool-installer").setup {
-		ensure_installed = packages(),
+		},
 	}
 end
 

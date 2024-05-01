@@ -9,50 +9,6 @@ M.config = function()
 	local config = require "nvim-treesitter.configs"
 	vim.treesitter.language.register("markdown", "mdx")
 
-	local parsers = function()
-		if vim.loop.os_uname().sysname == "Darwin" then
-			return {
-				"c",
-				"cpp",
-				"lua",
-				"bash",
-				"javascript",
-				"typescript",
-				"json",
-				"jsonc",
-				"yaml",
-				"c_sharp",
-				"html",
-				"css",
-				"astro",
-				"tsx",
-				"python",
-				"go",
-				"gomod",
-				"markdown",
-				"markdown_inline",
-				"toml",
-				"csv",
-			}
-		else
-			return {
-				"c",
-				"cpp",
-				"lua",
-				"bash",
-				"javascript",
-				"typescript",
-				"json",
-				"jsonc",
-				"yaml",
-				"c_sharp",
-				"tsx",
-				"toml",
-				"csv",
-			}
-		end
-	end
-
 	config.setup {
 		auto_install = true,
 		highlight = {
@@ -61,7 +17,29 @@ M.config = function()
 		indent = {
 			enable = true,
 		},
-		ensure_installed = parsers(),
+		ensure_installed = {
+			"c",
+			"cpp",
+			"lua",
+			"bash",
+			"javascript",
+			"typescript",
+			"json",
+			"jsonc",
+			"yaml",
+			"c_sharp",
+			"html",
+			"css",
+			"astro",
+			"tsx",
+			"python",
+			"go",
+			"gomod",
+			"markdown",
+			"markdown_inline",
+			"toml",
+			"csv",
+		},
 		incremental_selection = {
 			enable = true,
 			keymaps = {

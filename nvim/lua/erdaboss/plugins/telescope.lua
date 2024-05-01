@@ -119,6 +119,7 @@ M.config = function()
 	vim.api.nvim_set_keymap( "n", "<leader>fh", "<CMD>Telescope help_tags<CR>", { desc = "[F]ind [H]elp page", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fb", "<CMD>Telescope buffers sort_mru=true sort_lastused=true<CR>", { desc = "[F]ind [B]uffers", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fd", "<CMD>Telescope diagnostics<CR>", { desc = "[F]ind [D]iagnostics", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>ft", "<CMD>Telescope treesitter<CR>", { desc = "[F]ind [T]okens", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fr", "<CMD>Telescope resume<CR>", { desc = "[F]ind [R]esume", noremap = true, silent = true, nowait = true })
 	-- stylua: ignore end
 end

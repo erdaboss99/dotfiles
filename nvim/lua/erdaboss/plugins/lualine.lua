@@ -3,7 +3,6 @@ local M = {
 	event = "VeryLazy",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
-		"AndreM222/copilot-lualine",
 	},
 }
 
@@ -70,14 +69,7 @@ M.config = function()
 				},
 			},
 			lualine_x = {},
-			lualine_y = {
-				"copilot",
-				{
-					"filetype",
-					colored = true,
-					icon_only = false,
-				},
-			},
+			lualine_y = {},
 			lualine_z = {
 				"location",
 				"progress",

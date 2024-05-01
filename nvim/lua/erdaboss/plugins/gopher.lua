@@ -1,6 +1,6 @@
 local M = {
 	"olexsmir/gopher.nvim",
-	enable = vim.loop.os_uname().sysname == "Darwin",
+	ft = "go",
 	event = "VeryLazy",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -18,6 +18,10 @@ M.config = function()
 			iferr = "iferr",
 		},
 	}
+	-- stylua: ignore
+	vim.api.nvim_set_keymap( "n", "<leader>gsj", "<CMD>GoTagAdd json<CR>", { desc = "Add [G]o [S]truct [J]SON Tags", noremap = true, silent = true, nowait = true })
 end
+
+M.build = function() vim.cmd [[silent! GoInstallDeps]] end
 
 return M

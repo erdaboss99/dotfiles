@@ -1,10 +1,10 @@
 vim.filetype.add {
 	extension = {
 		mdx = "mdx",
-		env = "dotenv",
+		env = "sh",
 	},
 	filename = {
-		[".env"] = "dotenv",
-		["env"] = "dotenv",
+		[".env"] = "sh",
+		["env"] = "sh",
 	},
 }

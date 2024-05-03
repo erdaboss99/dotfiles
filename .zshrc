@@ -1,3 +1,4 @@
+
 setopt SHARE_HISTORY
 unsetopt beep
 eval "$(fnm env --use-on-cd)"

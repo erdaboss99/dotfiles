@@ -14,12 +14,12 @@ xcode-select --install
 
 ```zsh
 # Use SSH (if set up)...
-git clone git@github.com:erdaboss99/.dotfiles.git ~/.dotfiles
+git clone git@github.com:erdaboss99/dotfiles.git ~/Documents/DEV/dotfiles
 ```
 
 ```zsh
 # ...or use HTTPS and switch remotes later.
-git clone https://github.com/erdaboss99/.dotfiles.git ~/.dotfiles
+git clone https://github.com/erdaboss99/dotfiles.git ~/Documents/DEV/dotfiles
 ```
 
 4. Install Homebrew packages from `Brewfile`.

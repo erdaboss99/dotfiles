@@ -1,6 +1,6 @@
 eval "$(/usr/local/bin/brew shellenv)"
 
-export OBSIDIAN_FOLDER="/Users/erdelyiroland/Library/Mobile Documents/iCloud~md~obsidian/Documents/erdelyiroland/"
+export OBSIDIAN_PATH="/Users/erdelyiroland/Library/Mobile Documents/iCloud~md~obsidian/Documents/erdelyiroland/"
 
 alias vim='nvim'
 alias nvimc='cd ~/.config/nvim; nvim .'
@@ -23,7 +23,7 @@ alias ts='tmux new -s'
 alias dev='cd ~/Documents/DEV/; clear'
 alias dl='cd ~/Downloads/; clear'
 alias dot='cd ~/Documents/DEV/dotfiles/; clear'
-alias obs='cd $OBSIDIAN_FOLDER; clear'
+alias obs='cd $OBSIDIAN_PATH; clear'
 
 alias nrd='npm run dev'
 alias nrb='npm run build'

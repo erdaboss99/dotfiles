@@ -8,14 +8,6 @@ local M = {
 	},
 }
 
-local vault_path = function()
-	if vim.loop.os_uname().sysname == "Darwin" then
-		return "/Users/erdelyiroland/Library/Mobile Documents/iCloud~md~obsidian/Documents/erdelyiroland"
-	else
-		return "/mnt/c/Users/rerdelyi/iCloudDrive/iCloud~md~obsidian/erdelyiroland"
-	end
-end
-
 M.config = function()
 	require("obsidian").setup {
 		ui = {
@@ -24,18 +16,13 @@ M.config = function()
 		workspaces = {
 			{
 				name = "Vault",
-				path = vault_path(),
+				path = "$OBSIDIAN_PATH",
 				overrides = {
 					notes_subdir = "Notes",
 				},
 			},
 		},
-		daily_notes = {
-			folder = "Dailies",
-			date_format = "%Y-%m-%d",
-			alias_format = "%B %-d, %Y",
-			template = nil,
-		},
+		disable_frontmatter = true,
 		mappings = {},
 		note_id_func = function(title)
 			local suffix = ""
@@ -46,20 +33,25 @@ M.config = function()
 					suffix = suffix .. string.char(math.random(65, 90))
 				end
 			end
-			return tostring(os.date "%Y-%m-%d-%H-%M-%S") .. "_" .. suffix
+			return tostring(os.date "%Y-%m-%d") .. "_" .. suffix
 		end,
 
 		templates = {
-			subdir = "Templates",
+			subdir = "templates",
 			date_format = "%Y-%m-%d",
-			time_format = "%H:%M",
+			time_format = "%H:%M:%S",
+		},
+		completion = {
+			nvim_cmp = true,
+			min_chars = 2,
 		},
 	}
 
     -- stylua: ignore start
-	vim.api.nvim_set_keymap( "n", "<leader>nt", "<CMD>ObsidianToday<CR>", { desc = "[N]ote of [T]oday", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>nn", ":ObsidianNew ", { desc = "[N]ew  [N]ote", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>nt", ":ObsidianTemplate note<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>", { desc = "[N]ote  [T]emplate", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fn", ":ObsidianSearch<CR>", { desc = "[F]ind [N]ote", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>nf", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>", { desc = "[N]ote Title [F]ormat", noremap = true, silent = true, nowait = true })
 	-- stylua: ignore end
 end
 

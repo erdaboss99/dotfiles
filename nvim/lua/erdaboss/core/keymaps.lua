@@ -57,7 +57,6 @@ vim.api.nvim_set_keymap("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down",
 vim.api.nvim_set_keymap("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line up", noremap = true, silent = true, nowait = true })
 
 vim.api.nvim_set_keymap("x", "<leader>p", "\"_dP", { desc = "Paste without losing current clipboard register", noremap = true, silent = true, nowait = true })
-vim.api.nvim_set_keymap("n", "<leader>d", "\"_d", { desc = "Delete without losing current clipboard register", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("v", "<leader>d", "\"_d", { desc = "Delete without losing current clipboard register", noremap = true, silent = true, nowait = true })
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Search and replace current word under the cursor", noremap = true, silent = true, nowait = true })

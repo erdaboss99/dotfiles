@@ -7,6 +7,7 @@ alias nvimc='cd ~/.config/nvim; nvim .'
 alias dotc='cd ~/Documents/DEV/dotfiles; nvim .'
 
 alias fs='~/.local/scripts/tmux-sessionizer.sh'
+alias beye='~/Documents/DEV/go-beye/beye'
 alias f="fzf --preview 'bat --style=numbers --color=always {}' | xargs -n 1 nvim"
 alias c='clear'
 alias ls='colorls'

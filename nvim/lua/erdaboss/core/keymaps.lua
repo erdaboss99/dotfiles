@@ -13,6 +13,10 @@ vim.api.nvim_set_keymap("n", "<C-q>", "<CMD>qa!<CR>", { desc = "Quit all", norem
 vim.api.nvim_set_keymap("i", "<C-q>", "<ESC><CMD>qa!<CR>", { desc = "Quit all", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("v", "<C-q>", "<ESC><CMD>qa!<CR>", { desc = "Quit all", noremap = true, silent = true, nowait = true })
 
+vim.api.nvim_set_keymap("n", "<leader>q", "<CMD>copen<CR>", { desc = "Open quickfix list", noremap = true, silent = true, nowait = true })
+vim.api.nvim_set_keymap("n", "[q", "<CMD>cprev<CR>", { desc = "Prev quickfix item", noremap = true, silent = true, nowait = true })
+vim.api.nvim_set_keymap("n", "]q", "<CMD>cnext<CR>", { desc = "Next quickfix item", noremap = true, silent = true, nowait = true })
+
 vim.api.nvim_set_keymap("n", "<TAB>", "<CMD>bnext<CR>", { desc = "Next buffer", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("n", "<S-TAB>", "<CMD>bprev<CR>", { desc = "Previous buffer", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("n", "<C-w>b", "<CMD>bd<CR>", { desc = "Close buffer", noremap = true, silent = true, nowait = true })
@@ -59,5 +63,5 @@ vim.api.nvim_set_keymap("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line up", n
 vim.api.nvim_set_keymap("x", "<leader>p", "\"_dP", { desc = "Paste without losing current clipboard register", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("v", "<leader>d", "\"_d", { desc = "Delete without losing current clipboard register", noremap = true, silent = true, nowait = true })
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Search and replace current word under the cursor", noremap = true, silent = true, nowait = true })
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Search&replace current word", noremap = true, silent = true, nowait = true })
 -- stylua: ignore end

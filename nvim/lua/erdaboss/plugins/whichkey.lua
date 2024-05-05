@@ -14,10 +14,13 @@ M.config = function()
 	local wk = require "which-key"
 	wk.register({
 		f = {
-			name = "[F]ind",
+			name = "+Find",
 		},
 		n = {
-			name = "[N]otes",
+			name = "+Notes",
+		},
+		d = {
+			name = "+Debug",
 		},
 	}, { prefix = "<leader>" })
 end

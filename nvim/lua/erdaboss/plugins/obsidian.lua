@@ -48,10 +48,10 @@ M.config = function()
 	}
 
     -- stylua: ignore start
-	vim.api.nvim_set_keymap( "n", "<leader>nn", ":ObsidianNew ", { desc = "[N]ew  [N]ote", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>nt", ":ObsidianTemplate note<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>", { desc = "[N]ote  [T]emplate", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>fn", ":ObsidianSearch<CR>", { desc = "[F]ind [N]ote", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>nf", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>", { desc = "[N]ote Title [F]ormat", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>nn", ":ObsidianNew ", { desc = "New  Note", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>nt", ":ObsidianTemplate note<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>", { desc = "Note  Template", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>fn", ":ObsidianSearch<CR>", { desc = "Find Note", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>nf", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>", { desc = "Note Title Format", noremap = true, silent = true, nowait = true })
 	-- stylua: ignore end
 end
 

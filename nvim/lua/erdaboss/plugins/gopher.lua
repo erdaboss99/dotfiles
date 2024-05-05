@@ -1,7 +1,6 @@
 local M = {
 	"olexsmir/gopher.nvim",
 	ft = "go",
-	event = "VeryLazy",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
@@ -19,7 +18,7 @@ M.config = function()
 		},
 	}
 	-- stylua: ignore
-	vim.api.nvim_set_keymap( "n", "<leader>gsj", "<CMD>GoTagAdd json<CR>", { desc = "Add [G]o [S]truct [J]SON Tags", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>gsj", "<CMD>GoTagAdd json<CR>", { desc = "Add Go Struct JSON Tags", noremap = true, silent = true, nowait = true })
 end
 
 M.build = function() vim.cmd [[silent! GoInstallDeps]] end

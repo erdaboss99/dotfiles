@@ -12,15 +12,16 @@ M.config = function()
 	local on_attach = function(_, bufnr)
         -- stylua: ignore start
         vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show documentation", buffer = bufnr })
-        vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, { desc = "[G]o to [D]efinition", buffer = bufnr })
-        vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { desc = "[G]o to [R]eferences", buffer = bufnr })
-        vim.keymap.set("n", "gi", require("telescope.builtin").lsp_implementations, { desc = "[G]o to [I]mplementations", buffer = bufnr })
-        vim.keymap.set("n", "gt", require("telescope.builtin").lsp_type_definitions, { desc = "[G]o to [T]ype definitions", buffer = bufnr })
-        vim.keymap.set("n", "ge", function() vim.diagnostic.open_float { border = "rounded" } end, { desc = "[G]o to [E]rrors", buffer = bufnr })
+        vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, { desc = "Go to Definition", buffer = bufnr })
+        vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { desc = "Go to References", buffer = bufnr })
+        vim.keymap.set("n", "gi", require("telescope.builtin").lsp_implementations, { desc = "Go to Implementations", buffer = bufnr })
+        vim.keymap.set("n", "gt", require("telescope.builtin").lsp_type_definitions, { desc = "Go to Type definitions", buffer = bufnr })
+        vim.keymap.set("n", "ge", function() vim.diagnostic.open_float { border = "rounded" } end, { desc = "Go to Errors", buffer = bufnr })
         vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic", buffer = bufnr })
         vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic", buffer = bufnr })
-        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction", buffer = bufnr })
-        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[N]ame", buffer = bufnr })
+        vim.keymap.set("n", "<leader>o", "<CMD>Lspsaga outline<CR>", { desc = "LSP outline", buffer = bufnr })
+        vim.keymap.set("n", "<leader>c", vim.lsp.buf.code_action, { desc = "Code Action", buffer = bufnr })
+        vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename", buffer = bufnr })
 		-- stylua: ignore end
 	end
 

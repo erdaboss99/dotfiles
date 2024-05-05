@@ -111,16 +111,16 @@ M.config = function()
 	require("telescope").load_extension "ui-select"
 
     -- stylua: ignore start
-	vim.api.nvim_set_keymap( "n", "<leader>ff", "<CMD>Telescope find_files<CR>", { desc = "[F]ind [F]iles", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>fw", "<CMD>Telescope live_grep<CR>", { desc = "[F]ind [W]ord", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>fg", "<CMD>Telescope git_files<CR>", { desc = "[F]ind [G]it files", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>fc", "<CMD>Telescope git_status<CR>", { desc = "[F]ind git [C]hanges", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>fk", "<CMD>Telescope keymaps<CR>", { desc = "[F]ind [K]eymaps", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>fh", "<CMD>Telescope help_tags<CR>", { desc = "[F]ind [H]elp page", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>fb", "<CMD>Telescope buffers sort_mru=true sort_lastused=true<CR>", { desc = "[F]ind [B]uffers", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>fd", "<CMD>Telescope diagnostics<CR>", { desc = "[F]ind [D]iagnostics", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>ft", "<CMD>Telescope treesitter<CR>", { desc = "[F]ind [T]okens", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>fr", "<CMD>Telescope resume<CR>", { desc = "[F]ind [R]esume", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>ff", "<CMD>Telescope find_files<CR>", { desc = "Find Files", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>fw", "<CMD>Telescope live_grep<CR>", { desc = "Find Word", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>fg", "<CMD>Telescope git_files<CR>", { desc = "Find Git files", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>fc", "<CMD>Telescope git_status<CR>", { desc = "Find git Changes", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>fk", "<CMD>Telescope keymaps<CR>", { desc = "Find Keymaps", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>fh", "<CMD>Telescope help_tags<CR>", { desc = "Find Help page", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>fb", "<CMD>Telescope buffers sort_mru=true sort_lastused=true<CR>", { desc = "Find Buffers", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>fd", "<CMD>Telescope diagnostics<CR>", { desc = "Find Diagnostics", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>ft", "<CMD>Telescope treesitter<CR>", { desc = "Find Tokens", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>fr", "<CMD>Telescope resume<CR>", { desc = "Find Resume", noremap = true, silent = true, nowait = true })
 	-- stylua: ignore end
 end
 

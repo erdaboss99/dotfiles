@@ -7,7 +7,7 @@ local M = {
 		} },
 		"theHamsta/nvim-dap-virtual-text",
 	},
-	event = "VeryLazy",
+	event = "BufRead",
 }
 
 M.config = function()
@@ -22,10 +22,10 @@ M.config = function()
 	dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
 
     -- stylua: ignore start
-	vim.api.nvim_set_keymap("n", "<leader>db", "<CMD>DapToggleBreakpoint<CR>", { desc = "[D]ebug [B]reakpoint", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap("n", "<leader>dc", "<CMD>DapContinue<CR>", { desc = "[D]ebug [C]ontinue", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap("n", "<leader>dt", "<CMD>DapTerminate<CR>", { desc = "[D]ebug [T]erminate", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap("n", "<leader>ds", "<CMD>DapStepOver<CR>", { desc = "[D]ebug [S]tep over", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap("n", "<leader>db", "<CMD>DapToggleBreakpoint<CR>", { desc = "Debug Breakpoint", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap("n", "<leader>dc", "<CMD>DapContinue<CR>", { desc = "Debug Continue", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap("n", "<leader>dt", "<CMD>DapTerminate<CR>", { desc = "Debug Terminate", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap("n", "<leader>ds", "<CMD>DapStepOver<CR>", { desc = "Debug Step over", noremap = true, silent = true, nowait = true })
 	-- stylua: ignore end
 end
 

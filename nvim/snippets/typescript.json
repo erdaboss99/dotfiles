@@ -22,9 +22,5 @@
   "Playwright test step": {
     "prefix": "pws",
     "body": ["await test.step('$1', async () => {\n  $2\n});"]
-  },
-  "Playwright short test step": {
-    "prefix": "pwss",
-    "body": ["await test.step('$1', async () => $2);"]
   }
 }

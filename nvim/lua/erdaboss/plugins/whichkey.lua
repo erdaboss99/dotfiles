@@ -19,6 +19,9 @@ M.config = function()
 		n = {
 			name = "+Notes",
 		},
+		t = {
+			name = "+Toggle",
+		},
 		d = {
 			name = "+Debug",
 		},

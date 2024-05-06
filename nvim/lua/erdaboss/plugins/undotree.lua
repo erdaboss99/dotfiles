@@ -25,7 +25,7 @@ M.config = function()
 		},
 	}
     -- stylua: ignore start
-    vim.api.nvim_set_keymap( "n", "<leader>u", "<CMD>lua require('undotree').toggle()<CR>", { desc = "Undo tree", noremap = true, silent = true, nowait = true })
+    vim.api.nvim_set_keymap( "n", "<leader>tu", "<CMD>lua require('undotree').toggle()<CR>", { desc = "Toggle undo tree", noremap = true, silent = true, nowait = true })
 	-- stylua: ignore end
 end
 

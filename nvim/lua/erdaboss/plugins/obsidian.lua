@@ -11,7 +11,7 @@ local M = {
 M.config = function()
 	require("obsidian").setup {
 		ui = {
-			enable = false,
+			enable = true,
 		},
 		workspaces = {
 			{
@@ -41,6 +41,7 @@ M.config = function()
 			date_format = "%Y-%m-%d",
 			time_format = "%H:%M:%S",
 		},
+
 		completion = {
 			nvim_cmp = true,
 			min_chars = 2,

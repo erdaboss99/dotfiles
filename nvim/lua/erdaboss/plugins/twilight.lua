@@ -17,7 +17,7 @@ local M = {
 
 M.config = function()
     -- stylua: ignore start
-	vim.api.nvim_set_keymap( "n", "<leader>t", "<CMD>Twilight<CR>", { desc = "Twilight", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>tt", "<CMD>Twilight<CR>", { desc = "Toggle Twilight", noremap = true, silent = true, nowait = true })
 	-- stylua: ignore end
 end
 

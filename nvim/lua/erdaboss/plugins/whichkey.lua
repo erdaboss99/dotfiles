@@ -25,6 +25,7 @@ M.config = function()
 		d = {
 			name = "+Debug",
 		},
+		["b"] = "which_key_ignore",
 	}, { prefix = "<leader>" })
 end
 

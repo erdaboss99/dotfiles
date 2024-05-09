@@ -115,8 +115,6 @@ M.config = function()
 	}
 
 	-- stylua: ignore start
-	vim.api.nvim_set_keymap( "n", "<Char-0xAB>", "<CMD>Neotree toggle<CR>", { desc = "Toggle File Explorer", noremap = true, silent = true, nowait = true }) -- <CMD-b>
-	vim.api.nvim_set_keymap( "i", "<Char-0xAB>", "<ESC><CMD>Neotree toggle<CR>", { desc = "Toggle File Explorer", noremap = true, silent = true, nowait = true }) -- <CMD-b>
 	vim.api.nvim_set_keymap( "n", "<C-b>", "<CMD>Neotree toggle<CR>", { desc = "Toggle File Explorer", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "i", "<C-b>", "<ESC><CMD>Neotree toggle<CR>", { desc = "Toggle File Explorer", noremap = true, silent = true, nowait = true })
 	-- stylua: ignore end

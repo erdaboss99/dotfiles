@@ -1,10 +1,4 @@
 -- stylua: ignore start
-if vim.loop.os_uname().sysname == "Darwin" then
-    vim.api.nvim_set_keymap("n", "<Char-0xAA>", "<CMD>w!<CR>", { desc = "Save current buffer", noremap = true, silent = true, nowait = true }) -- <CMD-s>
-    vim.api.nvim_set_keymap("i", "<Char-0xAA>", "<ESC><CMD>w!<CR>", { desc = "Save current buffer", noremap = true, silent = true, nowait = true }) -- <CMD-s>
-    vim.api.nvim_set_keymap("v", "<Char-0xAA>", "<ESC><CMD>w!<CR>", { desc = "Save current buffer", noremap = true, silent = true, nowait = true }) -- <CMD-s>
-end
-
 vim.api.nvim_set_keymap("n", "<C-s>", "<CMD>w!<CR>", { desc = "Save current buffer", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("i", "<C-s>", "<ESC><CMD>w!<CR>", { desc = "Save current buffer", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("v", "<C-s>", "<ESC><CMD>w!<CR>", { desc = "Save current buffer", noremap = true, silent = true, nowait = true })
@@ -44,8 +38,6 @@ vim.api.nvim_set_keymap("n", "N", "Nzzzv", { desc = "Keep previous search term c
 
 vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { desc = "Scroll down half a page", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { desc = "Scroll up half a page", noremap = true, silent = true, nowait = true })
-vim.api.nvim_set_keymap("n", "H", "^", { desc = "Jump to the first non-blank character of the line", noremap = true, silent = true, nowait = true })
-vim.api.nvim_set_keymap("n", "L", "$", { desc = "Jump to the last character of the line", noremap = true, silent = true, nowait = true })
 
 vim.api.nvim_set_keymap("n", "<C-y>", "ggVG", { desc = "Select all", noremap = true, silent = true, nowait = true })
 
@@ -59,6 +51,8 @@ vim.api.nvim_set_keymap("n", "x", '"_x', { desc = "Delete character without savi
 vim.api.nvim_set_keymap("n", "J", "mzJ`z", { desc = "Join lines", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line up", noremap = true, silent = true, nowait = true })
+vim.api.nvim_set_keymap("v", ">", ">gv", { desc = "Indent selection right", noremap = true, silent = true, nowait = true })
+vim.api.nvim_set_keymap("v", "<", "<gv", { desc = "Indent selection left", noremap = true, silent = true, nowait = true })
 
 vim.api.nvim_set_keymap("x", "<leader>p", "\"_dP", { desc = "Paste without losing current clipboard register", noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap("v", "<leader>d", "\"_d", { desc = "Delete without losing current clipboard register", noremap = true, silent = true, nowait = true })

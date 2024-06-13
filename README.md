@@ -33,7 +33,6 @@ brew bundle
 ```zsh
 # zsh config
 ln -s ~/Documents/DEV/dotfiles/.zshrc ~/.zshrc
-ln -s ~/Documents/DEV/dotfiles/.zprofile ~/.zprofile
 ```
 
 ```zsh

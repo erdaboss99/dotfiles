@@ -34,6 +34,7 @@ SPEC "erdaboss.plugins.dap"
 
 SPEC "erdaboss.plugins.obsidian"
 SPEC "erdaboss.plugins.toggleterm"
+SPEC "erdaboss.plugins.lazygit"
 
 SPEC "erdaboss.plugins.whichkey"
 

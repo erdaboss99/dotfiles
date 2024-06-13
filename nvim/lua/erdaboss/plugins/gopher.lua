@@ -18,7 +18,7 @@ M.config = function()
 		},
 	}
 	-- stylua: ignore
-	vim.api.nvim_set_keymap( "n", "<leader>gsj", "<CMD>GoTagAdd json<CR>", { desc = "Add Go Struct JSON Tags", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>jg", "<CMD>GoTagAdd json<CR>", { desc = "Add Go Struct JSON Tags", noremap = true, silent = true, nowait = true })
 end
 
 M.build = function() vim.cmd [[silent! GoInstallDeps]] end

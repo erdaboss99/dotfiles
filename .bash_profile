@@ -27,6 +27,7 @@ alias g='lazygit'
 export OBSIDIAN_PATH='/mnt/c/Users/rerdelyi/iCloudDrive/iCloud~md~obsidian/erdelyiroland'
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=~/go
+export PATH="$PATH:$HOME/.dotnet/tools"
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then

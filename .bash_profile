@@ -21,6 +21,10 @@ alias pte='npx playwright test --config=./src/configuration/playwright.e2e.confi
 alias pts='npx playwright test --config=./src/configuration/playwright.system.config.ts --retries=0 --grep'
 alias ptec='npx playwright test --config=./src/configuration/playwright.e2e.config.ts --project="Desktop Chrome" --retries=0 --grep'
 alias ptsc='npx playwright test --config=./src/configuration/playwright.system.config.ts --project="Desktop Chrome" --retries=0 --grep'
+alias ptecp='npx playwright test --config=./src/configuration/playwright.e2e.config.ts --project="Desktop Chrome" --workers=1 --retries=0 --grep'
+alias ptscp='npx playwright test --config=./src/configuration/playwright.system.config.ts --project="Desktop Chrome" --workers=1 --retries=0 --grep'
+alias lts='npx eslint -c .eslintrc.json --ext .ts src'
+alias ltt='npx eslint -c .eslintrc.json --ext .ts tests'
 
 alias g='lazygit'
 

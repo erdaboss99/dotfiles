@@ -87,7 +87,7 @@ M.config = function()
 		winbar = {},
 		inactive_winbar = {},
 		extensions = {
-			"neo-tree",
+			-- "neo-tree",
 			"quickfix",
 		},
 	}

@@ -19,7 +19,6 @@ M.config = function()
         vim.keymap.set("n", "ge", function() vim.diagnostic.open_float { border = "rounded" } end, { desc = "Go to Errors", buffer = bufnr })
         vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic", buffer = bufnr })
         vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic", buffer = bufnr })
-        vim.keymap.set("n", "<leader>o", "<CMD>Lspsaga outline<CR>", { desc = "LSP outline", buffer = bufnr })
         vim.keymap.set("n", "<leader>c", vim.lsp.buf.code_action, { desc = "Code Action", buffer = bufnr })
         vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename", buffer = bufnr })
 		-- stylua: ignore end

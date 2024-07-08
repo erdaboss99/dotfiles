@@ -1,5 +1,6 @@
 local M = {
 	"olexsmir/gopher.nvim",
+	enabled = false,
 	ft = "go",
 	dependencies = {
 		"nvim-lua/plenary.nvim",

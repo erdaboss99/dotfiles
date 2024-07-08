@@ -27,7 +27,7 @@ M.config = function()
 			prompt_prefix = "   ",
 			selection_caret = "  ",
 			entry_prefix = "  ",
-			initial_mode = "insert",
+			initial_mode = "normal",
 			selection_strategy = "reset",
 			sorting_strategy = "ascending",
 			layout_strategy = "horizontal",
@@ -112,6 +112,7 @@ M.config = function()
 
     -- stylua: ignore start
 	vim.api.nvim_set_keymap( "n", "<leader>ff", "<CMD>Telescope find_files<CR>", { desc = "Find Files", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>fe", "<CMD>Telescope file_browser<CR>", { desc = "File Explorer", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fw", "<CMD>Telescope live_grep<CR>", { desc = "Find Word", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fg", "<CMD>Telescope git_files<CR>", { desc = "Find Git files", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fc", "<CMD>Telescope git_status<CR>", { desc = "Find git Changes", noremap = true, silent = true, nowait = true })

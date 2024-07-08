@@ -2,7 +2,7 @@
   "Playwright object model class": {
     "prefix": "pwc",
     "body": [
-      "import { Locator, Page } from '@playwright/test';",
+      "import { type Locator, type Page } from '@playwright/test';",
       "",
       "export class $1 {",
       "  private readonly page: Page;",

@@ -48,6 +48,9 @@ M.config = function()
 		},
 	}
 	require("telescope").load_extension "file_browser"
+	-- stylua: ignore start
+	vim.api.nvim_set_keymap( "n", "<leader>fe", "<CMD>Telescope file_browser path=%:p:h select_buffer=true<CR><CR>", { desc = "File Explorer", noremap = true, silent = true, nowait = true })
+	-- stylua: ignore end
 end
 
 return M

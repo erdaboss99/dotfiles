@@ -27,7 +27,7 @@ M.config = function()
 			prompt_prefix = "   ",
 			selection_caret = "  ",
 			entry_prefix = "  ",
-			initial_mode = "normal",
+			initial_mode = "insert",
 			selection_strategy = "reset",
 			sorting_strategy = "ascending",
 			layout_strategy = "horizontal",
@@ -112,14 +112,13 @@ M.config = function()
 
     -- stylua: ignore start
 	vim.api.nvim_set_keymap( "n", "<leader>ff", "<CMD>Telescope find_files<CR>", { desc = "Find Files", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>fe", "<CMD>Telescope file_browser<CR>", { desc = "File Explorer", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fw", "<CMD>Telescope live_grep<CR>", { desc = "Find Word", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fg", "<CMD>Telescope git_files<CR>", { desc = "Find Git files", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fc", "<CMD>Telescope git_status<CR>", { desc = "Find git Changes", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fk", "<CMD>Telescope keymaps<CR>", { desc = "Find Keymaps", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fh", "<CMD>Telescope help_tags<CR>", { desc = "Find Help page", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fb", "<CMD>Telescope buffers sort_mru=true sort_lastused=true<CR>", { desc = "Find Buffers", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>b", "<CMD>Telescope buffers sort_mru=true sort_lastused=true<CR>", { desc = "Find Buffers", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<C-b>", "<CMD>Telescope buffers sort_mru=true sort_lastused=true<CR>", { desc = "Find Buffers", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fd", "<CMD>Telescope diagnostics<CR>", { desc = "Find Diagnostics", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>ft", "<CMD>Telescope treesitter<CR>", { desc = "Find Tokens", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fr", "<CMD>Telescope resume<CR>", { desc = "Find Resume", noremap = true, silent = true, nowait = true })

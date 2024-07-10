@@ -60,6 +60,7 @@ export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude '{node_modules
 # fnm
 export PATH="/home/erdelyiroland/.local/share/fnm:$PATH"
 eval "$(fnm env --use-on-cd)"
+export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # starship
 eval "$(starship init bash)"

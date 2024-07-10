@@ -10,6 +10,7 @@ M.config = function()
 		extensions = {
 			file_browser = {
 				hijack_netw = true,
+				hidden = { file_browser = true, folder_browser = true },
 				mappings = {
 					["i"] = {
 						["<A-c>"] = fb_actions.create,

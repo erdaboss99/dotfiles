@@ -16,6 +16,7 @@ SPEC "erdaboss.plugins.neotree"
 SPEC "erdaboss.plugins.lualine"
 SPEC "erdaboss.plugins.noice"
 SPEC "erdaboss.plugins.undotree"
+SPEC "erdaboss.plugins.bufferline"
 
 SPEC "erdaboss.plugins.treesitter"
 SPEC "erdaboss.plugins.lsp-config"

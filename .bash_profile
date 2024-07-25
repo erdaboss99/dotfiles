@@ -17,18 +17,17 @@ alias tk='tmux kill-session'
 alias ts='tmux new -s'
 
 alias ptr="npx playwright show-report"
-alias pte='npx playwright test --config=./src/configuration/playwright.e2e.config.ts --retries=0 --grep'
-alias pts='npx playwright test --config=./src/configuration/playwright.system.config.ts --retries=0 --grep'
-alias ptec='npx playwright test --config=./src/configuration/playwright.e2e.config.ts --project="Desktop Chrome" --retries=0 --grep'
-alias ptsc='npx playwright test --config=./src/configuration/playwright.system.config.ts --project="Desktop Chrome" --retries=0 --grep'
-alias ptecp='npx playwright test --config=./src/configuration/playwright.e2e.config.ts --project="Desktop Chrome" --workers=1 --retries=0 --grep'
-alias ptscp='npx playwright test --config=./src/configuration/playwright.system.config.ts --project="Desktop Chrome" --workers=1 --retries=0 --grep'
+alias pte='npx playwright test --config=./src/configuration/playwright.e2e.config.ts --trace=on --retries=0 --grep'
+alias pts='npx playwright test --config=./src/configuration/playwright.system.config.ts --trace=on --retries=0 --grep'
+alias ptec='npx playwright test --config=./src/configuration/playwright.e2e.config.ts --trace=on --project="Desktop Chrome" --workers=1 --retries=0 --grep'
+alias ptsc='npx playwright test --config=./src/configuration/playwright.system.config.ts --trace=on --project="Desktop Chrome" --workers=1 --retries=0 --grep'
+alias ptecp='npx playwright test --config=./src/configuration/playwright.e2e.config.ts --trace=on --project="Desktop Chrome" --retries=0 --grep'
+alias ptscp='npx playwright test --config=./src/configuration/playwright.system.config.ts --trace=on --project="Desktop Chrome" --retries=0 --grep'
 alias lts='npx eslint -c .eslintrc.json --ext .ts src'
 alias ltt='npx eslint -c .eslintrc.json --ext .ts tests'
 
 alias g='lazygit'
 
-export OBSIDIAN_PATH='/mnt/c/Users/rerdelyi/iCloudDrive/iCloud~md~obsidian/erdelyiroland'
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=~/go
 export PATH="$PATH:$HOME/.dotnet/tools"
@@ -52,7 +51,7 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 # fzf
-source /usr/share/doc/fzf/examples/key-bindings.bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!node_modules" -g "!.git" -g "!dist/"'
 export FZF_CTRL_T_COMMAND="fd --type f --hidden --follow --exclude '{node_modules}'"
 export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude '{node_modules}'"

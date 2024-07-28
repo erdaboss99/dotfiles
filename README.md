@@ -132,6 +132,9 @@ sudo apt install software-properties-common -y
 
 sudo add-apt-repository ppa:dotnet/backports
 
+# If dotnet bug occurs, remove the ppa
+sudo add-apt-repository --remove ppa:dotnet/backports
+
 sudo add-apt-repository ppa:deadsnakes/ppa
 
 sudo apt update && apt upgrade -y

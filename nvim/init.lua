@@ -29,6 +29,7 @@ SPEC "erdaboss.plugins.surround"
 SPEC "erdaboss.plugins.symbol-usage"
 SPEC "erdaboss.plugins.gopher"
 SPEC "erdaboss.plugins.dap"
+SPEC "erdaboss.plugins.cloak"
 
 SPEC "erdaboss.plugins.obsidian"
 SPEC "erdaboss.plugins.toggleterm"

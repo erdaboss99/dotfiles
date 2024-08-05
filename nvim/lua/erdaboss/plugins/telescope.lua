@@ -94,7 +94,7 @@ M.config = function()
 		},
 		pickers = {
 			find_files = {
-				find_command = { "rg", "--files", "--no-ignore", "--hidden", "--glob", "!**/.git/*" },
+				find_command = { "rg", "-L", "--files", "--no-ignore", "--hidden", "--glob", "!**/.git/*" },
 			},
 		},
 		extensions_list = {

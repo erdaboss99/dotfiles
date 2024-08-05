@@ -1,7 +1,7 @@
 alias vim='nvim'
 alias nvimc="nvim ~/.config/nvim"
-alias wf="cd ~/Work/autotest-playwright"
-alias r='reset'
+alias wf="cd ~/Work/autotest-playwright.git/master"
+alias r='source ~/.bash_profile && reset'
 alias c='clear'
 
 alias bat='batcat'
@@ -15,6 +15,9 @@ alias td='tmux detach'
 alias tl='tmux ls'
 alias tk='tmux kill-session'
 alias ts='tmux new -s'
+
+alias ww="fzf_git_worktree_change_dir"
+alias wwr="fzf_git_worktree_remove"
 
 alias ptr="npx playwright show-report"
 alias pte='npx playwright test --config=./src/configuration/playwright.e2e.config.ts --trace=on --retries=0 --grep'
@@ -49,6 +52,8 @@ fi
 if [ -d "$HOME/.local/bin" ]; then
 	PATH="$HOME/.local/bin:$PATH"
 fi
+
+[ -f ~/.local/scripts/git-worktrees.bash ] && source ~/.local/scripts/git-worktrees.bash
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

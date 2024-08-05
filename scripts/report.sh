@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# downloads_folder="/mnt/c/Users/rerdelyi/Downloads"
+downloads_folder="/mnt/c/Users/rerdelyi/Downloads"
 # downloads_folder="/mnt/c/Users/x-erdelyir/Downloads"
-specific_folder="$HOME/Work/autotest-playwright/playwright-report"
+specific_folder="$HOME/Work/autotest-playwright.git/master/playwright-report"
 rm -rf "$specific_folder"/*
 # Find the most recent zip file in the Downloads folder
 recent_zip=$(ls -t "$downloads_folder"/*.zip 2>/dev/null | head -n 1)

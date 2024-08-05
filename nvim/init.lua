@@ -11,7 +11,6 @@ SPEC "erdaboss.plugins.gitsigns"
 SPEC "erdaboss.plugins.indent-blankline"
 
 SPEC "erdaboss.plugins.telescope"
-SPEC "erdaboss.plugins.telescope-file-browser"
 SPEC "erdaboss.plugins.neotree"
 SPEC "erdaboss.plugins.lualine"
 SPEC "erdaboss.plugins.noice"

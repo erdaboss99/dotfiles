@@ -65,6 +65,8 @@ M.config = function()
 	vim.api.nvim_set_keymap("n", "<leader>dc", "<CMD>DapContinue<CR>", { desc = "Debug Continue", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap("n", "<leader>dt", "<CMD>DapTerminate<CR>", { desc = "Debug Terminate", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap("n", "<leader>ds", "<CMD>DapStepOver<CR>", { desc = "Debug Step over", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap("n", "<leader>dh", "<CMD>:lua require('dap.ui.widgets').hover()<CR>", { desc = "Debug Hover", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap("n", "<leader>dp", "<CMD>:lua require('dap.ui.widgets').preview()<CR>", { desc = "Debug Preview", noremap = true, silent = true, nowait = true })
 	-- stylua: ignore end
 end
 

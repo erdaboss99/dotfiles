@@ -5,10 +5,15 @@ local M = {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
+		"nvim-telescope/telescope-file-browser.nvim",
 	},
 }
 
 M.config = function()
+	require("telescope").load_extension "ui-select"
+	require("telescope").load_extension "file_browser"
+
+	local fb_actions = require "telescope._extensions.file_browser.actions"
 	require("telescope").setup {
 		defaults = {
 			vimgrep_arguments = {
@@ -47,7 +52,7 @@ M.config = function()
 			file_sorter = require("telescope.sorters").get_fuzzy_file,
 			file_ignore_patterns = {
 				"node_modules",
-				".git/",
+				"/.git/",
 				".next",
 				".DS_Store",
 			},
@@ -106,22 +111,57 @@ M.config = function()
 			["ui-select"] = {
 				require("telescope.themes").get_dropdown {},
 			},
+			file_browser = {
+				hijack_netw = true,
+				hidden = { file_browser = true, folder_browser = true },
+				display_stat = { date = true, size = false, mode = false },
+				hide_parent_dir = true,
+				respect_gitignore = false,
+				mappings = {
+					["i"] = {
+						["<A-c>"] = fb_actions.create,
+						["<S-CR>"] = false,
+						["<A-r>"] = fb_actions.rename,
+						["<A-m>"] = fb_actions.move,
+						["<A-y>"] = fb_actions.copy,
+						["<A-d>"] = fb_actions.remove,
+						["<C-o>"] = fb_actions.open,
+						["<C-g>"] = false,
+						["<C-e>"] = false,
+						["<C-w>"] = false,
+						["<C-t>"] = false,
+						["<C-f>"] = fb_actions.toggle_browser,
+						["<C-h>"] = fb_actions.toggle_hidden,
+						["<C-s>"] = fb_actions.toggle_all,
+						["<bs>"] = fb_actions.backspace,
+					},
+					["n"] = {
+						["c"] = fb_actions.create,
+						["r"] = fb_actions.rename,
+						["m"] = fb_actions.move,
+						["y"] = fb_actions.copy,
+						["d"] = fb_actions.remove,
+						["o"] = fb_actions.open,
+						["g"] = false,
+						["e"] = false,
+						["w"] = false,
+						["t"] = false,
+						["f"] = fb_actions.toggle_browser,
+						["h"] = fb_actions.toggle_hidden,
+						["s"] = fb_actions.toggle_all,
+					},
+				},
+			},
 		},
 	}
-	require("telescope").load_extension "ui-select"
 
     -- stylua: ignore start
 	vim.api.nvim_set_keymap( "n", "<leader>ff", "<CMD>Telescope find_files<CR>", { desc = "Find Files", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fw", "<CMD>Telescope live_grep<CR>", { desc = "Find Word", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>fg", "<CMD>Telescope git_files<CR>", { desc = "Find Git files", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fc", "<CMD>Telescope git_status<CR>", { desc = "Find git Changes", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>fk", "<CMD>Telescope keymaps<CR>", { desc = "Find Keymaps", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>fh", "<CMD>Telescope help_tags<CR>", { desc = "Find Help page", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>fb", "<CMD>Telescope buffers sort_mru=true sort_lastused=true<CR>", { desc = "Find Buffers", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<C-b>", "<CMD>Telescope buffers sort_mru=true sort_lastused=true<CR>", { desc = "Find Buffers", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>fd", "<CMD>Telescope diagnostics<CR>", { desc = "Find Diagnostics", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>ft", "<CMD>Telescope treesitter<CR>", { desc = "Find Tokens", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fr", "<CMD>Telescope resume<CR>", { desc = "Find Resume", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>fe", "<CMD>Telescope file_browser path=%:p:h select_buffer=true<CR><CR>", { desc = "File Explorer", noremap = true, silent = true, nowait = true })
 	-- stylua: ignore end
 end
 

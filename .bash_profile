@@ -20,12 +20,9 @@ alias ww="fzf_git_worktree_change_dir"
 alias wwr="fzf_git_worktree_remove"
 
 alias ptr="npx playwright show-report"
-alias pte='npx playwright test --config=./src/configuration/playwright.e2e.config.ts --trace=on --retries=0 --grep'
-alias pts='npx playwright test --config=./src/configuration/playwright.system.config.ts --trace=on --retries=0 --grep'
-alias ptec='npx playwright test --config=./src/configuration/playwright.e2e.config.ts --trace=on --project="Desktop Chrome" --workers=1 --retries=0 --grep'
-alias ptsc='npx playwright test --config=./src/configuration/playwright.system.config.ts --trace=on --project="Desktop Chrome" --workers=1 --retries=0 --grep'
-alias ptecp='npx playwright test --config=./src/configuration/playwright.e2e.config.ts --trace=on --project="Desktop Chrome" --retries=0 --grep'
-alias ptscp='npx playwright test --config=./src/configuration/playwright.system.config.ts --trace=on --project="Desktop Chrome" --retries=0 --grep'
+alias pt='npx playwright test --config=./src/configuration/playwright.config.ts --trace=on --retries=1 --grep'
+alias ptc='npx playwright test --config=./src/configuration/playwright.config.ts --trace=on --project="Desktop Chrome" --workers=1 --retries=0 --grep'
+alias ptcp='npx playwright test --config=./src/configuration/playwright.config.ts --trace=on --project="Desktop Chrome" --retries=0 --grep'
 alias lts='npx eslint -c .eslintrc.json --ext .ts src'
 alias ltt='npx eslint -c .eslintrc.json --ext .ts tests'
 

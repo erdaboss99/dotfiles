@@ -11,6 +11,15 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	command = "setlocal conceallevel=2",
 })
 
+vim.api.nvim_create_augroup("ShellFileFormat", {
+	clear = true,
+})
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	group = "ShellFileFormat",
+	pattern = "sh",
+	command = "setlocal fileformat=unix",
+})
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = {
 		"netrw",

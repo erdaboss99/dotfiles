@@ -23,8 +23,10 @@ alias ptr="npx playwright show-report"
 alias pt='npx playwright test --config=./src/configuration/playwright.config.ts --trace=on --retries=1 --grep'
 alias ptc='npx playwright test --config=./src/configuration/playwright.config.ts --trace=on --project="Desktop Chrome" --workers=1 --retries=0 --grep'
 alias ptcp='npx playwright test --config=./src/configuration/playwright.config.ts --trace=on --project="Desktop Chrome" --retries=0 --grep'
-alias lts='npx eslint -c .eslintrc.json --ext .ts src'
-alias ltt='npx eslint -c .eslintrc.json --ext .ts tests'
+alias lt='npx eslint -c eslint.config.mjs --cache --report-unused-disable-directives .'
+alias lts='npx eslint -c eslint.config.mjs --cache --report-unused-disable-directives src'
+alias ltt='npx eslint -c eslint.config.mjs --cache --report-unused-disable-directives tests'
+alias tsb='npx tsc -b'
 
 alias g='lazygit'
 
@@ -62,6 +64,8 @@ export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude '{node_modules
 export PATH="/home/erdelyiroland/.local/share/fnm:$PATH"
 eval "$(fnm env --use-on-cd)"
 export PATH="$PATH:/opt/nvim-linux64/bin"
+
+[ -f ~/.env.sh ] && source ~/.env.sh
 
 # starship
 eval "$(starship init bash)"

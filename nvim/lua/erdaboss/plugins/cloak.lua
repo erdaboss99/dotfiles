@@ -15,7 +15,7 @@ M.config = function()
 	}
 
     -- stylua: ignore start
-    vim.api.nvim_set_keymap( "n", "<leader>tc", "<CMD>CloakToggle<CR>", { desc = "Toggle Cloak", noremap = true, silent = true, nowait = true })
+    vim.api.nvim_set_keymap( "n", "<leader>tc", "<CMD>CloakToggle<CR>", { desc = "Toggle cloak", noremap = true, silent = true, nowait = true })
 	-- stylua: ignore end
 end
 

@@ -1,6 +1,6 @@
 local M = {
 	"epwalsh/obsidian.nvim",
-	enabled = false,
+	enabled = true,
 	version = "*",
 	event = "VeryLazy",
 	ft = "markdown",

@@ -45,8 +45,8 @@ M.config = function()
 				vertical = {
 					mirror = false,
 				},
-				width = 0.87,
-				height = 0.80,
+				width = 0.90,
+				height = 0.95,
 				preview_cutoff = 120,
 			},
 			file_sorter = require("telescope.sorters").get_fuzzy_file,
@@ -83,12 +83,12 @@ M.config = function()
 			mappings = {
 				n = {
 					["<ESC>"] = require("telescope.actions").close,
-					["<C-d>"] = require("telescope.actions").delete_buffer,
+					["<C-x>"] = require("telescope.actions").delete_buffer,
 				},
 				i = {
 					["<ESC>"] = require("telescope.actions").close,
 					["<C-h>"] = "which_key",
-					["<C-d>"] = require("telescope.actions").delete_buffer,
+					["<C-x>"] = require("telescope.actions").delete_buffer,
 				},
 			},
 		},

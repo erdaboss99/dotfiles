@@ -43,6 +43,13 @@ M.config = function()
 			time_format = "%H:%M:%S",
 		},
 
+		daily_notes = {
+			folder = "Dailies",
+			date_format = "%Y-%m-%d",
+			default_tags = { "daily-notes" },
+			template = "dailies",
+		},
+
 		completion = {
 			nvim_cmp = true,
 			min_chars = 2,
@@ -50,10 +57,11 @@ M.config = function()
 	}
 
     -- stylua: ignore start
-	vim.api.nvim_set_keymap( "n", "<leader>nn", ":ObsidianNew ", { desc = "New  Note", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>nt", ":ObsidianTemplate note<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>", { desc = "Note  Template", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>fd", ":ObsidianDailies<CR>", { desc = "Find Daily Note", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>fn", ":ObsidianSearch<CR>", { desc = "Find Note", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>nf", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>", { desc = "Note Title Format", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>ft", ":ObsidianTags<CR>", { desc = "Find Note Tag", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>nn", ":ObsidianNew ", { desc = "New  Note", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>nt", ":ObsidianTemplate note<CR> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>", { desc = "Note  Template", noremap = true, silent = true, nowait = true })
 	-- stylua: ignore end
 end
 

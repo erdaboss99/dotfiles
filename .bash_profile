@@ -1,8 +1,11 @@
 alias vim='nvim'
 alias nvimc="nvim ~/.config/nvim"
-alias wf="cd ~/Work/autotest-playwright.git/master"
+alias wf="cd ~/Work"
+alias obs='cd $OBSIDIAN_PATH; clear'
 alias r='source ~/.bash_profile && reset'
 alias c='clear'
+alias dotf='cd ~/dotfiles; clear'
+alias fs='~/.local/scripts/tmux-sessionizer.sh'
 
 alias bat='batcat'
 alias ls='colorls'
@@ -19,6 +22,8 @@ alias ts='tmux new -s'
 alias ww="fzf_git_worktree_change_dir"
 alias wwr="fzf_git_worktree_remove"
 
+alias pct='npx playwright test --config="./playwright-ct.config.ts"'
+
 alias ptr="npx playwright show-report"
 alias pt='npx playwright test --config=./src/configuration/playwright.config.ts --trace=on --retries=1 --grep'
 alias ptc='npx playwright test --config=./src/configuration/playwright.config.ts --trace=on --project="Desktop Chrome" --workers=1 --retries=0 --grep'
@@ -31,6 +36,7 @@ alias tsb='npx tsc -b'
 alias g='lazygit'
 
 export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:$HOME/go/bin"
 export GOPATH=~/go
 export PATH="$PATH:$HOME/.dotnet/tools"
 
@@ -52,7 +58,7 @@ if [ -d "$HOME/.local/bin" ]; then
 	PATH="$HOME/.local/bin:$PATH"
 fi
 
-[ -f ~/.local/scripts/git-worktrees.bash ] && source ~/.local/scripts/git-worktrees.bash
+[ -f ~/.local/scripts/git-worktrees.sh ] && source ~/.local/scripts/git-worktrees.sh
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -66,6 +72,12 @@ eval "$(fnm env --use-on-cd)"
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
 [ -f ~/.env.sh ] && source ~/.env.sh
+
+export PNPM_HOME="/home/erdelyiroland/.local/share/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 
 # starship
 eval "$(starship init bash)"

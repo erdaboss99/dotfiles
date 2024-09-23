@@ -1,8 +1,6 @@
-export OBSIDIAN_PATH="/Users/erdelyiroland/Library/Mobile Documents/iCloud~md~obsidian/Documents/erdelyiroland/"
-
 alias vim='nvim'
 alias nvimc='cd ~/.config/nvim; nvim .'
-alias dotc='cd ~/Documents/DEV/dotfiles; nvim .'
+alias dotf='cd ~/Documents/DEV/dotfiles; clear'
 
 alias fs='~/.local/scripts/tmux-sessionizer.sh'
 alias beye='~/Documents/DEV/go-beye/beye'
@@ -50,6 +48,8 @@ export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude '{node_modules
 eval "$(/usr/local/bin/brew shellenv)"
 eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
+
+[ -f ~/.env.sh ] && source ~/.env.sh
 
 export PATH="$PATH:/Users/erdelyiroland/go/bin"
 

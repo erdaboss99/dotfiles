@@ -10,9 +10,6 @@ local M = {
 }
 
 M.config = function()
-	require("telescope").load_extension "ui-select"
-	require("telescope").load_extension "file_browser"
-
 	local fb_actions = require "telescope._extensions.file_browser.actions"
 	require("telescope").setup {
 		defaults = {
@@ -115,7 +112,7 @@ M.config = function()
 				hijack_netw = true,
 				hidden = { file_browser = true, folder_browser = true },
 				display_stat = { date = true, size = false, mode = false },
-				hide_parent_dir = true,
+				hide_parent_dir = false,
 				respect_gitignore = false,
 				mappings = {
 					["i"] = {
@@ -125,14 +122,14 @@ M.config = function()
 						["<A-m>"] = fb_actions.move,
 						["<A-y>"] = fb_actions.copy,
 						["<A-d>"] = fb_actions.remove,
-						["<C-o>"] = fb_actions.open,
+						["<C-o>"] = false,
 						["<C-g>"] = false,
 						["<C-e>"] = false,
 						["<C-w>"] = false,
 						["<C-t>"] = false,
-						["<C-f>"] = fb_actions.toggle_browser,
-						["<C-h>"] = fb_actions.toggle_hidden,
-						["<C-s>"] = fb_actions.toggle_all,
+						["<C-f>"] = false,
+						["<C-h>"] = false,
+						["<C-s>"] = false,
 						["<bs>"] = fb_actions.backspace,
 					},
 					["n"] = {
@@ -141,19 +138,22 @@ M.config = function()
 						["m"] = fb_actions.move,
 						["y"] = fb_actions.copy,
 						["d"] = fb_actions.remove,
-						["o"] = fb_actions.open,
+						["o"] = false,
 						["g"] = false,
 						["e"] = false,
 						["w"] = false,
 						["t"] = false,
-						["f"] = fb_actions.toggle_browser,
-						["h"] = fb_actions.toggle_hidden,
-						["s"] = fb_actions.toggle_all,
+						["f"] = false,
+						["h"] = false,
+						["s"] = false,
 					},
 				},
 			},
 		},
 	}
+
+	require("telescope").load_extension "ui-select"
+	require("telescope").load_extension "file_browser"
 
     -- stylua: ignore start
 	vim.api.nvim_set_keymap( "n", "<leader>ff", "<CMD>Telescope find_files<CR>", { desc = "Find Files", noremap = true, silent = true, nowait = true })

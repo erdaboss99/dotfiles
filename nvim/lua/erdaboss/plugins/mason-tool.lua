@@ -26,6 +26,7 @@ M.config = function()
 			{ "csharp-language-server", version = "0.10.0" }, -- C# LSP
 			"gopls", -- Go LSP
 			"taplo", -- TOML LSP
+			"vue-language-server", -- Vue LSP"
 
 			"stylua", -- Lua formatter
 			"shfmt", -- Bash formatter

@@ -23,6 +23,7 @@ M.config = function()
 				},
 			},
 		},
+		new_notes_location = "notes_subdir",
 		disable_frontmatter = true,
 		mappings = {},
 		note_id_func = function(title)
@@ -61,7 +62,7 @@ M.config = function()
 	vim.api.nvim_set_keymap( "n", "<leader>fn", ":ObsidianSearch<CR>", { desc = "Find Note", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>ft", ":ObsidianTags<CR>", { desc = "Find Note Tag", noremap = true, silent = true, nowait = true })
 	vim.api.nvim_set_keymap( "n", "<leader>nn", ":ObsidianNew ", { desc = "New  Note", noremap = true, silent = true, nowait = true })
-	vim.api.nvim_set_keymap( "n", "<leader>nt", ":ObsidianTemplate note<CR> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>", { desc = "Note  Template", noremap = true, silent = true, nowait = true })
+	vim.api.nvim_set_keymap( "n", "<leader>nt", ":ObsidianTemplate<CR>", { desc = "Note  Template", noremap = true, silent = true, nowait = true })
 	-- stylua: ignore end
 end
 

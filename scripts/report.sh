@@ -1,20 +1,17 @@
 #!/bin/bash
 
-downloads_folder="/mnt/c/Users/rerdelyi/Downloads"
-# downloads_folder="/mnt/c/Users/x-erdelyir/Downloads"
-specific_folder="$HOME/Work/autotest-playwright.git/master/playwright-report"
-rm -rf "$specific_folder"/*
+rm -rf "$PW_REPORT_PASTE_FOLDER"/*
 # Find the most recent zip file in the Downloads folder
-recent_zip=$(ls -t "$downloads_folder"/*.zip 2>/dev/null | head -n 1)
+recent_zip=$(ls -t "$PW_REPORT_DOWNLOAD_FOLDER"/*.zip 2>/dev/null | head -n 1)
 
 # Check if a zip file was found
 if [ -n "$recent_zip" ]; then
-	echo "Moving $recent_zip to $specific_folder"
-	mv "$recent_zip" "$specific_folder"
+	echo "Moving $recent_zip to $PW_REPORT_PASTE_FOLDER"
+	mv "$recent_zip" "$PW_REPORT_PASTE_FOLDER"
 
 	# Extract the zip file
-	unzip -q "$specific_folder/$(basename "$recent_zip")" -d "$specific_folder"
+	unzip -q "$PW_REPORT_PASTE_FOLDER/$(basename "$recent_zip")" -d "$PW_REPORT_PASTE_FOLDER"
 	echo "Zip file extracted."
 else
-	echo "No zip files found in $downloads_folder"
+	echo "No zip files found in $PW_REPORT_DOWNLOAD_FOLDER"
 fi

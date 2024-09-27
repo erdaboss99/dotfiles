@@ -3,16 +3,15 @@
 if [[ $# -eq 1 ]]; then
 	selected=$1
 else
-	notes_path=$(realpath "$OBSIDIAN_PATH/..")
-	notes=$(find "$notes_path" -mindepth 1 -maxdepth 1 -type d)
+	notes_path=$(realpath "$OBSIDIAN_PATH")
 	if [[ "$(uname)" == "Darwin" ]]; then
 		# macOS
 		query=$(find ~/Documents/DEV -mindepth 1 -maxdepth 1 -type d)
 	elif [[ "$(uname)" == "Linux" ]]; then
 		# Linux
-		query=$(find ~/Work -mindepth 1 -maxdepth 1 -type d -name '*git*')
+		query=$(find ~/Work -mindepth 1 -maxdepth 1 -type d -name '*git*')$'\n'"$HOME/dotfiles"
 	fi
-	final_query="$query"$'\n'"$notes"
+	final_query="$query"$'\n'"$notes_path"
 	selected=$(echo "$final_query" | fzf)
 fi
 

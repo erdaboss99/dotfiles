@@ -42,7 +42,7 @@ M.config = function()
 		.. "/node_modules/@vue/language-server"
 
 	-- TypeScript, JavaScript, JSX and TSX LSP
-	lspconf.tsserver.setup {
+	lspconf.ts_ls.setup {
 		on_attach = on_attach,
 		capabilities = capabilities,
 		init_options = {
@@ -50,7 +50,7 @@ M.config = function()
 				{
 					name = "@vue/typescript-plugin",
 					location = vue_language_server_path,
-					languages = { "vue" },
+					languages = { "javascript", "typescript", "vue" },
 				},
 			},
 		},

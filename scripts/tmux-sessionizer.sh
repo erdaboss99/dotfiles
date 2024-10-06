@@ -9,7 +9,7 @@ else
 		query=$(find ~/Documents/DEV -mindepth 1 -maxdepth 1 -type d)
 	elif [[ "$(uname)" == "Linux" ]]; then
 		# Linux
-		query=$(find ~/Work -mindepth 1 -maxdepth 1 -type d -name '*git*')$'\n'"$HOME/dotfiles"
+		query=$(find ~/Work -mindepth 1 -maxdepth 1 -type d)$'\n'"$HOME/dotfiles"
 	fi
 	final_query="$query"$'\n'"$notes_path"
 	selected=$(echo "$final_query" | fzf)

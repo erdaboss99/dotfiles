@@ -7,6 +7,7 @@ local M = {
 M.config = function()
 	require("mini.comment").setup {
 		mappings = {
+			comment = "",
 			comment_line = "<C-_>",
 			comment_visual = "<C-_>",
 		},

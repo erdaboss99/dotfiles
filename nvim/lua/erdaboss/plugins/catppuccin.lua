@@ -10,7 +10,6 @@ M.config = function()
 		transparent_background = false,
 	}
 	vim.cmd.colorscheme "catppuccin-mocha"
-	-- vim.cmd.colorscheme "catppuccin-frappe"
 end
 
 return M

@@ -23,8 +23,6 @@ M.config = function()
 				"--column",
 				"--smart-case",
 				"--hidden",
-				"--glob",
-				"!**/.git/*",
 			},
 			prompt_prefix = "   ",
 			selection_caret = "  ",
@@ -47,12 +45,6 @@ M.config = function()
 				preview_cutoff = 120,
 			},
 			file_sorter = require("telescope.sorters").get_fuzzy_file,
-			file_ignore_patterns = {
-				"node_modules",
-				"/.git/",
-				".next",
-				".DS_Store",
-			},
 			generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 			path_display = {
 				"truncate",
@@ -91,7 +83,16 @@ M.config = function()
 		},
 		pickers = {
 			find_files = {
-				find_command = { "rg", "-L", "--files", "--no-ignore", "--hidden", "--glob", "!**/.git/*" },
+				find_command = { "rg", "-L", "--files", "--no-ignore", "--hidden" },
+				file_ignore_patterns = {
+					"node_modules",
+					".git",
+					".next",
+					".DS_Store",
+				},
+			},
+			file_browser = {
+				find_command = { "rg", "-L", "--files", "--no-ignore", "--hidden" },
 			},
 		},
 		extensions_list = {
@@ -123,9 +124,9 @@ M.config = function()
 						["<A-y>"] = fb_actions.copy,
 						["<A-d>"] = fb_actions.remove,
 						["<C-o>"] = false,
-						["<C-g>"] = false,
+						["<C-g>"] = fb_actions.goto_parent_dir,
 						["<C-e>"] = false,
-						["<C-w>"] = false,
+						["<C-w>"] = fb_actions.goto_cwd,
 						["<C-t>"] = false,
 						["<C-f>"] = false,
 						["<C-h>"] = false,
@@ -139,9 +140,9 @@ M.config = function()
 						["y"] = fb_actions.copy,
 						["d"] = fb_actions.remove,
 						["o"] = false,
-						["g"] = false,
+						["g"] = fb_actions.goto_parent_dir,
 						["e"] = false,
-						["w"] = false,
+						["w"] = fb_actions.goto_cwd,
 						["t"] = false,
 						["f"] = false,
 						["h"] = false,

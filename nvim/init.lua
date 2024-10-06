@@ -11,7 +11,6 @@ SPEC "erdaboss.plugins.gitsigns"
 SPEC "erdaboss.plugins.indent-blankline"
 
 SPEC "erdaboss.plugins.telescope"
-SPEC "erdaboss.plugins.neotree"
 SPEC "erdaboss.plugins.lualine"
 SPEC "erdaboss.plugins.noice"
 SPEC "erdaboss.plugins.undotree"
@@ -32,7 +31,6 @@ SPEC "erdaboss.plugins.dap"
 SPEC "erdaboss.plugins.cloak"
 
 SPEC "erdaboss.plugins.obsidian"
-SPEC "erdaboss.plugins.toggleterm"
 SPEC "erdaboss.plugins.lazygit"
 
 SPEC "erdaboss.plugins.whichkey"

@@ -172,8 +172,10 @@ M.config = function()
 		settings = {
 			gopls = {
 				completeUnimported = true,
+				usePlaceholders = true,
 				analyses = {
 					ununsedparams = true,
+					staticcheck = true,
 				},
 			},
 		},

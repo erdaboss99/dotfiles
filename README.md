@@ -89,7 +89,8 @@ mkdir ~/.config
 
 ```zsh
 # bash config
-ln -s ~/dotfiles/.bash_profile ~/.bash_profile
+ln -s ~/dotfiles/.profile ~/.profile
+ln -s ~/dotfiles/.bashrc ~/.bashrc
 ```
 
 ```zsh

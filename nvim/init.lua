@@ -150,7 +150,7 @@ require("lazy").setup({
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			require("catppuccin").setup { transparent_background = false }
+			require("catppuccin").setup {}
 			vim.cmd.colorscheme "catppuccin-mocha"
 		end,
 	},
@@ -284,7 +284,7 @@ require("lazy").setup({
 				pickers = {
 					find_files = {
 						find_command = { "rg", "-L", "--files", "--no-ignore", "--hidden" },
-						file_ignore_patterns = { "node_modules", ".git", ".next", ".DS_Store" },
+						file_ignore_patterns = { "node_modules", "^.git/", ".next", ".DS_Store" },
 					},
 					file_browser = { find_command = { "rg", "-L", "--files", "--no-ignore", "--hidden" } },
 				},

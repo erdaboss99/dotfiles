@@ -1,8 +1,7 @@
 alias vim='nvim'
-alias nvimc="nvim ~/.config/nvim"
 alias wf="cd ~/Work"
 alias obs='cd $OBSIDIAN_PATH; clear'
-alias r='source ~/.bash_profile && reset'
+alias r='source ~/.bashrc && reset'
 alias c='clear'
 alias dotf='cd ~/dotfiles; clear'
 alias fs='~/.local/scripts/tmux-sessionizer.sh'
@@ -35,18 +34,14 @@ alias tsb='npx tsc -b'
 
 alias g='lazygit'
 
+[ -f ~/.env.sh ] && source ~/.env.sh
+[ -f ~/.local/scripts/git-worktrees.sh ] && source ~/.local/scripts/git-worktrees.sh
+
+export EDITOR='nvim'
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$PATH:$HOME/go/bin"
 export GOPATH=~/go
 export PATH="$PATH:$HOME/.dotnet/tools"
-
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-	# include .bashrc if it exists
-	if [ -f "$HOME/.bashrc" ]; then
-		. "$HOME/.bashrc"
-	fi
-fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ]; then
@@ -57,8 +52,6 @@ fi
 if [ -d "$HOME/.local/bin" ]; then
 	PATH="$HOME/.local/bin:$PATH"
 fi
-
-[ -f ~/.local/scripts/git-worktrees.sh ] && source ~/.local/scripts/git-worktrees.sh
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -71,8 +64,7 @@ export PATH="/home/erdelyiroland/.local/share/fnm:$PATH"
 eval "$(fnm env --use-on-cd)"
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
-[ -f ~/.env.sh ] && source ~/.env.sh
-
+# pnpm
 export PNPM_HOME="/home/erdelyiroland/.local/share/pnpm"
 case ":$PATH:" in
 *":$PNPM_HOME:"*) ;;

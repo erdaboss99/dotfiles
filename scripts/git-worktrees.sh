@@ -15,13 +15,13 @@ function fzf_git_worktree_change_dir() {
 	worktrees=$(git worktree list | fzf --exit-0 --print-query --reverse)
 	retval=$?
 
-	IFS=$'\n' read -rd '' -a sess_arr <<<"$worktrees"
+    IFS=$'\n' sess_arr=(${(f)worktrees})
 
 	worktree=$(echo ${sess_arr[1]} | awk '{print $1}')
 	query=${sess_arr[0]}
 
-	if [ $retval == 0 ]; then
-		if [ "$worktree" == "" ]; then
+    if [ $retval = 0 ]; then  # Single = for comparison
+		if [ "$worktree" = "" ]; then  # Single = for comparison
 			worktree=$(echo "$query" | awk '{print $1}')
 		fi
 		cd "$worktree"

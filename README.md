@@ -1,149 +1,77 @@
-# Steps to bootstrap a new Mac
-
-1. Install Apple's Command Line Tools
-
-```zsh
-xcode-select --install
-```
-
-2. Install Brew
-
-[Homebrew website](https://brew.sh/)
-
-3. Clone the repo
-
-```zsh
-# Use SSH (if set up)...
-git clone git@github.com:erdaboss99/dotfiles.git ~/Documents/DEV/dotfiles
-```
-
-```zsh
-# ...or use HTTPS and switch remotes later.
-git clone https://github.com/erdaboss99/dotfiles.git ~/Documents/DEV/dotfiles
-```
-
-4. Install Homebrew packages from `Brewfile`.
-
-```zsh
-brew bundle
-```
-
-5. Create symlinks
-
-```zsh
-# zsh config
-ln -s ~/Documents/DEV/dotfiles/.zshrc ~/.zshrc
-```
-
-```zsh
-# fzf ignore
-ln -s ~/Documents/DEV/dotfiles/.ignore ~/.ignore
-```
-
-```zsh
-# TMUX config
-# TPM is required! Install it from here https://github.com/tmux-plugins/tpm
-ln -s ~/Documents/DEV/dotfiles/.tmux.conf ~/.tmux.conf
-```
-
-```zsh
-# NVIM config
-ln -s ~/Documents/DEV/dotfiles/nvim ~/.config/nvim
-```
-
-```zsh
-# wezterm config
-ln -s ~/Documents/DEV/dotfiles/.wezterm.lua ~/.wezterm.lua
-```
-
-```zsh
-# starship config
-ln -s ~/Documents/DEV/dotfiles/starship.toml ~/.config/starship.toml
-```
-
-```zsh
-# local scripts
-ln -s ~/Documents/DEV/dotfiles/scripts ~/.local/scripts
-```
-
 # Steps to bootstrap a new WSL Distribution (Ubuntu)
 
 1. Clone the repo
 
-```zsh
-# Use SSH (if set up)...
+```bash
 git clone git@github.com:erdaboss99/dotfiles.git
-```
-
-```zsh
-# ...or use HTTPS and switch remotes later.
-git clone https://github.com/erdaboss99/dotfiles.git
 ```
 
 2. Create symlinks
 
-```zsh
+```bash
 # create .config folder
 mkdir ~/.config
 ```
 
-```zsh
+```bash
 # bash config
-ln -s ~/dotfiles/.profile ~/.profile
-ln -s ~/dotfiles/.bashrc ~/.bashrc
+ln -s ~/dotfiles/.zshrc ~/.zshrc
 ```
 
-```zsh
+```bash
 # fzf ignore
 ln -s ~/dotfiles/.ignore ~/.ignore
 ```
 
-```zsh
+```bash
 # TMUX config
 # TPM is required! Install it from here https://github.com/tmux-plugins/tpm
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ```
 
-```zsh
+```bash
 # local scripts
-ln -s ~/dotfiles/scripts ~/.local/.scripts
+ln -s ~/dotfiles/scripts ~/.local/scripts
 ```
 
-```zsh
+```bash
 # NVIM config
 ln -s ~/dotfiles/nvim ~/.config/nvim
 ```
 
-```zsh
+```bash
 # starship config
 ln -s ~/dotfiles/starship.toml ~/.config/starship.toml
 ```
 
-```zsh
+```bash
 # hushlogin to remove the last login message
 ln -s ~/dotfiles/.hushlogin ~/.hushlogin
 ```
 
 3. Install apt packages
 
-```zsh
+```bash
 sudo apt update && apt upgrade -y
 
 sudo apt install software-properties-common -y
 
-sudo add-apt-repository ppa:dotnet/backports
-
-# If dotnet bug occurs, remove the ppa
-sudo add-apt-repository --remove ppa:dotnet/backports
-
 sudo add-apt-repository ppa:deadsnakes/ppa
 
 sudo apt update && apt upgrade -y
+
+# Change default shell to ZSH
+sudo apt install zsh
+chsh -s /bin/zsh
 ```
 
-```zsh
+```bash
 # install dependencies
 sudo apt install unzip
+
+sudo apt install xclip
+
+sudo apt install fd-find
 
 sudo apt-get install ruby-full
 
@@ -164,17 +92,16 @@ sudo apt install dotnet-sdk-8.0
 sudo apt install python3.12
 
 sudo apt-get install python3.12-venv
-
 ```
 
 4. Install utilities
 
-```zsh
+```bash
 # python package manager
 curl -sS https://bootstrap.pypa.io/get-pip.py | python3.12
 ```
 
-```zsh
+```bash
 # fnm installer
 curl -fsSL https://fnm.vercel.app/install | bash
 
@@ -183,19 +110,19 @@ fnm install "insert lts"
 fnm use "insert lts"
 ```
 
-```zsh
+```bash
 # starship prompt
 curl -sS https://starship.rs/install.sh | sh
 ```
 
-```zsh
+```bash
 # fzf fuzzy finder
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 ~/.fzf/install
 ```
 
-```zsh
+```bash
 # colorls
 rbenv rehash
 
@@ -208,8 +135,3 @@ sudo gem install colorls
 
 [Go installation guide](https://go.dev/doc/install)
 
-5. Remove .bashrc
-
-```zsh
-rm ~/.bashrc
-```

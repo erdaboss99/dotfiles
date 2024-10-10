@@ -1,1 +1,1 @@
-[ -n "$BASH" -a -f ~/.bashrc ] && . ~/.bashrc
+[ -n "$ZSH" -a -f ~/.zshrc ] && . ~/.zshrc

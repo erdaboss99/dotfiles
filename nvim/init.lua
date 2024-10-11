@@ -2,7 +2,6 @@
 vim.g.copilot_filetypes = { VimspectorPrompt = false }
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-if vim.loop.os_uname().sysname == "Linux" then vim.opt.fileformats = "dos,unix" end
 vim.opt.clipboard = "unnamedplus"
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
@@ -150,7 +149,9 @@ require("lazy").setup({
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			require("catppuccin").setup {}
+			require("catppuccin").setup {
+				transparent_background = true,
+			}
 			vim.cmd.colorscheme "catppuccin-mocha"
 		end,
 	},

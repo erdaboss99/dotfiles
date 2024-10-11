@@ -353,6 +353,7 @@ require("lazy").setup({
             vim.api.nvim_set_keymap( "n", "<leader>fr", "<CMD>Telescope resume<CR>", { desc = "Find Resume", noremap = true, silent = true, nowait = true })
             vim.api.nvim_set_keymap( "n", "<leader>fe", "<CMD>Telescope file_browser path=%:p:h select_buffer=true<CR><CR>", { desc = "File Explorer", noremap = true, silent = true, nowait = true })
 			-- stylua: ignore end
+			vim.api.nvim_set_hl(0, "TelescopeSelection", { fg = "#f2cdcd", bg = "#313244" })
 		end,
 	},
 	{

@@ -2,6 +2,7 @@
 vim.g.copilot_filetypes = { VimspectorPrompt = false }
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.opt.fileformats = "unix,dos"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.tabstop = 4
 vim.opt.expandtab = true

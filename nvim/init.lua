@@ -576,15 +576,16 @@ require("lazy").setup({
 			lspconf.ts_ls.setup {
 				on_attach = on_attach,
 				capabilities = capabilities,
-				init_options = {
-					plugins = {
-						{
-							name = "@vue/typescript-plugin",
-							location = vue_language_server_path,
-							languages = { "javascript", "typescript", "vue" },
-						},
-					},
-				},
+				-- only when using vue, sadly if the vue plugin is being used, ts_ls will be slow af
+				-- init_options = {
+				-- 	plugins = {
+				-- 		{
+				-- 			name = "@vue/typescript-plugin",
+				-- 			location = vue_language_server_path,
+				-- 			languages = { "javascript", "typescript", "vue" },
+				-- 		},
+				-- 	},
+				-- },
 				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 			}
 

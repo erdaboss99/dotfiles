@@ -27,7 +27,8 @@ alias ls='colorls'
 alias ta='tmux attach -t'
 alias td='tmux detach'
 alias tl='tmux ls'
-alias tk='tmux kill-session'
+alias tks='tmux kill-session'
+alias tkw='tmux killw'
 alias ts='tmux new -s'
 
 alias ww="fzf_git_worktree_change_dir"

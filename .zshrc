@@ -33,6 +33,7 @@ alias ts='tmux new -s'
 
 alias ww="fzf_git_worktree_change_dir"
 alias wwr="fzf_git_worktree_remove"
+alias wwa="git_worktree_add"
 alias wwt='~/.local/scripts/tmux-layout.sh'
 
 alias pct='npx playwright test --config="./playwright-ct.config.ts"'

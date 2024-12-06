@@ -48,3 +48,57 @@ function fzf_git_worktree_remove() {
 	git worktree remove $WORKTREE --force &>/dev/null
 	cd $DEFAULT_GIT_FOLDER
 }
+
+function git_worktree_add() {
+	is_in_git_repo || return
+
+	local worktree_name=$1
+	if [ -z "$worktree_name" ]; then
+		echo "Usage: git_worktree_add <worktree-name>"
+		return 1
+	fi
+
+	local worktree_dir="./$worktree_name"
+
+	if [ -d "$worktree_dir" ]; then
+		echo "Worktree directory '$worktree_dir' already exists."
+		return 1
+	fi
+
+	git worktree add "$worktree_dir"
+
+    local source_env="./playwright.env"
+    local target_env="$worktree_dir/playwright.env"
+
+    if [ ! -f "$source_env" ]; then
+        echo "Warning: '$source_env' does not exist. Symlink not created."
+    else
+        local relative_path
+        relative_path=$(realpath --relative-to="$worktree_dir" "$source_env" 2>/dev/null)
+
+        if [ -z "$relative_path" ]; then
+            relative_path="$source_env"
+        fi
+
+        echo "Creating symlink for env file at in $target_env"
+        ln -s "$relative_path" "$target_env"
+        if [ $? -ne 0 ]; then
+            echo "Warning: Failed to create symlink for playwright.env."
+        fi
+    fi
+
+    (
+        cd "$worktree_dir" || { echo "Error: Cannot change directory to '$worktree_dir'."; exit 1; }
+        if [ -f package.json ]; then
+            echo "Running 'npm ci' in '$worktree_dir'..."
+            npm ci
+            if [ $? -ne 0 ]; then
+                echo "Warning: 'npm ci' failed in '$worktree_dir'."
+            fi
+        else
+            echo "Warning: No package.json found in '$worktree_dir'. Skipping 'npm ci'."
+        fi
+    )
+
+    cd "$worktree_dir" || { echo "Error: Unable to change directory to '$worktree_dir'."; return 1; }
+}

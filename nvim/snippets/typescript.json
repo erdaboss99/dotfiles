@@ -5,19 +5,12 @@
       "import { type Locator, type Page } from '@playwright/test';",
       "",
       "export class $1 {",
-      "  private readonly page: Page;",
-      "  private readonly isMobile: boolean;",
-      "  ",
-      "  constructor(page: Page, isMobile: boolean) {",
-      "   this.page = page;",
-      "   this.isMobile = isMobile;",
-      "  }",
+      "  public constructor(",
+      "    private page: Page,",
+      "    private isMobile: boolean",
+      "  ) {}",
       "}"
     ]
-  },
-  "Playwright module": {
-    "prefix": "pwm",
-    "body": ["export module $1 {\n  \n}", "}"]
   },
   "Playwright test step": {
     "prefix": "pws",

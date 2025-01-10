@@ -59,12 +59,12 @@ if [ -d "$HOME/bin" ]; then
 	PATH="$HOME/bin:$PATH"
 fi
 
-# set PATH so it includes user's private bin if it exists
+# set PATH so it includes user's local bin if it exists
 if [ -d "$HOME/.local/bin" ]; then
 	PATH="$HOME/.local/bin:$PATH"
 fi
 
-# set PATH so it includes user's private scripts if it exists
+# set PATH so it includes user's local scripts if it exists
 if [ -d "$HOME/.local/scripts" ]; then
 	PATH="$HOME/.local/scripts:$PATH"
 fi

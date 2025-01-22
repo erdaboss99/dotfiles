@@ -3,8 +3,7 @@
 if [[ $# -eq 1 ]]; then
 	selected=$1
 else
-	notes_path=$(realpath "$OBSIDIAN_PATH")
-	query=$(find ~/Work ~/Personal -mindepth 1 -maxdepth 1 -type d)$'\n'"$HOME/dotfiles"$'\n'"$notes_path"
+	query=$(find ~/Work ~/Personal -mindepth 1 -maxdepth 1 -type d)$'\n'"$HOME/dotfiles"$([[ -n "$OBSIDIAN_PATH" ]] && echo $'\n'"$(realpath "$OBSIDIAN_PATH")")
 	selected=$(echo "$query" | fzf)
 fi
 

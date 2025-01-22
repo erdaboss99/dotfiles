@@ -923,7 +923,13 @@ require("lazy").setup({
 		"laytan/cloak.nvim",
 		lazy = false,
 		config = function()
-			require("cloak").setup { enabled = true, patterns = { { file_pattern = "*.env", cloak_pattern = "=.+" } } }
+			require("cloak").setup {
+				enabled = true,
+				patterns = {
+					{ file_pattern = "*.md", cloak_pattern = "=.+" },
+					{ file_pattern = "*.env", cloak_pattern = "=.+" },
+				},
+			}
             -- stylua: ignore start
             vim.api.nvim_set_keymap( "n", "<leader>tc", "<CMD>CloakToggle<CR>", { desc = "Toggle cloak", noremap = true, silent = true, nowait = true })
 			-- stylua: ignore end
@@ -932,7 +938,7 @@ require("lazy").setup({
 	{
 		-- Obsidian integration for note taking
 		"epwalsh/obsidian.nvim",
-		enabled = true,
+		enabled = vim.env.OBSIDIAN_PATH ~= nil,
 		version = "*",
 		event = "VeryLazy",
 		ft = "markdown",

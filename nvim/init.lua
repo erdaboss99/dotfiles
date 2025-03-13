@@ -520,7 +520,6 @@ require("lazy").setup({
 					"css",
 					"astro",
 					"tsx",
-					"python",
 					"go",
 					"gomod",
 					"markdown",
@@ -600,13 +599,6 @@ require("lazy").setup({
 				},
 			}
 
-			-- Python LSP
-			lspconf.pyright.setup {
-				on_attach = on_attach,
-				capabilities = capabilities,
-				filetypes = { "python" },
-			}
-
 			-- Go LSP
 			lspconf.gopls.setup {
 				on_attach = on_attach,
@@ -668,7 +660,6 @@ require("lazy").setup({
 					"json-lsp", -- JSON LSP
 					"yaml-language-server", -- YAML LSP
 					"marksman", -- Markdown and MDX LSP
-					"pyright", -- Python LSP
 					{ "csharp-language-server", version = "0.10.0" }, -- C# LSP
 					"gopls", -- Go LSP
 					"taplo", -- TOML LSP
@@ -676,7 +667,6 @@ require("lazy").setup({
 					"stylua", -- Lua formatter
 					"shfmt", -- Bash formatter
 					"prettierd", -- Formatter for Astro, HTML, CSS, Markdown, MDX, JavaScript, TypeScript, JSX, TSX, JSON
-					"black", -- Python formatter
 					"csharpier", -- C# formatter
 					"gofumpt", -- Go formatter
 					"goimports-reviser", -- Go imports formatter
@@ -710,7 +700,6 @@ require("lazy").setup({
 					},
 					null_ls.builtins.formatting.shfmt,
 					null_ls.builtins.formatting.csharpier,
-					null_ls.builtins.formatting.black,
 					null_ls.builtins.formatting.gofumpt,
 					null_ls.builtins.formatting.goimports_reviser,
 					null_ls.builtins.formatting.golines,

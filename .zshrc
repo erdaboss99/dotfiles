@@ -54,6 +54,8 @@ alias g='lazygit'
 
 export EDITOR='nvim'
 
+export GPG_TTY=$(tty)
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ]; then
 	PATH="$HOME/bin:$PATH"
@@ -77,6 +79,7 @@ fi
 
 # nvim
 export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 local map = vim.keymap.set
 local opts = function(desc) return { desc = desc, noremap = true, silent = true, nowait = true } end
 
@@ -15,6 +16,7 @@ return {
 			workspaces = { { name = "Vault", path = "$OBSIDIAN_PATH", overrides = { notes_subdir = "Notes" } } },
 			new_notes_location = "notes_subdir",
 			disable_frontmatter = true,
+			---@diagnostic disable-next-line: missing-fields
 			mappings = {},
 			note_id_func = function(title)
 				local suffix = ""
@@ -27,13 +29,16 @@ return {
 				end
 				return tostring(os.date "%Y-%m-%d") .. "_" .. suffix
 			end,
+			---@diagnostic disable-next-line: missing-fields
 			templates = { subdir = "templates", date_format = "%Y-%m-%d", time_format = "%H:%M:%S" },
+			---@diagnostic disable-next-line: missing-fields
 			daily_notes = {
 				folder = "Dailies",
 				date_format = "%Y-%m-%d",
 				default_tags = { "daily-notes" },
 				template = "dailies",
 			},
+			---@diagnostic disable-next-line: missing-fields
 			completion = { nvim_cmp = true, min_chars = 2 },
 		}
 		map("n", "<leader>fn", "<CMD>ObsidianSearch<CR>", opts "Find in notes")

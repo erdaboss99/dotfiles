@@ -13,16 +13,21 @@ return {
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 		local on_attach = function(_, bufnr)
-			map("n", "K", vim.lsp.buf.hover, opts "Show documentation", bufnr)
-			map("n", "gd", require("telescope.builtin").lsp_definitions, opts "LSP go to definition", bufnr)
-			map("n", "gr", require("telescope.builtin").lsp_references, opts "LPS go to references", bufnr)
-			map("n", "gi", require("telescope.builtin").lsp_implementations, opts "LSP go to implementations", bufnr)
-			map("n", "gt", require("telescope.builtin").lsp_type_definitions, opts "LSP go to type definitions", bufnr)
-			map("n", "H", function() vim.diagnostic.open_float { border = "rounded" } end, opts "LSP show error", bufnr)
-			map("n", "[d", vim.diagnostic.goto_prev, opts "Go to previous diagnostic", bufnr)
-			map("n", "]d", vim.diagnostic.goto_next, opts "Go to next diagnostic", bufnr)
-			map("n", "<leader>ca", vim.lsp.buf.code_action, opts "Code action", bufnr)
-			map("n", "<leader>cr", vim.lsp.buf.rename, opts "Code rename", bufnr)
+			map("n", "K", vim.lsp.buf.hover, opts("Show documentation", bufnr))
+			map("n", "gd", require("telescope.builtin").lsp_definitions, opts("LSP go to definition", bufnr))
+			map("n", "gr", require("telescope.builtin").lsp_references, opts("LPS go to references", bufnr))
+			map("n", "gi", require("telescope.builtin").lsp_implementations, opts("LSP go to implementations", bufnr))
+			map("n", "gt", require("telescope.builtin").lsp_type_definitions, opts("LSP go to type definitions", bufnr))
+			map(
+				"n",
+				"H",
+				function() vim.diagnostic.open_float { border = "rounded" } end,
+				opts("LSP show error", bufnr)
+			)
+			map("n", "[d", vim.diagnostic.goto_prev, opts("Go to previous diagnostic", bufnr))
+			map("n", "]d", vim.diagnostic.goto_next, opts("Go to next diagnostic", bufnr))
+			map("n", "<leader>ca", vim.lsp.buf.code_action, opts("Code action", bufnr))
+			map("n", "<leader>cr", vim.lsp.buf.rename, opts("Code rename", bufnr))
 		end
 
 		-- Lua LSP

@@ -27,11 +27,6 @@ return {
 		end,
 	},
 	{
-		-- Pictogram library
-		"onsails/lspkind.nvim",
-		config = function() require("lspkind").init { symbol_map = { Copilot = "" } } end,
-	},
-	{
 		-- Indentation lines
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufRead",
@@ -137,7 +132,12 @@ return {
 		event = "VeryLazy",
 		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
 		config = function()
-			require("notify").setup { background_colour = "#000000", render = "wrapped-compact", max_width = 50 }
+			require("notify").setup {
+				merge_duplicates = false,
+				background_colour = "#000000",
+				render = "wrapped-compact",
+				max_width = 50,
+			}
 			require("noice").setup {
 				views = { mini = { win_options = { winblend = 0 } } },
 				lsp = {

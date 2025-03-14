@@ -12,14 +12,12 @@ return {
 		"L3MON4D3/LuaSnip", -- Snippet engine
 		"saadparwaiz1/cmp_luasnip", -- for Lua auto completion
 		"rafamadriz/friendly-snippets", -- Snippet library
-		"onsails/lspkind.nvim", -- Pictogram library
 	},
 
 	config = function()
 		require("copilot_cmp").setup()
 		local cmp = require "cmp"
 		local luasnip = require "luasnip"
-		local lspkind = require "lspkind"
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 		require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets" } }
@@ -30,7 +28,7 @@ return {
 		})
 
 		cmp.setup {
-			preselect = "none",
+			preselect = "None",
 			completion = { completeopt = "menu,menuone,noselect,noinsert,preview" },
 			view = { docs = { auto_open = true } },
 			window = {
@@ -65,7 +63,14 @@ return {
 					end
 				end,
 			},
-			formatting = { format = lspkind.cmp_format { maxwidth = 50, ellipsis_char = "..." } },
+			formatting = {
+				format = function(entry, vim_item)
+					vim_item.menu = "[" .. entry.source.name .. "]"
+					return vim_item
+				end,
+				expandable_indicator = true,
+				fields = { "abbr", "kind", "menu" },
+			},
 			sources = {
 				{ name = "copilot", group_index = 1 },
 				{ name = "nvim_lsp", group_index = 1 },

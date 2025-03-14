@@ -47,6 +47,7 @@ map("v", "<", "<gv", opts "Indent left")
 map("x", "<leader>p", '"_dP', opts "Paste without overwriting register")
 map("v", "<leader>d", '"_d', opts "Delete without overwriting register")
 map("n", "x", '"_x', opts "Delete character without overwriting register")
+map("n", "<leader>pc", function() vim.cmd "let @+ = expand('%:p')" end, opts "Copy full path") -- Copy full path
 
 -- Save and Quit
 map({ "n", "i", "v" }, "<C-s>", "<ESC><CMD>w!<CR>", opts "Save current buffer")

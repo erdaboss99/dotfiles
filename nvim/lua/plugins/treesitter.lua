@@ -9,6 +9,7 @@ return {
 		require("nvim-treesitter.install").compilers = { "clang", "gcc" }
 		local config = require "nvim-treesitter.configs"
 		vim.treesitter.language.register("markdown", "mdx")
+		---@diagnostic disable-next-line: missing-fields
 		config.setup {
 			auto_install = true,
 			highlight = { enable = true },

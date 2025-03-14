@@ -11,11 +11,11 @@ return {
 			require("gitsigns").setup {
 				on_attach = function(bufnr)
 					local gitsigns = require "gitsigns"
-					map("n", "[c", "<CMD>Gitsigns prev_hunk<CR>", opts "Go to previous git change hunk", bufnr)
-					map("n", "]c", "<CMD>Gitsigns next_hunk<CR>", opts "Go to next git change hunk", bufnr)
-					map("n", "<leader>td", gitsigns.toggle_deleted, opts "Toggle deleted hunks", bufnr)
-					map("n", "<leader>tb", gitsigns.toggle_current_line_blame, opts "Toggle current line blame", bufnr)
-					map("n", "<leader>tl", gitsigns.toggle_linehl, opts "Toggle line highlight", bufnr)
+					map("n", "[c", "<CMD>Gitsigns prev_hunk<CR>", opts("Go to previous git change hunk", bufnr))
+					map("n", "]c", "<CMD>Gitsigns next_hunk<CR>", opts("Go to next git change hunk", bufnr))
+					map("n", "<leader>td", gitsigns.preview_hunk_inline, opts("Toggle deleted hunks", bufnr))
+					map("n", "<leader>tb", gitsigns.toggle_current_line_blame, opts("Toggle current line blame", bufnr))
+					map("n", "<leader>tl", gitsigns.toggle_linehl, opts("Toggle line highlight", bufnr))
 				end,
 				signs = {
 					add = { text = "│" },
@@ -25,7 +25,6 @@ return {
 					changedelete = { text = "~" },
 					untracked = { text = "│" },
 				},
-				current_line_blame = true,
 			}
 		end,
 	},

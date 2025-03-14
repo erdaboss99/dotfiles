@@ -81,6 +81,11 @@ fi
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
+# Dotnet tools
+if [ -d "$HOME/.dotnet/tools" ]; then
+	PATH="$HOME/.dotnet/tools:$PATH"
+fi
+
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!node_modules" -g "!.git" -g "!dist/"'

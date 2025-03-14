@@ -6,6 +6,9 @@ end
 return {
 	-- LSP Config
 	"neovim/nvim-lspconfig",
+	dependencies = {
+		"b0o/schemastore.nvim",
+	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local lspconf = require "lspconfig"
@@ -84,9 +87,20 @@ return {
 			},
 		}
 
+		-- JSON LSP
+		lspconf.jsonls.setup {
+			on_attach = on_attach,
+			capabilities = capabilities,
+			settings = {
+				json = {
+					schemas = require("schemastore").json.schemas(),
+					validate = { enable = true },
+				},
+			},
+		}
+
 		local default_servers = {
 			"eslint", -- ESLint LSP
-			"jsonls", -- JSON LSP
 			"yamlls", -- YAML LSP
 			"bashls", -- Bash (Shell) LSP
 			"csharp_ls", -- C# LSP

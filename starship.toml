@@ -4,11 +4,12 @@ format = """$os$username$directory$git_branch$fill$golang$nodejs$python$time
 [ ](bold)"""
 palette = "catppuccin_mocha"
 add_newline = false
+command_timeout = 1000
 
 [os]
 style = "bold"
 disabled = false
-symbols = { Macos = " ", Ubuntu = " " }
+symbols = { Macos = " ", Ubuntu = "󰕈 " }
 
 [username]
 style_user = "bold mauve"

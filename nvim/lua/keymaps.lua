@@ -43,6 +43,12 @@ map("v", "K", ":m '<-2<CR>gv=gv", opts "Move line up")
 map("v", ">", ">gv", opts "Indent right")
 map("v", "<", "<gv", opts "Indent left")
 
+-- Better handling of word operations
+map("n", "yw", "yiw", opts "Yank current word")
+map("n", "dw", "diw", opts "Delete current word")
+map("n", "cw", "ciw", opts "Change current word")
+map("n", "vw", "viw", opts "Select current word")
+
 -- Clipboard
 map("x", "<leader>p", '"_dP', opts "Paste without overwriting register")
 map("v", "<leader>d", '"_d', opts "Delete without overwriting register")

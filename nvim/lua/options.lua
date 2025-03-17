@@ -27,6 +27,8 @@ vim.opt.updatetime = 100 -- Faster completion
 vim.opt.swapfile = false -- No swap files
 vim.opt.iskeyword:append "-" -- Treat dash separated words as a word text object
 vim.opt.shortmess:append "sI" -- Shorter messages
+vim.opt.list = true
+vim.opt.listchars = { trail = "·", eol = "↲", tab = "➜ " } -- Show trailing spaces and end of line
 
 -- Disable built-in providers
 for _, provider in ipairs { "node", "perl", "python3", "ruby" } do

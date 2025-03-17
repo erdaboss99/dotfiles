@@ -27,32 +27,6 @@ return {
 		end,
 	},
 	{
-		-- Indentation lines
-		"lukas-reineke/indent-blankline.nvim",
-		event = "BufRead",
-		main = "ibl",
-		config = function()
-			require("ibl").setup {
-				indent = { tab_char = "➜" },
-				exclude = {
-					filetypes = {
-						"lspinfo",
-						"checkhealth",
-						"help",
-						"man",
-						"gitcommit",
-						"lazy",
-						"TelescopePrompt",
-						"TelescopeResults",
-						"mason",
-						"",
-					},
-				},
-				scope = { enabled = false },
-			}
-		end,
-	},
-	{
 		-- Bottom Status line
 		"nvim-lualine/lualine.nvim",
 		event = "VeryLazy",

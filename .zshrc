@@ -29,6 +29,7 @@ alias td='tmux detach'
 alias tl='tmux ls'
 alias tks='tmux kill-session'
 alias tkw='tmux killw'
+alias tkp='tmux killp'
 alias ts='tmux new -s'
 
 alias ww="fzf_git_worktree_change_dir"
@@ -55,6 +56,11 @@ alias g='lazygit'
 export EDITOR='nvim'
 
 export GPG_TTY=$(tty)
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt incappendhistory
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ]; then

@@ -36,6 +36,7 @@ return {
 				cs = { "csharpier" },
 
 				go = { "gofumpt", "golines", "goimports-reviser" },
+				["_"] = { "trim_whitespace" },
 			},
 			format_on_save = {
 				-- These options will be passed to conform.format()

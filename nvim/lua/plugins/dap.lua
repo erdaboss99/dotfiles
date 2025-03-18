@@ -21,7 +21,6 @@ return {
 		require("dap-go").setup()
 		---@diagnostic disable-next-line: missing-fields
 		require("nvim-dap-virtual-text").setup {}
-		local dap, dapui = require "dap", require "dapui"
 
 		---@diagnostic disable-next-line: missing-fields
 		require("dap-vscode-js").setup {
@@ -45,20 +44,13 @@ return {
 			}
 		end
 
-		dap.listeners.before.attach.dapui_config = function() dapui.open() end
-		dap.listeners.before.launch.dapui_config = function() dapui.open() end
-		dap.listeners.before.event_terminated.dapui_config = function() dapui.close() end
-		dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
-
 		vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#d20f39" })
 		vim.api.nvim_set_hl(0, "DapStopped", { fg = "#fab387" })
 		vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpoint", linehl = "", numhl = "" })
 		vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped", linehl = "", numhl = "" })
 
 		map("n", "<leader>db", "<CMD>DapToggleBreakpoint<CR>", opts "Debug toggle breakpoint")
+		map("n", "<leader>dt", function() require("dapui").toggle() end, opts "Debug UI toggle")
 		map("n", "<leader>dc", "<CMD>DapContinue<CR>", opts "Debug continue")
-		map("n", "<leader>dt", "<CMD>DapTerminate<CR>", opts "Debug terminate")
-		map("n", "<leader>dh", "<CMD>:lua require('dap.ui.widgets').hover()<CR>", opts "Debug hover")
-		map("n", "<leader>dp", "<CMD>:lua require('dap.ui.widgets').preview()<CR>", opts "Debug preview")
 	end,
 }

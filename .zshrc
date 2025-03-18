@@ -22,7 +22,6 @@ alias dotf='cd ~/dotfiles; clear'
 alias bat='batcat'
 alias fs='~/.local/scripts/tmux-sessionizer.sh'
 alias f="fzf --preview 'bat --style=numbers --color=always {}' | xargs -n 1 nvim"
-alias ls='colorls'
 
 alias ta='tmux attach -t'
 alias td='tmux detach'
@@ -107,9 +106,6 @@ fi
 
 # starship
 eval "$(starship init zsh)"
-
-# colorls
-source $(dirname $(gem which colorls))/tab_complete.sh
 
 # pnpm
 export PNPM_HOME="/Users/erdelyiroland/Library/pnpm"

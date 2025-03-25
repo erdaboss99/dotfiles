@@ -12,6 +12,20 @@ return {
 		"L3MON4D3/LuaSnip", -- Snippet engine
 		"saadparwaiz1/cmp_luasnip", -- for Lua auto completion
 		"rafamadriz/friendly-snippets", -- Snippet library
+		{
+			"windwp/nvim-autopairs",
+			opts = {
+				fast_wrap = {},
+				disable_filetype = { "TelescopePrompt", "vim" },
+			},
+			config = function(_, opts)
+				require("nvim-autopairs").setup(opts)
+
+				-- setup cmp for autopairs
+				local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+				require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+			end,
+		},
 	},
 
 	config = function()
@@ -28,16 +42,13 @@ return {
 		})
 
 		cmp.setup {
-			preselect = "None",
-			completion = { completeopt = "menu,menuone,noselect,noinsert,preview" },
+			completion = { completeopt = "menu,menuone" },
 			view = { docs = { auto_open = true } },
 			window = {
 				completion = {
 					border = "rounded",
 					winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:FloatBorder,Search:None",
 					scrollbar = false,
-					col_offset = -3,
-					scrolloff = 8,
 				},
 				documentation = {
 					border = "rounded",

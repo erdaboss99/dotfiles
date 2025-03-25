@@ -7,14 +7,9 @@ map("n", "[q", "<CMD>cprev<CR>", opts "Prev quickfix item")
 map("n", "]q", "<CMD>cnext<CR>", opts "Next quickfix item")
 
 -- Buffer navigation
-map("n", "<TAB>", "<CMD>bnext<CR>", opts "Next buffer")
-map("n", "<S-TAB>", "<CMD>bprev<CR>", opts "Previous buffer")
-map("n", "<C-w>b", "<CMD>bd<CR>", opts "Close buffer")
+map("n", "<Tab>", "<CMD>bnext<CR>", opts "Next buffer")
+map("n", "<S-Tab>", "<CMD>bprev<CR>", opts "Previous buffer")
 map("n", "<C-z>", "<CMD>bd<CR>", opts "Close buffer")
-
--- Exit insert mode
-map("i", "jk", "<ESC>", opts "Exit insert mode")
-map("i", "kj", "<ESC>", opts "Exit insert mode")
 
 -- Window movement
 map("n", "<C-Up>", "<C-w>k", opts "Move to window above")
@@ -38,8 +33,8 @@ map("n", "<C-u>", "<C-u>zz", opts "Scroll up half a page")
 -- Editing
 map("n", "<C-y>", "ggVG", opts "Select all")
 map("n", "J", "mzJ`z", opts "Join lines")
-map("v", "J", ":m '>+1<CR>gv=gv", opts "Move line down")
-map("v", "K", ":m '<-2<CR>gv=gv", opts "Move line up")
+map("v", "<M-Down>", ":m '>+1<CR>gv=gv", opts "Move line down")
+map("v", "<M-Up>", ":m '<-2<CR>gv=gv", opts "Move line up")
 map("v", ">", ">gv", opts "Indent right")
 map("v", "<", "<gv", opts "Indent left")
 
@@ -53,14 +48,14 @@ map("n", "vw", "viw", opts "Select current word")
 map("x", "<leader>p", '"_dP', opts "Paste without overwriting register")
 map("v", "<leader>d", '"_d', opts "Delete without overwriting register")
 map("n", "x", '"_x', opts "Delete character without overwriting register")
-map("n", "<leader>yf", function() vim.cmd "let @+ = expand('%:p')" end, opts "Copy full path")
-map("n", "<leader>yn", function() vim.cmd "let @+ = expand('%:t')" end, opts "Copy file name")
-map("n", "<leader>yr", function() vim.cmd "let @+ = expand('%:.')" end, opts "Copy relative path")
+map("n", "<leader>yf", function() vim.cmd "let @+ = expand('%:p')" end, opts "[Y]ank full path")
+map("n", "<leader>yn", function() vim.cmd "let @+ = expand('%:t')" end, opts "[Y]ank file name")
+map("n", "<leader>yr", function() vim.cmd "let @+ = expand('%:.')" end, opts "[Y]ank relative path")
 map(
 	"n",
 	"<leader>yl",
 	function() vim.cmd "let @+ = expand('%:.') .. ':' .. line('.') " end,
-	opts "Copy relative path with line number"
+	opts "[Y]ank relative path with line number"
 )
 
 -- Save and Quit

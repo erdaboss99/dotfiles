@@ -41,9 +41,9 @@ return {
 			---@diagnostic disable-next-line: missing-fields
 			completion = { nvim_cmp = true, min_chars = 2 },
 		}
-		map("n", "<leader>fn", "<CMD>ObsidianSearch<CR>", opts "Find in notes")
-		map("n", "<leader>ft", "<CMD>ObsidianTags<CR>", opts "Find by note tag")
-		map("n", "<leader>nn", "<CMD>ObsidianNew<CR>", opts "New note")
-		map("n", "<leader>nt", "ggVGd<CMD>ObsidianTemplate<CR>", opts "Insert not template")
+		map("n", "<leader>fn", "<CMD>ObsidianSearch<CR>", opts "[F]ind in [N]otes")
+		map("n", "<leader>ft", "<CMD>ObsidianTags<CR>", opts "[F]ind by note [T]ag")
+		map("n", "<leader>nn", "<CMD>ObsidianNew<CR>", opts "[N]ew [N]ote")
+		map("n", "<leader>nt", "ggVGd<CMD>ObsidianTemplate<CR>", opts "[N]ote insert [T]emplate")
 	end,
 }

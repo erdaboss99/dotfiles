@@ -32,18 +32,25 @@ return {
 					{ file_pattern = "*.env", cloak_pattern = "=.+" },
 				},
 			}
-			map("n", "<leader>tc", "<CMD>CloakToggle<CR>", opts "Toggle cloak")
+			map("n", "<leader>tc", "<CMD>CloakToggle<CR>", opts "[T]oggle [C]loak")
 		end,
 	},
 	{
 		-- QoL for keybindings
 		"folke/which-key.nvim",
-		event = "VeryLazy",
+		event = "VimEnter",
 		cmd = "WhichKey",
-		opts = {},
-		init = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-		end,
+		opts = {
+			mappings = vim.g.have_nerd_font,
+			spec = {
+				{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
+				{ "<leader>d", group = "[D]ebug" },
+				{ "<leader>f", group = "[F]ind" },
+				{ "<leader>g", group = "[G]it" },
+				{ "<leader>n", group = "[N]otes" },
+				{ "<leader>t", group = "[T]oggle" },
+				{ "<leader>y", group = "[Y]ank" },
+			},
+		},
 	},
 }

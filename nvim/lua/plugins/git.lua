@@ -13,9 +13,8 @@ return {
 					local gitsigns = require "gitsigns"
 					map("n", "[c", "<CMD>Gitsigns prev_hunk<CR>", opts("Go to previous git change hunk", bufnr))
 					map("n", "]c", "<CMD>Gitsigns next_hunk<CR>", opts("Go to next git change hunk", bufnr))
-					map("n", "<leader>td", gitsigns.preview_hunk_inline, opts("Toggle deleted hunks", bufnr))
-					map("n", "<leader>tb", gitsigns.toggle_current_line_blame, opts("Toggle current line blame", bufnr))
-					map("n", "<leader>tl", gitsigns.toggle_linehl, opts("Toggle line highlight", bufnr))
+					map("n", "<leader>gd", gitsigns.preview_hunk_inline, opts("[G]it show [D]eleted hunks", bufnr))
+					map("n", "<leader>gl", gitsigns.toggle_linehl, opts("[G]it [H]ighlight changes", bufnr))
 				end,
 				signs = {
 					add = { text = "│" },
@@ -27,5 +26,23 @@ return {
 				},
 			}
 		end,
+	},
+
+	{ -- Git management in Neovim
+		"kdheepak/lazygit.nvim",
+		lazy = true,
+		cmd = {
+			"LazyGit",
+			"LazyGitConfig",
+			"LazyGitCurrentFile",
+			"LazyGitFilter",
+			"LazyGitFilterCurrentFile",
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		keys = {
+			{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "[G]it Lazy[G]it" },
+		},
 	},
 }

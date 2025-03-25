@@ -26,6 +26,7 @@ return {
 				["<C-l>"] = "actions.refresh",
 				["-"] = { "actions.parent", mode = "n" },
 				["_"] = { "actions.open_cwd", mode = "n" },
+				["<Tab>"] = { "actions.open_cwd", mode = "n" },
 				["gs"] = { "actions.change_sort", mode = "n" },
 				["<C-h>"] = { "actions.show_help", mode = "n" },
 				["g?"] = false,

@@ -37,12 +37,6 @@ return {
 					height = 0.95,
 					preview_cutoff = 120,
 				},
-				file_sorter = require("telescope.sorters").get_fuzzy_file,
-				generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-				path_display = { "truncate" },
-				winblend = 0,
-				border = {},
-				borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 				color_devicons = true,
 				set_env = { ["COLORTERM"] = "truecolor" },
 				file_previewer = require("telescope.previewers").vim_buffer_cat.new,
@@ -81,13 +75,13 @@ return {
 			},
 		}
 		require("telescope").load_extension "ui-select"
-		map("n", "<leader>ff", "<CMD>Telescope find_files<CR>", opts "Find in all files")
-		map("n", "<leader>fo", "<CMD>Telescope oldfiles<CR>", opts "Find in old files")
-		map("n", "<leader>fw", "<CMD>Telescope live_grep<CR>", opts "Find by word")
-		map("n", "<leader>fc", "<CMD>Telescope git_status<CR>", opts "Find in git changes")
-		map("n", "<leader>fs", "<CMD>Telescope spell_suggest<CR>", opts "Find spell suggestion")
+		map("n", "<leader>ff", "<CMD>Telescope find_files<CR>", opts "[F]ind in all [F]iles")
+		map("n", "<leader>fo", "<CMD>Telescope oldfiles<CR>", opts "[F]ind in [O]ld files")
+		map("n", "<leader>fw", "<CMD>Telescope live_grep<CR>", opts "[F]ind by [W]ord")
+		map("n", "<leader>fc", "<CMD>Telescope git_status<CR>", opts "[F]ind in git [C]hanges")
+		map("n", "<leader>fs", "<CMD>Telescope spell_suggest<CR>", opts "[F]ind spell [S]uggestion")
 		map("n", "<C-b>", "<CMD>Telescope buffers sort_mru=true sort_lastused=true<CR>", opts "Find in buffers")
-		map("n", "<leader>fr", "<CMD>Telescope resume<CR>", opts "Find resume")
+		map("n", "<leader>fr", "<CMD>Telescope resume<CR>", opts "[F]ind [R]esume")
 		vim.api.nvim_set_hl(0, "TelescopeSelection", { fg = "#f2cdcd", bg = "#313244" })
 	end,
 }

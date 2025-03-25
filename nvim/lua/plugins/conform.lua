@@ -36,11 +36,12 @@ return {
 				cs = { "csharpier" },
 
 				go = { "gofumpt", "golines", "goimports-reviser" },
+				templ = { "templ" },
 				["_"] = { "trim_whitespace" },
 			},
 			format_on_save = {
 				-- These options will be passed to conform.format()
-				timeout_ms = 1000,
+				timeout_ms = 2000,
 				lsp_format = "fallback",
 			},
 			formatters = {
@@ -50,7 +51,6 @@ return {
 			},
 		}
 
-		map("n", "<leader>cf", function() require("conform").format() end, opts "Code format")
-		map("n", "<leader>ce", "<CMD>ConformInfo<CR>", opts "Show code format info")
+		map("n", "<leader>cf", function() require("conform").format() end, opts "[C]ode [F]ormat")
 	end,
 }

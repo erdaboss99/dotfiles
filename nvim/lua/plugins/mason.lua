@@ -31,6 +31,7 @@ return {
 					"gopls", -- Go LSP
 					"taplo", -- TOML LSP
 					"vue-language-server", -- Vue LSP
+					"templ", -- Go template LSP
 					"stylua", -- Lua formatter
 					"shfmt", -- Bash formatter
 					"prettierd", -- Formatter for Astro, HTML, CSS, Markdown, MDX, JavaScript, TypeScript, JSX, TSX, JSON

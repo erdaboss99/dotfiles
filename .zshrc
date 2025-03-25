@@ -31,6 +31,13 @@ alias tkw='tmux killw'
 alias tkp='tmux killp'
 alias ts='tmux new -s'
 
+alias gpl='git pull'
+alias gps='git push'
+alias gst='git status'
+alias gcm='git commit -m'
+alias gsw='git switch'
+alias gaa='git add -A'
+
 alias ww="fzf_git_worktree_change_dir"
 alias wwr="fzf_git_worktree_remove"
 alias wwa="git_worktree_add"

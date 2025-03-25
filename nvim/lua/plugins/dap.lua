@@ -4,6 +4,7 @@ local opts = function(desc) return { desc = desc, noremap = true, silent = true,
 return {
 	-- Debugging tools
 	"mfussenegger/nvim-dap",
+	commit = "90616ae6ae40053103dc66872886fc26b94c70c8",
 	dependencies = {
 		"leoluz/nvim-dap-go",
 		"mxsdev/nvim-dap-vscode-js",
@@ -17,7 +18,9 @@ return {
 	},
 	event = "BufRead",
 	config = function()
-		require("dapui").setup()
+		local dap = require "dap"
+		local dapui = require "dapui"
+		dapui.setup()
 		require("dap-go").setup()
 		---@diagnostic disable-next-line: missing-fields
 		require("nvim-dap-virtual-text").setup {}
@@ -28,14 +31,29 @@ return {
 			adapters = { "pwa-node" },
 		}
 
+		dap.listeners.after.event_initialized["dapui_config"] = dapui.open
+		dap.listeners.before.event_terminated["dapui_config"] = dapui.close
+		dap.listeners.before.event_exited["dapui_config"] = dapui.close
+
+		-- Playwright
 		for _, language in ipairs { "typescript", "javascript" } do
-			require("dap").configurations[language] = {
+			dap.configurations[language] = {
 				{
 					type = "pwa-node",
 					request = "launch",
-					name = "npm run test:debug (console)",
-					runtimeExecutable = "npm",
-					runtimeArgs = { "run", "test:debug" },
+					name = "Test PW Test with test:debug tag",
+					runtimeExecutable = "npx",
+					runtimeArgs = {
+						"playwright",
+						"test",
+						"--config=./src/configuration/playwright.config.ts",
+						"--grep",
+						"test@debug",
+						"--retries=0",
+						"--trace=on",
+						"--project=Desktop Chrome",
+						"--debug",
+					},
 					rootPath = "${workspaceFolder}",
 					cwd = "${workspaceFolder}",
 					console = "integratedTerminal",
@@ -49,8 +67,8 @@ return {
 		vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpoint", linehl = "", numhl = "" })
 		vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped", linehl = "", numhl = "" })
 
-		map("n", "<leader>db", "<CMD>DapToggleBreakpoint<CR>", opts "Debug toggle breakpoint")
-		map("n", "<leader>dt", function() require("dapui").toggle() end, opts "Debug UI toggle")
-		map("n", "<leader>dc", "<CMD>DapContinue<CR>", opts "Debug continue")
+		map("n", "<leader>db", "<CMD>DapToggleBreakpoint<CR>", opts "[D]ebug toggle [B]reakpoint")
+		map("n", "<leader>dt", function() require("dapui").toggle() end, opts "[D]ebug UI [T]oggle")
+		map("n", "<leader>dc", "<CMD>DapContinue<CR>", opts "[D]ebug [C]ontinue")
 	end,
 }

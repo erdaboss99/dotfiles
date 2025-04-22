@@ -15,7 +15,10 @@ return {
 					map("n", "]c", "<CMD>Gitsigns next_hunk<CR>", opts("Go to next git change hunk", bufnr))
 					map("n", "<leader>gd", gitsigns.preview_hunk_inline, opts("[G]it show [D]eleted hunks", bufnr))
 					map("n", "<leader>gl", gitsigns.toggle_linehl, opts("[G]it [H]ighlight changes", bufnr))
+					map("n", "<leader>gb", gitsigns.blame, opts("[G]it [B]lame", bufnr))
 				end,
+				current_line_blame = true,
+				word_diff = true,
 				signs = {
 					add = { text = "│" },
 					change = { text = "│" },

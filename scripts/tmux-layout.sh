@@ -2,41 +2,38 @@
 
 # Ensure tmux is running
 if [ -z "$TMUX" ]; then
-	echo "You need to run this script inside a tmux session."
-	exit 1
+    echo "You need to run this script inside a tmux session."
+    exit 1
 fi
 
 # Function to select a git worktree directory using fzf
 function fzf_git_worktree_change_directory() {
-	# Check if inside a git repository
-	git rev-parse --is-inside-work-tree &>/dev/null || {
-		echo "Not inside a git repository."
-		return 1
-	}
+    # Check if inside a git repository
+    git rev-parse --is-inside-work-tree &>/dev/null || {
+        echo "Not inside a git repository."
+        return 1
+    }
 
-	# List git worktrees and use fzf for selection
-	local worktrees
-	local worktree
-	local query
-	local retval
+    # List git worktrees and use fzf for selection
+    local worktree
 
-	# Get worktrees and pass them through fzf for selection
-	worktree=$(git worktree list | fzf --exit-0 --reverse | awk '{print $1}')
+    # Get worktrees and pass them through fzf for selection
+    worktree=$(git worktree list | fzf --exit-0 --reverse | awk '{print $1}')
 
-	# Check if a worktree was selected
-	if [ -z "$worktree" ]; then
-		echo "No worktree selected."
-		return 1
-	fi
+    # Check if a worktree was selected
+    if [ -z "$worktree" ]; then
+        echo "No worktree selected."
+        return 1
+    fi
 
-	echo "$worktree"
+    echo "$worktree"
 }
 
 # Select the git worktree directory
 WORKTREE=$(fzf_git_worktree_change_directory)
 if [ -z "$WORKTREE" ]; then
-	echo "No worktree selected. Exiting."
-	exit 1
+    echo "No worktree selected. Exiting."
+    exit 1
 fi
 
 # Create tmux panes
@@ -59,4 +56,4 @@ tmux send-keys "cd $WORKTREE;c" C-m
 # Return focus to the top pane
 tmux select-pane -t 1
 
-tmux rename-window "$(basename $WORKTREE | tr '[:lower:]' '[:upper:]')"
+tmux rename-window "$(basename "$WORKTREE" | tr '[:lower:]' '[:upper:]')_$(git rev-parse --abbrev-ref HEAD | sed 's/[^[:alnum:]]/-/g' | tr '[:lower:]' '[:upper:]')"

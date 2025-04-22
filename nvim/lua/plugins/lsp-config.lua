@@ -14,7 +14,6 @@ return {
 		local lspconf = require "lspconfig"
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
-		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 		local on_attach = function(client, bufnr)
 			map("n", "K", vim.lsp.buf.hover, opts("Show documentation", bufnr))
@@ -150,7 +149,7 @@ return {
 			"marksman", -- Markdown and MDX LSP
 			-- "volar", -- Vue LSP
 			-- "taplo", -- TOML LSP
-			"tailwindcss", -- TailwindCSS LSP
+			-- "tailwindcss", -- TailwindCSS LSP
 			-- "astro", -- Astro LSP
 			-- "prismals", -- Prisma ORM LSP
 		}

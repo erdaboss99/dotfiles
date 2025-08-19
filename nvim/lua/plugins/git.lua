@@ -16,9 +16,10 @@ return {
 					map("n", "<leader>gd", gitsigns.preview_hunk_inline, opts("[G]it show [D]eleted hunks", bufnr))
 					map("n", "<leader>gl", gitsigns.toggle_linehl, opts("[G]it [H]ighlight changes", bufnr))
 					map("n", "<leader>gb", gitsigns.blame, opts("[G]it [B]lame", bufnr))
+					map("n", "<leader>gw", gitsigns.toggle_word_diff, opts("[G]it [W]ord diff", bufnr))
 				end,
 				current_line_blame = true,
-				word_diff = true,
+				word_diff = false,
 				signs = {
 					add = { text = "│" },
 					change = { text = "│" },

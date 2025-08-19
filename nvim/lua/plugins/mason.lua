@@ -21,6 +21,7 @@ return {
 					"css-lsp", -- CSS LSP
 					"html-lsp", -- HTML LSP
 					"eslint-lsp", -- ESLint LSP - Linter for JavaScript and TypeScript
+					"biome", -- Biome Linter and Formatter for JavaScript and TypeScript
 					"shellcheck", -- Shell Linter
 					"tailwindcss-language-server", -- TailwindCSS LSP
 					"prisma-language-server", -- Prisma ORM LSP

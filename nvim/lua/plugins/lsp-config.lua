@@ -49,24 +49,24 @@ return {
 			settings = { Lua = { diagnostics = { globals = { "vim" } } } },
 		}
 
-		-- local mason_registry = require "mason-registry"
-		-- local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
-		-- 	.. "/node_modules/@vue/language-server"
+		local mason_registry = require "mason-registry"
+		local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+			.. "/node_modules/@vue/language-server"
 
 		-- TypeScript, JavaScript, JSX and TSX LSP
 		lspconf.ts_ls.setup {
 			on_attach = on_attach,
 			capabilities = capabilities,
 			-- only when using vue, sadly if the vue plugin is being used, ts_ls will be slow af
-			-- init_options = {
-			-- 	plugins = {
-			-- 		{
-			-- 			name = "@vue/typescript-plugin",
-			-- 			location = vue_language_server_path,
-			-- 			languages = { "javascript", "typescript", "vue" },
-			-- 		},
-			-- 	},
-			-- },
+			init_options = {
+				plugins = {
+					{
+						name = "@vue/typescript-plugin",
+						location = vue_language_server_path,
+						languages = { "javascript", "typescript", "vue" },
+					},
+				},
+			},
 			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 		}
 

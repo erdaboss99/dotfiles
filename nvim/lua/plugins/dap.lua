@@ -36,7 +36,7 @@ return {
 		dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
 		-- Playwright
-		for _, language in ipairs { "typescript", "javascript" } do
+		for _, language in ipairs { "typescript", "typescriptreact", "javascript" } do
 			dap.configurations[language] = {
 				{
 					type = "pwa-node",
@@ -47,6 +47,28 @@ return {
 						"playwright",
 						"test",
 						"--config=./src/configuration/playwright.config.ts",
+						"--grep",
+						"test@debug",
+						"--retries=0",
+						"--trace=on",
+						"--project=Desktop Chrome",
+						"--debug",
+					},
+					rootPath = "${workspaceFolder}",
+					cwd = "${workspaceFolder}",
+					console = "integratedTerminal",
+					internalConsoleOptions = "neverOpen",
+				},
+				{
+					type = "pwa-node",
+					request = "launch",
+					name = "Test PW Component Test with test:debug tag",
+					runtimeExecutable = "pnpm",
+					runtimeArgs = {
+						"exec",
+						"playwright",
+						"test",
+						"--config=./playwright-ct.config.ts",
 						"--grep",
 						"test@debug",
 						"--retries=0",

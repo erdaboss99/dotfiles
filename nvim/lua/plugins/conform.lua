@@ -1,6 +1,19 @@
 local map = vim.keymap.set
 local opts = function(desc) return { desc = desc, noremap = true, silent = true, nowait = true } end
 
+local folder_rules = {
+	{ pattern = "frontend%.git/.*/packages/tests", formatter = { "biome" } },
+	{ pattern = "frontend/packages/tests", formatter = { "biome" } },
+}
+
+local function pick_formatter(bufnr)
+	local filepath = vim.api.nvim_buf_get_name(bufnr)
+	for _, rule in ipairs(folder_rules) do
+		if filepath:match(rule.pattern) then return rule.formatter end
+	end
+	return { "prettierd" } -- default if nothing matches
+end
+
 return {
 	-- Formatter
 	"stevearc/conform.nvim",
@@ -10,19 +23,12 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 
-				javascript = { "prettierd" },
-				javascriptreact = { "prettierd" },
-				typescript = { "prettierd" },
-				typescriptreact = { "prettierd" },
-				json = { "prettierd" },
-				jsonc = { "prettierd" },
-
-				-- javascript = { "biome" },
-				-- javascriptreact = { "biome" },
-				-- typescript = { "biome" },
-				-- typescriptreact = { "biome" },
-				-- json = { "biome" },
-				-- jsonc = { "biome" },
+				javascript = pick_formatter,
+				javascriptreact = pick_formatter,
+				typescript = pick_formatter,
+				typescriptreact = pick_formatter,
+				json = pick_formatter,
+				jsonc = pick_formatter,
 
 				vue = { "prettierd" },
 				css = { "prettierd" },
@@ -48,7 +54,6 @@ return {
 				["_"] = { "trim_whitespace" },
 			},
 			format_on_save = {
-				-- These options will be passed to conform.format()
 				timeout_ms = 2000,
 				lsp_format = "fallback",
 			},

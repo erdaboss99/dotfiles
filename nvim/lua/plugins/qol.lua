@@ -33,6 +33,7 @@ return {
 				},
 			}
 			map("n", "<leader>tc", "<CMD>CloakToggle<CR>", opts "[T]oggle [C]loak")
+			map("n", "<leader>tp", "<CMD>CloakPreviewLine<CR>", opts "[T]oggle Cloak [P]review")
 		end,
 	},
 	{

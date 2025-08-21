@@ -2,7 +2,7 @@ local map = vim.keymap.set
 local opts = function(desc) return { desc = desc, noremap = true, silent = true, nowait = true } end
 
 -- Quickfix
-map("n", "<leader>q", "<CMD>copen<CR>", opts "Open quickfix list")
+map("n", "<leader>q", "<CMD>copen<CR>", opts "Open Quickfix list")
 map("n", "[q", "<CMD>cprev<CR>", opts "Prev quickfix item")
 map("n", "]q", "<CMD>cnext<CR>", opts "Next quickfix item")
 

@@ -58,15 +58,15 @@ return {
 			on_attach = on_attach,
 			capabilities = capabilities,
 			-- only when using vue, sadly if the vue plugin is being used, ts_ls will be slow af
-			init_options = {
-				plugins = {
-					{
-						name = "@vue/typescript-plugin",
-						location = vue_language_server_path,
-						languages = { "javascript", "typescript", "vue" },
-					},
-				},
-			},
+			-- init_options = {
+			-- 	plugins = {
+			-- 		{
+			-- 			name = "@vue/typescript-plugin",
+			-- 			location = vue_language_server_path,
+			-- 			languages = { "javascript", "typescript", "vue" },
+			-- 		},
+			-- 	},
+			-- },
 			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 		}
 
@@ -142,6 +142,7 @@ return {
 
 		local default_servers = {
 			"eslint", -- ESLint LSP
+			"biome", -- Biome LSP
 			"yamlls", -- YAML LSP
 			"bashls", -- Bash (Shell) LSP
 			"csharp_ls", -- C# LSP

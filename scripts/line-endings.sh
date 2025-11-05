@@ -2,19 +2,19 @@
 
 # Check if unix2dos and dos2unix are installed
 if ! command -v unix2dos &>/dev/null || ! command -v dos2unix &>/dev/null; then
-	echo "Please ensure both unix2dos and dos2unix are installed."
-	exit 1
+    echo "Please ensure both unix2dos and dos2unix are installed."
+    exit 1
 fi
 
 # Find all .ts and .json files, excluding node_modules directory
 find . -type f \( -name "*.ts" -o -name "*.json" \) -not -path "*/node_modules/*" | while read -r file; do
-	# Use dos2unix --info=2 to check the line endings, and extract the second column using awk
-	lf_count=$(dos2unix --info "$file" | awk '{print $2}')
+    # Use dos2unix --info=2 to check the line endings, and extract the second column using awk
+    lf_count=$(dos2unix --info "$file" | awk '{print $2}')
 
-	# If the second column (LF count) is greater than 0, convert the file
-	if [ "$lf_count" -gt 0 ]; then
-		unix2dos "$file"
-	fi
+    # If the second column (LF count) is greater than 0, convert the file
+    if [ "$lf_count" -gt 0 ]; then
+        unix2dos "$file"
+    fi
 done
 
 echo "Converted line endings to CRLF for all .ts and .json files."

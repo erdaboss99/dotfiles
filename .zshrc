@@ -43,6 +43,9 @@ alias wwr="fzf_git_worktree_remove"
 alias wwa="git_worktree_add"
 alias wwt='~/.local/scripts/tmux-layout.sh'
 
+alias report='~/.local/scripts/report.sh'
+alias line-endings='~/.local/scripts/line-endings.sh'
+
 alias pct='npx playwright test --config="./playwright-ct.config.ts"'
 
 alias ptr="npx playwright show-report"
@@ -115,7 +118,7 @@ fi
 eval "$(starship init zsh)"
 
 # pnpm
-export PNPM_HOME="/Users/erdelyiroland/Library/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;

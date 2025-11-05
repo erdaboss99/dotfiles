@@ -26,3 +26,10 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "netrw", "Jaq", "qf", "git", "help", "man", "lspinfo", "lir", "tsplayground", "" },
 	callback = function() vim.cmd [[ nnoremap <silent> <buffer> q :close<CR> set nobuflisted ]] end,
 })
+
+local group = vim.api.nvim_create_augroup("__env", { clear = true })
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = ".env",
+	group = group,
+	callback = function(args) vim.diagnostic.enable(false, args.buf) end,
+})

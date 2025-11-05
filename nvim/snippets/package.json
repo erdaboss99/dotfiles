@@ -6,7 +6,10 @@
   "contributes": {
     "snippets": [
       {
-        "language": [ "typescript" ],
+        "language": [
+          "typescript",
+          "typescriptreact"
+        ],
         "path": "./typescript.json"
       }
     ]

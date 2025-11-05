@@ -28,8 +28,16 @@ return {
 			require("cloak").setup {
 				enabled = true,
 				patterns = {
-					{ file_pattern = "*.md", cloak_pattern = "=.+" },
-					{ file_pattern = "*.env", cloak_pattern = "=.+" },
+					{
+						file_pattern = "*.md",
+						cloak_pattern = { "(.*(PASSWORD))(.+)", "(.*(TOKEN))(.+)", "(.*(KEY))(.+)" },
+						replace = "%1",
+					},
+					{
+						file_pattern = "*.env",
+						cloak_pattern = { "(.*(PASSWORD))(.+)", "(.*(TOKEN))(.+)", "(.*(KEY))(.+)" },
+						replace = "%1",
+					},
 				},
 			}
 			map("n", "<leader>tc", "<CMD>CloakToggle<CR>", opts "[T]oggle [C]loak")

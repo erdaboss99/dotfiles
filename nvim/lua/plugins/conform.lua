@@ -2,14 +2,15 @@ local map = vim.keymap.set
 local opts = function(desc) return { desc = desc, noremap = true, silent = true, nowait = true } end
 
 local folder_rules = {
-	{ pattern = "frontend%.git/.*/packages/tests", formatter = { "biome" } },
-	{ pattern = "frontend/packages/tests", formatter = { "biome" } },
+	{ pattern = "packages/test-page-objects", formatter = { "biome" } },
+	{ pattern = "packages/app-e2e-tests", formatter = { "biome" } },
+	{ pattern = "packages/design-system-tests", formatter = { "biome" } },
 }
 
 local function pick_formatter(bufnr)
 	local filepath = vim.api.nvim_buf_get_name(bufnr)
 	for _, rule in ipairs(folder_rules) do
-		if filepath:match(rule.pattern) then return rule.formatter end
+		if string.find(filepath, rule.pattern, 1, true) then return rule.formatter end
 	end
 	return { "prettierd" } -- default if nothing matches
 end

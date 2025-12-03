@@ -30,12 +30,23 @@ return {
 				patterns = {
 					{
 						file_pattern = "*.md",
-						cloak_pattern = { "(.*(PASSWORD))(.+)", "(.*(TOKEN))(.+)", "(.*(KEY))(.+)" },
+						cloak_pattern = {
+							"(.*(PASSWORD))(.+)",
+							"(.*(TOKEN))(.+)",
+							"(.*(KEY))(.+)",
+							"(.*(S3Bucket))(.+)",
+						},
+
 						replace = "%1",
 					},
 					{
 						file_pattern = "*.env",
-						cloak_pattern = { "(.*(PASSWORD))(.+)", "(.*(TOKEN))(.+)", "(.*(KEY))(.+)" },
+						cloak_pattern = {
+							"(.*(PASSWORD))(.+)",
+							"(.*(TOKEN))(.+)",
+							"(.*(KEY))(.+)",
+							"(.*(S3Bucket))(.+)",
+						},
 						replace = "%1",
 					},
 				},

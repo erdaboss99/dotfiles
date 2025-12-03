@@ -111,7 +111,7 @@ export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude '{node_modules
 FNM_PATH="/home/erdelyiroland/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="/home/erdelyiroland/.local/share/fnm:$PATH"
-  eval "`fnm env`"
+  eval "$(fnm env --use-on-cd --shell zsh)"
 fi
 
 # starship

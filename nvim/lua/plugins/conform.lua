@@ -2,6 +2,7 @@ local map = vim.keymap.set
 local opts = function(desc) return { desc = desc, noremap = true, silent = true, nowait = true } end
 
 local folder_rules = {
+	{ pattern = "advent-of-code-2025", formatter = { "biome" } },
 	{ pattern = "packages/test-page-objects", formatter = { "biome" } },
 	{ pattern = "packages/app-e2e-tests", formatter = { "biome" } },
 	{ pattern = "packages/design-system-tests", formatter = { "biome" } },
@@ -30,12 +31,12 @@ return {
 				typescriptreact = pick_formatter,
 				json = pick_formatter,
 				jsonc = pick_formatter,
+				html = pick_formatter,
+				vue = pick_formatter,
 
-				vue = { "prettierd" },
 				css = { "prettierd" },
 				scss = { "prettierd" },
 				less = { "prettierd" },
-				html = { "prettierd" },
 				yaml = { "prettierd" },
 				markdown = { "prettierd" },
 				["markdown.mdx"] = { "prettierd" },

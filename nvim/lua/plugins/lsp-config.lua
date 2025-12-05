@@ -3,6 +3,21 @@ local opts = function(desc, buffnr)
 	return { desc = desc, buffer = buffnr, noremap = true, silent = true, nowait = true }
 end
 
+local biome_folder_rules = {
+	{ pattern = "advent-of-code-2025" },
+	{ pattern = "packages/test-page-objects" },
+	{ pattern = "packages/app-e2e-tests" },
+	{ pattern = "packages/design-system-tests" },
+}
+
+local function should_use_biome()
+	local filepath = vim.fn.expand "%:p"
+	for _, rule in ipairs(biome_folder_rules) do
+		if string.find(filepath, rule.pattern, 1, true) then return true end
+	end
+	return false
+end
+
 return {
 	-- LSP Config
 	"neovim/nvim-lspconfig",
@@ -58,15 +73,15 @@ return {
 			on_attach = on_attach,
 			capabilities = capabilities,
 			-- only when using vue, sadly if the vue plugin is being used, ts_ls will be slow af
-			-- init_options = {
-			-- 	plugins = {
-			-- 		{
-			-- 			name = "@vue/typescript-plugin",
-			-- 			location = vue_language_server_path,
-			-- 			languages = { "javascript", "typescript", "vue" },
-			-- 		},
-			-- 	},
-			-- },
+			init_options = {
+				plugins = {
+					{
+						name = "@vue/typescript-plugin",
+						location = vue_language_server_path,
+						languages = { "javascript", "typescript", "vue" },
+					},
+				},
+			},
 			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 		}
 
@@ -142,7 +157,6 @@ return {
 
 		local default_servers = {
 			"eslint", -- ESLint LSP
-			"biome", -- Biome LSP
 			"yamlls", -- YAML LSP
 			"bashls", -- Bash (Shell) LSP
 			"csharp_ls", -- C# LSP
@@ -154,6 +168,10 @@ return {
 			-- "astro", -- Astro LSP
 			-- "prismals", -- Prisma ORM LSP
 		}
+
+		-- Add biome conditionally based on folder rules
+		if should_use_biome() then table.insert(default_servers, "biome") end
+
 		for _, server in pairs(default_servers) do
 			require("lspconfig")[server].setup { on_attach = on_attach, capabilities = capabilities }
 		end

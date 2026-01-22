@@ -4,7 +4,7 @@ local opts = function(desc, buffnr)
 end
 
 local biome_folder_rules = {
-	{ pattern = "advent-of-code-2025" },
+	{ pattern = "advent-of-code" },
 	{ pattern = "packages/test-page-objects" },
 	{ pattern = "packages/app-e2e-tests" },
 	{ pattern = "packages/design-system-tests" },

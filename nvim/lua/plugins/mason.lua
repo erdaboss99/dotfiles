@@ -16,6 +16,7 @@ return {
 					"lua-language-server", -- Lua LSP
 					"bash-language-server", -- Bash LSP
 					"typescript-language-server", -- TypeScript, JavaScript, JSX and TSX LSP
+					"vtsls", -- TypeScript, JavaScript, JSX and TSX LSP
 					"astro-language-server", -- Astro LSP
 					"emmet-ls", -- Emmet LSP
 					"css-lsp", -- CSS LSP

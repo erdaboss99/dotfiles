@@ -64,27 +64,6 @@ return {
 			settings = { Lua = { diagnostics = { globals = { "vim" } } } },
 		}
 
-		local mason_registry = require "mason-registry"
-		local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
-			.. "/node_modules/@vue/language-server"
-
-		-- TypeScript, JavaScript, JSX and TSX LSP
-		lspconf.ts_ls.setup {
-			on_attach = on_attach,
-			capabilities = capabilities,
-			-- only when using vue, sadly if the vue plugin is being used, ts_ls will be slow af
-			init_options = {
-				plugins = {
-					{
-						name = "@vue/typescript-plugin",
-						location = vue_language_server_path,
-						languages = { "javascript", "typescript", "vue" },
-					},
-				},
-			},
-			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-		}
-
 		-- CSS LSP
 		lspconf.cssls.setup {
 			capabilities = capabilities,
@@ -162,7 +141,6 @@ return {
 			"csharp_ls", -- C# LSP
 			"html", -- HTML LSP
 			"marksman", -- Markdown and MDX LSP
-			-- "volar", -- Vue LSP
 			-- "taplo", -- TOML LSP
 			-- "tailwindcss", -- TailwindCSS LSP
 			-- "astro", -- Astro LSP
@@ -175,5 +153,37 @@ return {
 		for _, server in pairs(default_servers) do
 			require("lspconfig")[server].setup { on_attach = on_attach, capabilities = capabilities }
 		end
+
+		local vue_language_server_path = vim.fn.stdpath "data"
+			.. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
+		local vue_plugin = {
+			name = "@vue/typescript-plugin",
+			location = vue_language_server_path,
+			languages = { "vue" },
+			configNamespace = "typescript",
+		}
+
+		lspconf.vtsls.setup {
+			on_attach = on_attach,
+			capabilities = capabilities,
+			settings = {
+				vtsls = {
+					tsserver = {
+						globalPlugins = {
+							vue_plugin,
+						},
+					},
+				},
+			},
+			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+		}
+
+		-- TypeScript, JavaScript, JSX and TSX LSP
+		-- lspconf.ts_ls.setup {
+		-- 	on_attach = on_attach,
+		-- 	capabilities = capabilities,
+		-- 	filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
+		-- }
 	end,
 }

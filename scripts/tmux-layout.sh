@@ -41,7 +41,7 @@ fi
 tmux split-window -v -l 10
 
 # Split bottom pane vertically: right pane with 2:1 ratio
-tmux split-window -h -p 33
+tmux split-window -h -l 33%
 
 # Navigate each pane to the selected git worktree directory
 tmux select-pane -t 1 # Top pane
@@ -56,4 +56,4 @@ tmux send-keys "cd $WORKTREE;c" C-m
 # Return focus to the top pane
 tmux select-pane -t 1
 
-tmux rename-window "$(basename "$WORKTREE" | tr '[:lower:]' '[:upper:]')_$(git rev-parse --abbrev-ref HEAD | sed 's/[^[:alnum:]]/-/g' | tr '[:lower:]' '[:upper:]')"
+tmux rename-window "$(basename "$WORKTREE" | tr '[:lower:]' '[:upper:]')_$(git -C "$WORKTREE" rev-parse --abbrev-ref HEAD | sed 's/[^[:alnum:]]/-/g' | tr '[:lower:]' '[:upper:]')"

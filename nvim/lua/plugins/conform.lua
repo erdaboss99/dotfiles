@@ -16,57 +16,76 @@ local function pick_formatter(bufnr)
 	return { "prettierd" } -- default if nothing matches
 end
 
-return {
-	-- Formatter
-	"stevearc/conform.nvim",
-	event = "BufWritePre",
-	config = function()
-		require("conform").setup {
-			formatters_by_ft = {
-				lua = { "stylua" },
+require("conform").setup {
+	formatters_by_ft = {
+		lua = { "stylua" },
 
-				javascript = pick_formatter,
-				javascriptreact = pick_formatter,
-				typescript = pick_formatter,
-				typescriptreact = pick_formatter,
-				json = pick_formatter,
-				jsonc = pick_formatter,
-				html = pick_formatter,
-				vue = pick_formatter,
+		javascript = pick_formatter,
+		javascriptreact = pick_formatter,
+		typescript = pick_formatter,
+		typescriptreact = pick_formatter,
+		json = pick_formatter,
+		jsonc = pick_formatter,
+		html = pick_formatter,
+		vue = pick_formatter,
 
-				css = { "prettierd" },
-				scss = { "prettierd" },
-				less = { "prettierd" },
-				yaml = { "prettierd" },
-				markdown = { "prettierd" },
-				["markdown.mdx"] = { "prettierd" },
-				graphql = { "prettierd" },
-				handlebars = { "prettierd" },
-				svelte = { "prettierd" },
-				astro = { "prettierd" },
-				htmlangular = { "prettierd" },
+		css = { "prettierd" },
+		scss = { "prettierd" },
+		less = { "prettierd" },
+		yaml = { "prettierd" },
+		markdown = { "prettierd" },
+		["markdown.mdx"] = { "prettierd" },
 
-				sh = { "shfmt" },
-				env = { "shfmt" },
+		sh = { "shfmt" },
+		env = { "shfmt" },
 
-				cs = { "csharpier" },
+		cs = { "csharpier" },
 
-				go = { "gofumpt", "golines", "goimports-reviser" },
-				templ = { "templ" },
+		go = { "gofumpt", "golines", "goimports-reviser" },
 
-				["_"] = { "trim_whitespace" },
-			},
-			format_on_save = {
-				timeout_ms = 2000,
-				lsp_format = "fallback",
-			},
-			formatters = {
-				prettierd = {
-					append_args = { "--ignore-path", "./.prettierignore" },
-				},
-			},
-		}
-
-		map("n", "<leader>cf", function() require("conform").format() end, opts "[C]ode [F]ormat")
+		["_"] = { "trim_whitespace" },
+	},
+	format_on_save = function(bufnr)
+		if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then return end
+		local bufname = vim.api.nvim_buf_get_name(bufnr)
+		if bufname:match "/node_modules/" then return end
+		return { timeout_ms = 500, lsp_format = "fallback" }
 	end,
+	formatters = {
+		prettierd = {
+			append_args = { "--ignore-path", "./.prettierignore" },
+		},
+	},
 }
+
+vim.api.nvim_create_user_command("FormatDisable", function(opt)
+	if opt.bang then
+		vim.b.disable_autoformat = true
+	else
+		vim.g.disable_autoformat = true
+	end
+	vim.notify("Autoformat disabled" .. (opt.bang and " (buffer)" or " (global)"), vim.log.levels.WARN)
+end, { desc = "Disable autoformat-on-save", bang = true })
+
+vim.api.nvim_create_user_command("FormatEnable", function()
+	vim.b.disable_autoformat = false
+	vim.g.disable_autoformat = false
+	vim.notify("Autoformat enabled", vim.log.levels.INFO)
+end, { desc = "Re-enable autoformat-on-save" })
+
+local auto_format = true
+
+map("n", "<leader>tf", function()
+	auto_format = not auto_format
+	if auto_format then
+		vim.cmd "FormatEnable"
+	else
+		vim.cmd "FormatDisable"
+	end
+end, opts "Toggle autoformat")
+
+map({ "n", "v" }, "<leader>cf", function()
+	require("conform").format({ async = true }, function(err, did_edit)
+		if not err and did_edit then vim.notify("Code formatted", vim.log.levels.INFO, { title = "Conform" }) end
+	end)
+end, opts "Code format")

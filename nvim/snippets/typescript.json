@@ -5,15 +5,15 @@
       "import { type Locator, type Page } from '@playwright/test';",
       "",
       "export class $1 {",
-      "  public constructor(",
-      "    private page: Page,",
-      "    private isMobile: boolean",
-      "  ) {}",
+      "\tpublic constructor(",
+      "\t\tprivate page: Page,",
+      "\t\tprivate isMobile: boolean",
+      "\t) {}",
       "}"
     ]
   },
   "Playwright test step": {
     "prefix": "pws",
-    "body": ["await test.step('$1', async () => {\n  $2\n});"]
+    "body": ["await test.step('$1', async () => {\n\t$2\n});"]
   }
 }

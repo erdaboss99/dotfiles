@@ -1,5 +1,5 @@
-require "options"
-require "keymaps"
-require "autocmds"
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-require "config.lazy"
+require "config"
+require "plugins"

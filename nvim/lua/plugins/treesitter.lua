@@ -1,49 +1,54 @@
-return {
-	-- Syntax highlighting and parsing
-	"nvim-treesitter/nvim-treesitter",
-	event = { "VeryLazy" },
-	build = ":TSUpdate",
-	cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-	lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
-	config = function()
-		require("nvim-treesitter.install").compilers = { "clang", "gcc" }
-		local config = require "nvim-treesitter.configs"
-		vim.treesitter.language.register("markdown", "mdx")
-		---@diagnostic disable-next-line: missing-fields
-		config.setup {
-			auto_install = true,
-			highlight = { enable = true },
-			indent = { enable = true },
-			ensure_installed = {
-				"c",
-				"cpp",
-				"lua",
-				"bash",
-				"javascript",
-				"typescript",
-				"json",
-				"jsonc",
-				"yaml",
-				"c_sharp",
-				"html",
-				"css",
-				"astro",
-				"tsx",
-				"go",
-				"gomod",
-				"markdown",
-				"markdown_inline",
-				"toml",
-				"csv",
-			},
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<C-Space>",
-					node_incremental = "<TAB>",
-					node_decremental = "<S-TAB>",
-				},
-			},
-		}
-	end,
+require("nvim-treesitter").setup {}
+require("nvim-treesitter").install {
+	"bash",
+	"c",
+	"c_sharp",
+	"cpp",
+	"css",
+	"csv",
+	"diff",
+	"dockerfile",
+	"gitcommit",
+	"gitignore",
+	"go",
+	"gomod",
+	"gosum",
+	"gowork",
+	"html",
+	"javascript",
+	"jsdoc",
+	"json",
+	"lua",
+	"luadoc",
+	"luap",
+	"make",
+	"markdown",
+	"markdown_inline",
+	"python",
+	"regex",
+	"rust",
+	"scss",
+	"sql",
+	"terraform",
+	"toml",
+	"tsx",
+	"typescript",
+	"vim",
+	"vimdoc",
+	"xml",
+	"yaml",
 }
+
+vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "*" },
+	callback = function()
+		local filetype = vim.bo.filetype
+		if filetype and filetype ~= "" then
+			local success = pcall(function() vim.treesitter.start() end)
+			if not success then return end
+		end
+	end,
+})

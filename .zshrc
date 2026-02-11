@@ -124,3 +124,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# rust/cargo
+# source cargo env if it exists
+[ -f ~/.cargo/env ] && source ~/.cargo/env

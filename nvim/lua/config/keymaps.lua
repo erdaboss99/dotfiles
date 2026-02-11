@@ -2,7 +2,7 @@ local map = vim.keymap.set
 local opts = function(desc) return { desc = desc, noremap = true, silent = true, nowait = true } end
 
 -- Quickfix
-map("n", "<leader>q", "<CMD>copen<CR>", opts "Open Quickfix list")
+map("n", "<leader>q", "<CMD>copen<CR>", opts "Open quickfix list")
 map("n", "[q", "<CMD>cprev<CR>", opts "Prev quickfix item")
 map("n", "]q", "<CMD>cnext<CR>", opts "Next quickfix item")
 
@@ -31,12 +31,39 @@ map("n", "<C-d>", "<C-d>zz", opts "Scroll down half a page")
 map("n", "<C-u>", "<C-u>zz", opts "Scroll up half a page")
 
 -- Editing
-map("n", "<C-y>", "ggVG", opts "Select all")
+map("n", "==", "ggVG", opts "Select all lines")
 map("n", "J", "mzJ`z", opts "Join lines")
 map("v", "<M-Down>", ":m '>+1<CR>gv=gv", opts "Move line down")
 map("v", "<M-Up>", ":m '<-2<CR>gv=gv", opts "Move line up")
 map("v", ">", ">gv", opts "Indent right")
 map("v", "<", "<gv", opts "Indent left")
+map("n", "<leader>tw", "<cmd>set wrap!<CR>", opts "Toggle wrap")
+
+-- Spell checking
+map("n", "<leader>z", "1z=", {
+	desc = "Fix world under cursor",
+})
+map("n", "<leader>ts", function()
+	local current_state = vim.o.spell
+	local bufnr = vim.api.nvim_get_current_buf()
+
+	if current_state then
+		local clients = vim.lsp.get_clients { bufnr = bufnr, name = "harper_ls" }
+		for _, client in ipairs(clients) do
+			client:stop()
+		end
+		vim.o.spell = false
+		vim.notify "Disabled Spell + Harper"
+	else
+		vim.o.spell = true
+		vim.lsp.enable "harper_ls"
+		vim.notify "Enabled Spell + Harper"
+	end
+end, opts "Toggle Spell + Harper")
+
+-- Better navigation
+map("n", "gl", "$", opts "Go to end of line")
+map("n", "gh", "^", opts "Go to start of line")
 
 -- Better handling of word operations
 map("n", "yw", "yiw", opts "Yank current word")

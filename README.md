@@ -56,8 +56,6 @@ sudo apt update && apt upgrade -y
 
 sudo apt install software-properties-common -y
 
-sudo add-apt-repository ppa:deadsnakes/ppa
-
 sudo apt update && apt upgrade -y
 
 # Change default shell to ZSH
@@ -73,12 +71,6 @@ sudo apt install xclip
 
 sudo apt install fd-find
 
-sudo apt-get install ruby-full
-
-sudo apt install ruby-rubygems
-
-sudo apt install rbenv
-
 sudo apt install bat
 
 sudo apt-get install ripgrep
@@ -89,17 +81,9 @@ sudo apt-get install clang
 
 sudo apt install dotnet-sdk-8.0
 
-sudo apt install python3.12
-
-sudo apt-get install python3.12-venv
 ```
 
 4. Install utilities
-
-```bash
-# python package manager
-curl -sS https://bootstrap.pypa.io/get-pip.py | python3.12
-```
 
 ```bash
 # fnm installer
@@ -122,16 +106,16 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
 
-```bash
-# colorls
-rbenv rehash
-
-sudo gem install colorls
-```
-
 [Lazygit git client](https://github.com/jesseduffield/lazygit)
 
-[NeoVim installation guide](https://github.com/neovim/neovim/blob/master/INSTALL.md)
+[Nvim installation guide](https://github.com/neovim/neovim/blob/master/INSTALL.md)
+
+> note: v0.12+ is required for the config to work
+
+[Vs Code JavaScript Debug](https://github.com/microsoft/vscode-js-debug#)
 
 [Go installation guide](https://go.dev/doc/install)
 
+[Rust installation guide](https://rust-lang.org/tools/install/)
+
+[Tree-Sitter](https://github.com/tree-sitter/tree-sitter)

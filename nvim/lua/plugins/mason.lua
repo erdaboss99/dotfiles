@@ -16,7 +16,7 @@ require("mason-tool-installer").setup {
 		"json-lsp", -- JSON LSP
 		"yaml-language-server", -- YAML LSP
 		"marksman", -- Markdown and MDX LSP
-		{ "csharp-language-server", version = "0.10.0" }, -- C# LSP
+		{ "csharp-language-server", version = "0.5.7" }, -- C# LSP
 		"gopls", -- Go LSP
 		"taplo", -- TOML LSP
 		"vue-language-server", -- Vue LSP

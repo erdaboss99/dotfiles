@@ -7,32 +7,32 @@ local default_keymaps = {
 	{ keys = "K", func = function() vim.lsp.buf.hover { border = "rounded" } end, desc = "Hover Documentation" },
 	{
 		keys = "gd",
-		func = require("telescope.builtin").lsp_definitions,
+		func = vim.lsp.buf.definition,
 		desc = "Goto Definition",
 		has = "definitionProvider",
 	},
 	{
 		keys = "gr",
-		func = require("telescope.builtin").lsp_references,
+		func = vim.lsp.buf.references,
 		desc = "Goto References",
 		has = "referencesProvider",
 	},
 	{
 		keys = "gi",
-		func = require("telescope.builtin").lsp_implementations,
+		func = vim.lsp.buf.implementation,
 		desc = "Goto Implementations",
 		has = "implementationProvider",
 	},
 	{
 		keys = "gt",
-		func = require("telescope.builtin").lsp_type_definitions,
+		func = vim.lsp.buf.type_definition,
 		desc = "Goto Type Definitions",
 		has = "typeDefinitionProvider",
 	},
 	{ keys = "H", func = function() vim.diagnostic.open_float { border = "rounded" } end, desc = "Show Diagnostics" },
 }
 
-local completion = vim.g.completion_mode or "blink" -- or 'native'
+local completion = vim.g.completion_mode or "blink"
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = augroup "lsp_attach",
 	callback = function(args)

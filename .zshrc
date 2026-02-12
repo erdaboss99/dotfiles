@@ -96,6 +96,12 @@ fi
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
+# Dotnet
+if [ -d "$HOME/dotnet" ]; then
+    export DOTNET_ROOT="$HOME/dotnet"
+    PATH="$HOME/dotnet:$PATH"
+fi
+
 # Dotnet tools
 if [ -d "$HOME/.dotnet/tools" ]; then
 	PATH="$HOME/.dotnet/tools:$PATH"

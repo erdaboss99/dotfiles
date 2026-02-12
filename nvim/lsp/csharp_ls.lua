@@ -8,6 +8,7 @@ local function strip_archive_subpath(path)
 end
 
 local function search_ancestors(startpath, func)
+	vim.validate("func", func, "function")
 	if func(startpath) then return startpath end
 	local guard = 100
 	for path in vim.fs.parents(startpath) do

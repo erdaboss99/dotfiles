@@ -24,7 +24,11 @@ require("lualine").setup {
 				symbols = { modified = "󰏫 ", readonly = " ", unnamed = "", newfile = "✚ " },
 			},
 		},
-		lualine_x = {},
+		lualine_x = {
+			{
+				require("opencode").statusline,
+			},
+		},
 		lualine_y = { "lsp_status" },
 		lualine_z = { "location", "progress" },
 	},

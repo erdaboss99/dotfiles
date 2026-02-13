@@ -25,6 +25,9 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 			},
 			completion = {
 				menu = {
+					draw = {
+						columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", gap = 1 } },
+					},
 					border = "rounded",
 					winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:FloatBorder,Search:None",
 					scrollbar = false,
@@ -38,13 +41,18 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 				},
 			},
 			sources = {
-				default = { "copilot", "lsp", "path", "snippets", "buffer" },
+				default = { "copilot", "lazydev", "lsp", "path", "snippets", "buffer" },
 				providers = {
 					copilot = {
 						name = "copilot",
 						module = "blink-copilot",
 						score_offset = 100,
 						async = true,
+					},
+					lazydev = {
+						name = "LazyDev",
+						module = "lazydev.integrations.blink",
+						score_offset = 110,
 					},
 				},
 			},

@@ -38,6 +38,7 @@ map("v", "<M-Up>", ":m '<-2<CR>gv=gv", opts "Move line up")
 map("v", ">", ">gv", opts "Indent right")
 map("v", "<", "<gv", opts "Indent left")
 map("n", "<leader>tw", "<cmd>set wrap!<CR>", opts "Toggle wrap")
+map("n", "<leader>tn", "<CMD>set invrelativenumber<CR>", opts "Toggle relative line numbers")
 
 -- Spell checking
 map("n", "<leader>z", "1z=", {
@@ -59,7 +60,7 @@ map("n", "<leader>ts", function()
 		vim.lsp.enable "harper_ls"
 		vim.notify "Enabled Spell + Harper"
 	end
-end, opts "Toggle Spell + Harper")
+end, opts "Toggle spellcheck")
 
 -- Better navigation
 map("n", "gl", "$", opts "Go to end of line")

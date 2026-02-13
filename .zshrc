@@ -59,6 +59,8 @@ alias tsb='npx tsc -b'
 
 alias g='lazygit'
 
+alias opencode="opencode --port 4096"
+
 [ -f ~/.env.sh ] && source ~/.env.sh
 [ -f ~/.local/scripts/git-worktrees.sh ] && source ~/.local/scripts/git-worktrees.sh
 
@@ -134,3 +136,6 @@ esac
 # rust/cargo
 # source cargo env if it exists
 [ -f ~/.cargo/env ] && source ~/.cargo/env
+
+# opencode
+export PATH=/home/erdelyiroland/.opencode/bin:$PATH

@@ -24,5 +24,3 @@ require("gitsigns").setup {
 		untracked = { text = "│" },
 	},
 }
-
-map("n", "<leader>gg", "<CMD>LazyGit<CR>", opts "Open lazygit")

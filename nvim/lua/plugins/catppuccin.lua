@@ -3,12 +3,12 @@ require("catppuccin").setup {
 	integrations = {
 		cmp = true,
 		gitsigns = true,
-		telescope = { enabled = true },
 		treesitter = true,
 		notify = true,
 		noice = true,
 		mason = true,
 		dap_ui = true,
+		snacks = { enabled = true },
 		blink_cmp = {
 			style = "bordered",
 		},

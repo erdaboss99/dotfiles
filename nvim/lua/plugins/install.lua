@@ -27,17 +27,9 @@ pack { { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "
 -- Completion
 -- ======================
 
-pack { { src = "https://github.com/zbirenbaum/copilot.lua" } }
 pack { { src = "https://github.com/L3MON4D3/LuaSnip" } }
 pack { { src = "https://github.com/fang2hou/blink-copilot" } }
 pack { { src = "https://github.com/saghen/blink.cmp", version = vim.version.range "^1" } }
-
--- ======================
--- Fuzzy Finder
--- ======================
-
-pack { { src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" } }
-pack { { src = "https://github.com/nvim-telescope/telescope.nvim" } }
 
 -- ======================
 -- File Explorer
@@ -51,7 +43,6 @@ pack { { src = "https://github.com/refractalize/oil-git-status.nvim" } }
 -- ======================
 
 pack { { src = "https://github.com/lewis6991/gitsigns.nvim" } }
-pack { { src = "https://github.com/kdheepak/lazygit.nvim" } }
 
 -- ======================
 -- Debugger
@@ -76,6 +67,13 @@ pack { { src = "https://github.com/folke/noice.nvim" } }
 pack { { src = "https://github.com/folke/which-key.nvim" } }
 
 -- ======================
+-- AI
+-- ======================
+
+pack { { src = "https://github.com/zbirenbaum/copilot.lua" } }
+pack { { src = "https://github.com/nickjvandyke/opencode.nvim" } }
+
+-- ======================
 -- Notes
 -- ======================
 
@@ -89,4 +87,5 @@ pack { { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" } 
 pack { { src = "https://github.com/echasnovski/mini.comment" } }
 pack { { src = "https://github.com/echasnovski/mini.surround" } }
 pack { { src = "https://github.com/laytan/cloak.nvim" } }
-pack { { src = "https://github.com/b0o/schemastore.nvim" } }
+pack { { src = "https://github.com/folke/snacks.nvim" } }
+pack { { src = "https://github.com/folke/lazydev.nvim" } }

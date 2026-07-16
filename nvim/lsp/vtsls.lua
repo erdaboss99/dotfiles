@@ -52,9 +52,11 @@ return {
 			return
 		end
 
-		-- Find workspace root
-		local workspace_root = vim.fs.dirname(vim.fs.find(ROOT_MARKERS, { path = fname, upward = true })[1])
-		on_dir(workspace_root or vim.fn.getcwd())
+		-- Prefer the nearest tsconfig.json/jsconfig.json to the file,
+		-- falling back to any root marker (package.json, .git)
+		local tsconfig = vim.fs.find({ "tsconfig.json", "jsconfig.json" }, { path = fname, upward = true })[1]
+		local root = vim.fs.find(ROOT_MARKERS, { path = fname, upward = true })[1]
+		on_dir(vim.fs.dirname(tsconfig or root) or vim.fn.getcwd())
 	end,
 	settings = {
 		complete_function_calls = true,

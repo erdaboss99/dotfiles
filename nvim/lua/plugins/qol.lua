@@ -31,6 +31,17 @@ require("cloak").setup {
 			},
 			replace = "%1",
 		},
+		{
+			file_pattern = "*.sh",
+			cloak_pattern = {
+				"(.*(PASSWORD))(.+)",
+				"(.*(TOKEN))(.+)",
+				"(.*(KEY))(.+)",
+				"(.*(S3Bucket))(.+)",
+			},
+
+			replace = "%1",
+		},
 	},
 }
 

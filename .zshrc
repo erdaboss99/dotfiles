@@ -59,10 +59,9 @@ alias tsb='npx tsc -b'
 
 alias g='lazygit'
 
-alias opencode="opencode --port 4096"
-
 [ -f ~/.env.sh ] && source ~/.env.sh
 [ -f ~/.local/scripts/git-worktrees.sh ] && source ~/.local/scripts/git-worktrees.sh
+[ -f ~/.local/scripts/auth-wrappers.sh ] && source ~/.local/scripts/auth-wrappers.sh
 
 export EDITOR='nvim'
 
@@ -139,3 +138,12 @@ esac
 
 # opencode
 export PATH=/home/erdelyiroland/.opencode/bin:$PATH
+
+# bun completions
+[ -f ~/.bun/_bun ] && source ~/.bun/_bun
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export SSH_ASKPASS_REQUIRE=prefer

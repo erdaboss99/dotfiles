@@ -3,7 +3,7 @@ return {
 	filetypes = { "yaml" },
 	settings = {
 		yaml = {
-			schemastore = { enable = false, url = "" },
+			schemastore = { enable = true, url = "" },
 		},
 	},
 }

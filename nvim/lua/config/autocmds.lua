@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = augroup "highlight_yank",
-	callback = function() (vim.hl or vim.highlight).on_yank { higroup = "Visual", timeout = 200 } end,
+	callback = function() vim.highlight.on_yank { higroup = "Visual", timeout = 200 } end,
 })
 
 -- Close some filetypes with <q>

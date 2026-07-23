@@ -87,6 +87,7 @@ vim.lsp.enable {
 	"jsonls", -- JSON LSP
 	"eslint", -- ESLint LSP
 	"vtsls", -- Typescript and JavaScript LSP
+	-- "tsgo", -- Typescript and JavaScript LSP
 	"yamlss", -- YAML LSP
 	"bashls", -- Bash(Shell) LSP
 	"csharp_ls", -- C# LSP

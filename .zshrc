@@ -45,6 +45,7 @@ alias wwt='~/.local/scripts/tmux-layout.sh'
 
 alias report='~/.local/scripts/report.sh'
 alias line-endings='~/.local/scripts/line-endings.sh'
+alias new-sh='~/.local/scripts/new-sh.sh'
 
 alias pct='npx playwright test --config="./playwright-ct.config.ts"'
 

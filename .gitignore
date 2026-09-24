@@ -1,2 +1,4 @@
 .DS_Store
 nvim/lazy-lock.json
+act
+pw-test

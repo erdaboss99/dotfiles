@@ -73,7 +73,7 @@ return {
 		packageManager = nil,
 		useESLintClass = false,
 		experimental = {
-			useFlatConfig = true, -- ESLint 9+ flat config only
+			useFlatConfig = false, -- ESLint 9+ flat config only
 		},
 		codeActionOnSave = {
 			enable = false,

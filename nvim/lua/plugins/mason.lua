@@ -28,6 +28,7 @@ require("mason-tool-installer").setup {
 		"goimports-reviser", -- Go imports formatter
 		"golines", -- Go lines formatter
 		"harper-ls", -- Spell checker LSP
-		"powershell-editor-services", -- PowerShell LSP
+		"powershell-editor-services", -- PowerShell LSP,
+		"pyright", -- Python LSP
 	},
 }

@@ -49,14 +49,8 @@ alias new-sh='~/.local/scripts/new-sh.sh'
 
 alias pct='npx playwright test --config="./playwright-ct.config.ts"'
 
-alias ptr="npx playwright show-report"
-alias pt='npx playwright test --config=./src/configuration/playwright.config.ts --trace=on --retries=1 --grep'
-alias ptc='npx playwright test --config=./src/configuration/playwright.config.ts --trace=on --project="Desktop Chrome" --workers=1 --retries=0 --grep'
-alias ptcp='npx playwright test --config=./src/configuration/playwright.config.ts --trace=on --project="Desktop Chrome" --retries=0 --grep'
-alias lt='npx eslint -c eslint.config.mjs --cache --report-unused-disable-directives .'
-alias lts='npx eslint -c eslint.config.mjs --cache --report-unused-disable-directives src'
-alias ltt='npx eslint -c eslint.config.mjs --cache --report-unused-disable-directives tests'
-alias tsb='npx tsc -b'
+alias ptr="bunx playwright show-report"
+alias tsb='bunx tsc -b'
 
 alias g='lazygit'
 

@@ -94,6 +94,8 @@ vim.lsp.enable {
 	"html", -- HTML LSP
 	"marksman", -- Markdown and MDX LSP
 	"taplo", -- TOML LSP
+	"powershell_es", -- TOML LSP
+	"pyright", -- Python LSP
 	-- "harper_ls", -- Harper LSP (Spell checking)
 }
 

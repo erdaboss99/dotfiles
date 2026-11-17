@@ -96,6 +96,7 @@ vim.lsp.enable {
 	"taplo", -- TOML LSP
 	"powershell_es", -- TOML LSP
 	"pyright", -- Python LSP
+	"terraformls", -- Terraform LSP
 	-- "harper_ls", -- Harper LSP (Spell checking)
 }
 

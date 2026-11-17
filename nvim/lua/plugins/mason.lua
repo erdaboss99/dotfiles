@@ -29,6 +29,7 @@ require("mason-tool-installer").setup {
 		"golines", -- Go lines formatter
 		"harper-ls", -- Spell checker LSP
 		"powershell-editor-services", -- PowerShell LSP,
-		"pyright", -- Python LSP
+		"pyright", -- Python LSP,
+		"terraform-ls", -- Terraform LSP
 	},
 }

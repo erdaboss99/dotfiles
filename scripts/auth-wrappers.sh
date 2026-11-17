@@ -16,3 +16,9 @@ gh() {
 oc() {
     OPENCODE_AUTH_CONTENT="$(pass show github/opencode-auth)" command opencode "$@"
 }
+
+# Claude Code: long-lived OAuth token from `claude setup-token` (subscription auth).
+# For API-key billing use ANTHROPIC_API_KEY instead.
+claude() {
+    CLAUDE_CODE_OAUTH_TOKEN="$(pass show personal/claude-auth-token)" command claude "$@"
+}

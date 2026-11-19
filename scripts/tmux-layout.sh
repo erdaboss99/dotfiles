@@ -43,14 +43,21 @@ tmux split-window -v -l 10
 # Split bottom pane vertically: right pane with 2:1 ratio
 tmux split-window -h -l 33%
 
+# Split top pane vertically: two equal halves
+tmux select-pane -t 1
+tmux split-window -h -l 50%
+
 # Navigate each pane to the selected git worktree directory
-tmux select-pane -t 1 # Top pane
+tmux select-pane -t 1 # Top-left pane
 tmux send-keys "cd $WORKTREE;c" C-m
 
-tmux select-pane -t 2 # Bottom-left pane
+tmux select-pane -t 2 # Top-right pane
 tmux send-keys "cd $WORKTREE;c" C-m
 
-tmux select-pane -t 3 # Bottom-right pane
+tmux select-pane -t 3 # Bottom-left pane
+tmux send-keys "cd $WORKTREE;c" C-m
+
+tmux select-pane -t 4 # Bottom-right pane
 tmux send-keys "cd $WORKTREE;c" C-m
 
 # Return focus to the top pane

@@ -20,16 +20,19 @@ alias r='source ~/.zshrc && reset'
 alias c='clear'
 alias dotf='cd ~/dotfiles; clear'
 alias bat='batcat'
-alias fs='~/.local/scripts/tmux-sessionizer.sh'
+alias fs='~/.local/scripts/zellij-sessionizer.sh'
 alias f="fzf --preview 'bat --style=numbers --color=always {}' | xargs -n 1 nvim"
 
-alias ta='tmux attach -t'
-alias td='tmux detach'
-alias tl='tmux ls'
-alias tks='tmux kill-session'
-alias tkw='tmux killw'
-alias tkp='tmux killp'
-alias ts='tmux new -s'
+# zellij (names kept from the tmux days)
+alias z='zellij'
+alias ta='zellij attach'
+alias td='zellij action detach'
+alias tl='zellij ls'
+tks() { zellij kill-session "${1:-$ZELLIJ_SESSION_NAME}" && zellij delete-session "${1:-$ZELLIJ_SESSION_NAME}" 2>/dev/null; }
+alias tka='zellij kill-all-sessions -y; zellij delete-all-sessions -y'
+alias tkw='zellij action close-tab'
+alias tkp='zellij action close-pane'
+alias ts='zellij attach -c'
 
 alias gpl='git pull'
 alias gps='git push'
@@ -41,7 +44,7 @@ alias gaa='git add -A'
 alias ww="fzf_git_worktree_change_dir"
 alias wwr="fzf_git_worktree_remove"
 alias wwa="git_worktree_add"
-alias wwt='~/.local/scripts/tmux-layout.sh'
+alias wwt='~/.local/scripts/zellij-layout.sh'
 
 alias report='~/.local/scripts/report.sh'
 alias line-endings='~/.local/scripts/line-endings.sh'

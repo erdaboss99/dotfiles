@@ -15,7 +15,6 @@ Library/
 .local/
 .zsh_sessions/
 .terminfo/
-.tmux/
 .vim/
 .config/raycast/
 .config/nvim/.github/

@@ -1,0 +1,25 @@
+// Port of scripts/tmux-layout.sh:
+//   ┌──────────┬──────────┐
+//   │    1     │    2     │
+//   ├──────────┴───┬──────┤
+//   │      3       │  4   │  10 lines, 2:1
+//   └──────────────┴──────┘
+// cwd comes from `zellij action new-tab --cwd <worktree>`
+layout {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zjstatus"
+        }
+        children
+    }
+    tab {
+        pane split_direction="vertical" {
+            pane focus=true
+            pane
+        }
+        pane size=10 split_direction="vertical" {
+            pane
+            pane size="33%"
+        }
+    }
+}

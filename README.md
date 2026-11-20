@@ -24,9 +24,9 @@ ln -s ~/dotfiles/.ignore ~/.ignore
 ```
 
 ```bash
-# TMUX config
-# TPM is required! Install it from here https://github.com/tmux-plugins/tpm
-ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+# Zellij config (prefix: Ctrl a, tmux-style binds)
+# On first launch approve the zjstatus permission prompt in the top bar (focus it, press y)
+ln -s ~/dotfiles/zellij ~/.config/zellij
 ```
 
 ```bash
@@ -104,6 +104,11 @@ curl -sS https://starship.rs/install.sh | sh
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 ~/.fzf/install
+```
+
+```bash
+# zellij (prebuilt binary; v0.44+ required for `zellij action switch-session`)
+curl -fsSL https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz | tar xz -C ~/.local/bin
 ```
 
 [Lazygit git client](https://github.com/jesseduffield/lazygit)

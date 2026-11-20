@@ -1,0 +1,190 @@
+// Symlink: ln -s ~/dotfiles/zellij ~/.config/zellij
+
+theme "tokyo-night"
+default_layout "default"
+default_mode "normal"
+mouse_mode true
+scroll_buffer_size 50000
+scrollback_editor "nvim"     // tmux vi copy-mode replacement: prefix + e
+on_quit "ask_detach"
+show_release_notes false
+show_startup_tips false
+session_serialization false  // no resurrection: exited sessions are gone, not "EXITED - attach to resurrect"
+
+ui {
+    pane_frames {
+        rounded_corners true
+        hide_session_name true
+    }
+}
+
+plugins {
+    // Status bar (tokyo-night-tmux replacement): mode, session, tabs, hostname
+  zjstatus location="https://github.com/dj95/zjstatus/releases/download/v0.25.0/zjstatus.wasm" {
+      format_left   "{mode}#[fg=#7aa2f7,bold] {session} "
+      format_center "{tabs}"
+      format_right  "{datetime} {command_host}"
+      format_space  ""
+      format_hide_on_overlength "true"
+      format_precedence "lrc"
+
+      border_enabled "false"
+      hide_frame_for_single_pane "false"
+
+      mode_normal       "#[bg=#7aa2f7,fg=#1a1b26,bold] NORMAL "
+      mode_tmux         "#[bg=#ff9e64,fg=#1a1b26,bold] PREFIX "
+      mode_scroll       "#[bg=#bb9af7,fg=#1a1b26,bold] SCROLL "
+      mode_search       "#[bg=#bb9af7,fg=#1a1b26,bold] SEARCH "
+      mode_enter_search "#[bg=#bb9af7,fg=#1a1b26,bold] SEARCH "
+      mode_rename_tab   "#[bg=#e0af68,fg=#1a1b26,bold] RENAME "
+      mode_rename_pane  "#[bg=#e0af68,fg=#1a1b26,bold] RENAME "
+      mode_session      "#[bg=#9ece6a,fg=#1a1b26,bold] SESSION "
+      mode_locked       "#[bg=#f7768e,fg=#1a1b26,bold] LOCKED "
+
+      tab_normal              "#[fg=#565f89] {index}:{name} "
+      tab_normal_fullscreen   "#[fg=#565f89] {index}:{name} [Z] "
+      tab_active              "#[fg=#7aa2f7,bold] [{index}:{name}] "
+      tab_active_fullscreen   "#[fg=#7aa2f7,bold] [{index}:{name} Z] "
+
+      command_host_command    "hostname"
+      command_host_format     "#[fg=#bb9af7] 󰒋 {stdout} "
+      command_host_interval   "0"
+      command_host_rendermode "static"
+
+      datetime        "#[fg=#7dcfff,bold] 󰥔 {format} "
+      datetime_format "%A, %d %b %Y %H:%M"
+      datetime_timezone "Europe/Berlin"
+  }
+}
+
+// Built-in background plugin (zellij default, kept as-is)
+load_plugins {
+    "zellij:bars" { role "link"; }
+}
+
+// ---------------------------------------------------------------------------
+// Keybinds: tmux-style only. Prefix = Ctrl a. No other Ctrl/Alt chords are
+// grabbed, so nvim / shell keep Ctrl p/o/s/n/h/t/q etc.
+// ---------------------------------------------------------------------------
+keybinds clear-defaults=true {
+    normal {
+        bind "Ctrl a" { SwitchToMode "Tmux"; }
+        // tmux: bind -n S-Left/S-Right previous/next-window
+        bind "Shift Left"  { GoToPreviousTab; }
+        bind "Shift Right" { GoToNextTab; }
+    }
+
+    tmux {
+        // send-prefix (C-a C-a sends a literal Ctrl a)
+        bind "Ctrl a" { Write 1; SwitchToMode "Normal"; }
+
+        // splits (tmux: bind v split -h / bind h split -v)
+        bind "v" { NewPane "Right"; SwitchToMode "Normal"; }
+        bind "h" { NewPane "Down";  SwitchToMode "Normal"; }
+
+        // sessions (tmux: p/l switch-client -p/-n)
+        bind "p" { GoToPreviousSession; SwitchToMode "Normal"; }
+        bind "l" { GoToNextSession;     SwitchToMode "Normal"; }
+        bind "d" { Detach; }
+        bind "s" {
+            LaunchOrFocusPlugin "session-manager" { floating true; move_to_focused_tab true; };
+            SwitchToMode "Normal"
+        }
+        bind "$" { SwitchToMode "RenameSession"; SessionNameInput 0; }
+
+        // sessionizer (tmux: bind f run-shell tmux-sessionizer)
+        bind "f" {
+            Run "bash" "-c" "~/.local/scripts/zellij-sessionizer.sh" {
+                floating true
+                close_on_exit true
+                name "sessionizer"
+            };
+            SwitchToMode "Normal"
+        }
+
+        // tabs (tmux windows)
+        bind "c" { NewTab; SwitchToMode "Normal"; }
+        bind "," { SwitchToMode "RenameTab"; TabNameInput 0; }
+        bind "n" { GoToNextTab; SwitchToMode "Normal"; }
+        bind "w" { CloseTab; SwitchToMode "Normal"; }
+
+        // panes
+        bind "Left"  { MoveFocus "Left";  SwitchToMode "Normal"; }
+        bind "Right" { MoveFocus "Right"; SwitchToMode "Normal"; }
+        bind "Up"    { MoveFocus "Up";    SwitchToMode "Normal"; }
+        bind "Down"  { MoveFocus "Down";  SwitchToMode "Normal"; }
+        bind "o" { FocusNextPane; SwitchToMode "Normal"; }
+        bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
+        bind "x" { CloseFocus; SwitchToMode "Normal"; }
+        bind "Space" { NextSwapLayout; }
+        bind "W" { ToggleFloatingPanes; SwitchToMode "Normal"; }
+        // resize (repeatable like tmux -r: stays in prefix mode, Esc/Enter to leave)
+        bind "Ctrl Left"  { Resize "Increase Left"; }
+        bind "Ctrl Right" { Resize "Increase Right"; }
+        bind "Ctrl Up"    { Resize "Increase Up"; }
+        bind "Ctrl Down"  { Resize "Increase Down"; }
+
+        // copy mode (tmux: [ with mode-keys vi)
+        bind "[" { SwitchToMode "Scroll"; }
+        bind "e" { EditScrollback; SwitchToMode "Normal"; }
+    }
+
+    scroll {
+        bind "e" { EditScrollback; SwitchToMode "Normal"; }
+        bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
+        bind "q" "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
+        bind "j" "Down" { ScrollDown; }
+        bind "k" "Up" { ScrollUp; }
+        bind "Ctrl f" "PageDown" { PageScrollDown; }
+        bind "Ctrl b" "PageUp" { PageScrollUp; }
+        bind "Ctrl d" "d" { HalfPageScrollDown; }
+        bind "Ctrl u" "u" { HalfPageScrollUp; }
+        bind "G" { ScrollToBottom; }
+        bind "[" { ScrollToPreviousPrompt; }
+        bind "]" { ScrollToNextPrompt; }
+        bind "c" { CopyLastCommandOutput; SwitchToMode "Normal"; }
+    }
+
+    search {
+        bind "q" "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
+        bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
+        bind "n" { Search "down"; }
+        bind "N" { Search "up"; }
+        bind "j" "Down" { ScrollDown; }
+        bind "k" "Up" { ScrollUp; }
+        bind "Ctrl d" "d" { HalfPageScrollDown; }
+        bind "Ctrl u" "u" { HalfPageScrollUp; }
+        bind "c" { SearchToggleOption "CaseSensitivity"; }
+        bind "w" { SearchToggleOption "Wrap"; }
+        bind "o" { SearchToggleOption "WholeWord"; }
+        bind "e" { EditScrollback; SwitchToMode "Normal"; }
+    }
+
+    entersearch {
+        bind "Ctrl c" "Esc" { SwitchToMode "Scroll"; }
+        bind "Enter" { SwitchToMode "Search"; }
+    }
+
+    renametab {
+        bind "Ctrl c" { SwitchToMode "Normal"; }
+        bind "Esc" { UndoRenameTab; SwitchToMode "Normal"; }
+    }
+
+    renamepane {
+        bind "Ctrl c" { SwitchToMode "Normal"; }
+        bind "Esc" { UndoRenamePane; SwitchToMode "Normal"; }
+    }
+
+    renamesession {
+        bind "Ctrl c" { SwitchToMode "Normal"; }
+        bind "Esc" { UndoRenameSession; SwitchToMode "Normal"; }
+    }
+
+    shared_except "normal" "locked" "renametab" "renamepane" "renamesession" "entersearch" {
+        bind "Enter" "Esc" { SwitchToMode "Normal"; }
+    }
+    shared_except "normal" "locked" {
+        bind "Shift Left"  { GoToPreviousTab; }
+        bind "Shift Right" { GoToNextTab; }
+    }
+}

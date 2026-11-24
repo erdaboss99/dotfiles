@@ -1,8 +1,3 @@
-[credential "https://github.com"]
-    helper = !git-credential-pass-github
-[credential "https://gist.github.com"]
-    helper = !git-credential-pass-github
-
 [core]
     pager = delta
 

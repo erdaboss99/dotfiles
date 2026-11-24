@@ -64,6 +64,44 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	callback = function() vim.opt_local.conceallevel = 2 end,
 })
 
+-- Follow the repo's .gitattributes `eol` (crlf/lf) instead of always defaulting to unix.
+-- Fixes eslint `linebreak-style` / prettier `endOfLine` errors on new or mixed-ending files.
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
+	group = augroup "gitattributes_eol",
+	callback = function(event)
+		local buf = event.buf
+		if vim.bo[buf].buftype ~= "" or not vim.bo[buf].modifiable then return end
+		local path = vim.api.nvim_buf_get_name(buf)
+		if path == "" then return end
+
+		-- git needs an existing cwd; new files may live in not-yet-created folders
+		local dir = vim.fs.dirname(path)
+		while dir and not vim.uv.fs_stat(dir) do
+			local parent = vim.fs.dirname(dir)
+			dir = parent ~= dir and parent or nil
+		end
+		if not dir then return end
+
+		local res = vim.system({ "git", "check-attr", "eol", "--", path }, { cwd = dir, text = true }):wait()
+		if res.code ~= 0 then return end
+		local eol = (res.stdout or ""):match ": eol: (%a+)%s*$"
+		local target = ({ crlf = "dos", lf = "unix" })[eol]
+		if not target or vim.bo[buf].fileformat == target then return end
+
+		if target == "dos" then
+			-- buffer was read as unix: drop stray CRs from mixed-ending lines before switching
+			vim.api.nvim_buf_call(buf, function() vim.cmd [[silent! keepjumps keeppatterns %s/\r$//e]] end)
+		end
+		vim.bo[buf].fileformat = target
+		if event.event == "BufReadPost" then
+			vim.notify(
+				("Line endings -> %s (per .gitattributes), save to apply"):format(eol:upper()),
+				vim.log.levels.INFO
+			)
+		end
+	end,
+})
+
 -- Set filetype for .env and .env.* files
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	group = augroup "env_filetype",

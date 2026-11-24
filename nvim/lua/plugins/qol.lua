@@ -4,6 +4,9 @@ local opts = function(desc) return { desc = desc, noremap = true, silent = true,
 require("mini.comment").setup {
 	mappings = { comment = "", comment_line = "<C-_>", comment_visual = "<C-_>" },
 }
+-- Terminals/multiplexers using the kitty keyboard protocol (zellij) send Ctrl+/ as <C-/>, legacy ones as <C-_>
+map("n", "<C-/>", "<C-_>", { remap = true, silent = true, desc = "Toggle comment line" })
+map("x", "<C-/>", "<C-_>", { remap = true, silent = true, desc = "Toggle comment" })
 
 require("mini.surround").setup()
 

@@ -2,3 +2,5 @@
 nvim/lazy-lock.json
 act
 pw-test
+aws-token-fetch
+timelog
